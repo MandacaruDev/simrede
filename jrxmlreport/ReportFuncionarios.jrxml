@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lista_funcionarios" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8e6482a4-e7fb-48cb-9bd0-2ffdb6b98f61">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="413"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ocupacao" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="vinculo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="escola" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     funcionarios.`id` AS funcionarios_id,
+     funcionarios.`siem_id` AS funcionarios_f_siems_id,
+     ocupacaos.`id` AS ocupacaos_o_id,
+     ocupacaos.`nome` AS ocupacaos_o_nome,
+     pessoas.`id` AS pessoas_p_id,
+     pessoas.`nome` AS pessoas_p_nome,
+     pessoas.`fone` AS pessoas_p_fone,
+     pessoas.`email` AS pessoas_p_email,
+     pessoas.`cel1` AS pessoas_p_cel1,
+     pessoas.`cel2` AS pessoas_p_cel2,
+     funcionarios.`status_funcionario` AS funcionarios_f_status_funcionarios,
+     siems.`id` AS siems_s_id,
+     siems.`siem` AS siems_s_siems,
+     siems.`nome` AS siems_s_nome,
+     funcionarios.`ocupacao_id` AS funcionarios_f_ocupacaos_id,
+     funcionarios.`vinculo` AS funcionarios_f_vinculo,
+     pessoas.`distrito` AS pessoas_p_distrito,
+
+(select count(funcionarios.siem_id) from `funcionarios` WHERE
+     siems.id = $P{escola}
+     and funcionarios.status_funcionario = "ATIVO"
+     and funcionarios.ocupacao_id = $P{ocupacao}
+     and funcionarios.vinculo = $P{vinculo}) as totalfuncionarios
+
+FROM
+     `ocupacaos` ocupacaos INNER JOIN `funcionarios` funcionarios ON ocupacaos.`id` = funcionarios.`ocupacao_id`
+     INNER JOIN `pessoas` pessoas ON funcionarios.`pessoa_id` = pessoas.`id`
+     INNER JOIN `siems` siems ON funcionarios.`siem_id` = siems.`id`
+WHERE
+     status_funcionario = "ATIVO"
+     and funcionarios.`ocupacao_id` = $P{ocupacao}
+     and funcionarios.`vinculo` = $P{vinculo}
+     and funcionarios.`siem_id` = $P{escola}
+
+ORDER BY
+     siems.`nome` ASC,
+     ocupacaos.`nome` ASC,
+     pessoas.`nome` ASC]]>
+	</queryString>
+	<field name="funcionarios_id" class="java.lang.Long"/>
+	<field name="funcionarios_f_siems_id" class="java.lang.Long"/>
+	<field name="ocupacaos_o_id" class="java.lang.Long"/>
+	<field name="ocupacaos_o_nome" class="java.lang.String"/>
+	<field name="pessoas_p_id" class="java.lang.Long"/>
+	<field name="pessoas_p_nome" class="java.lang.String"/>
+	<field name="pessoas_p_fone" class="java.lang.String"/>
+	<field name="pessoas_p_email" class="java.lang.String"/>
+	<field name="pessoas_p_cel1" class="java.lang.String"/>
+	<field name="pessoas_p_cel2" class="java.lang.String"/>
+	<field name="funcionarios_f_status_funcionarios" class="java.lang.String"/>
+	<field name="siems_s_id" class="java.lang.Long"/>
+	<field name="siems_s_siems" class="java.lang.String"/>
+	<field name="siems_s_nome" class="java.lang.String"/>
+	<field name="funcionarios_f_ocupacaos_id" class="java.lang.Long"/>
+	<field name="funcionarios_f_vinculo" class="java.lang.String"/>
+	<field name="pessoas_p_distrito" class="java.lang.String"/>
+	<field name="totalfuncionarios" class="java.lang.Long"/>
+	<group name="ocupacaos" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{ocupacaos_o_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="10"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField>
+					<reportElement x="13" y="0" width="340" height="20" uuid="a758f9a7-bb51-45e5-8c4c-ac6365867a9c"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["TOTAL - "+$F{ocupacaos_o_nome}+":  "+$V{ocupacaos_COUNT}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="122" y="16" width="541" height="14" uuid="8803a9a5-cb4f-4fdf-be58-ec3c01b1d083"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[SECRETARIA DE EDUCAÇÃO E ESPORTE DE JUAZEIRO BAHIA- SEDUC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="36" width="541" height="14" uuid="85986098-e085-4cc9-ac23-278b5a37c590"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[NUCLEO DE TECNOLOGIA MUNICIPAL - NTM]]></text>
+			</staticText>
+			<image>
+				<reportElement x="691" y="17" width="69" height="42" uuid="47aed1b9-cd95-4d51-ad24-c43ef556b19b"/>
+				<imageExpression><![CDATA["/home/aetji649/sglab/jrxmlreport/img/logoNTM.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="31" y="0" width="78" height="71" uuid="9d1f7b52-7521-4717-bf17-c6a4cff247f7"/>
+				<imageExpression><![CDATA["/home/aetji649/sglab/jrxmlreport/img/logo_escudo_juazeiro.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="121" y="5" width="541" height="14" uuid="3692d302-37a1-4f98-9e6b-c1b6d2ccb07d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTA DE FUNCIONÁRIOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="60" width="40" height="20" uuid="f7727399-d4f2-44a4-81f3-2ae0ef0ccb2a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="60" width="135" height="20" uuid="f38e1991-4849-4ffd-9817-bcc2a20eccb2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOTAÇÃO / ESCOLA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="60" width="69" height="20" uuid="ecf75877-0813-46d1-b774-210fbab3fa24"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CELULAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="549" y="60" width="203" height="20" uuid="d3233095-3db6-4259-b649-49a19645a2b9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-MAIL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="13" y="31" width="249" height="20" uuid="dae32afe-0549-43c6-ac9a-3fbc5592a089"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["OCUPAÇÃO: "+$F{ocupacaos_o_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="663" y="5" width="137" height="20" uuid="05f5a12f-1251-4cd7-86e5-ef3c4610b7e1"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL GERAL:  "+$F{totalfuncionarios}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement x="2" y="17" width="798" height="1" uuid="13396bed-1cdf-4b73-a042-b9a47665af89"/>
+			</line>
+			<textField>
+				<reportElement x="13" y="0" width="202" height="20" uuid="91772490-353f-4375-b177-eaa2e97a998a"/>
+				<textFieldExpression><![CDATA[$F{siems_s_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="0" width="95" height="20" uuid="39535acb-ed32-4c54-b9fd-9cf89679bca2"/>
+				<textFieldExpression><![CDATA[$F{pessoas_p_cel1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="549" y="0" width="220" height="20" uuid="2dd2759e-f188-4070-9f8d-ffbabc22f153"/>
+				<textFieldExpression><![CDATA[$F{pessoas_p_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="0" width="231" height="20" uuid="758c2c7f-7a32-459c-a432-92df8e751ce0"/>
+				<textFieldExpression><![CDATA[$F{pessoas_p_nome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="14" splitType="Stretch"/>
+	</summary>
+</jasperReport>

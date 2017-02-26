@@ -1,0 +1,17 @@
+<?php
+$server="localhost";
+$db="sglab";
+$user="root";
+$pass="";
+$version="0.9d";
+$pgport=3306;
+$pchartfolder="./class/pchart2";
+/*
+$server="localhost";
+$db="aetji649_moodle";
+$user="aetji649";
+$pass="n6F44r8aEo";
+$version="0.9d";
+$pgport=3306;
+$pchartfolder="./class/pchart2";
+*/

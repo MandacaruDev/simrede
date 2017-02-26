@@ -1,0 +1,1289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relGeralEscola" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="060438fe-03f4-4a3e-8fdf-798d805442f4">
+	<property name="ireport.zoom" value="1.4641000000000093"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="339"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="mediaBaixa">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{variable1}.intValue()<10 ? "<style forecolor='#FF0000'>" + $V{variable1} + "</style>" : "<style forecolor='#0033FF'>" + $V{variable1} + "</style>"]]></conditionExpression>
+			<style/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="4a6b7424-ac27-4483-8399-e991743ded2b"/>
+	<parameter name="simulado" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="codsiem" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nivel" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ano" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT *,
+(select anuq1 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq1,
+(select anuq2 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq2,
+(select anuq3 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq3,
+(select anuq4 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq4,
+(select anuq5 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq5,
+(select anuq6 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq6,
+(select anuq7 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq7,
+(select anuq8 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq8,
+(select anuq9 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq9,
+(select anuq10 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq10,
+
+
+(select anuq11 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq11,
+(select anuq12 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq12,
+(select anuq13 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq13,
+(select anuq14 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq14,
+(select anuq15 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq15,
+(select anuq16 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq16,
+(select anuq17 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq17,
+(select anuq18 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq18,
+(select anuq19 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq19,
+(select anuq20 from anulada  where simulado = $P{simulado}
+ and ano = $P{ano} and nivel like $P{nivel}) AS anuq20,
+
+ (select sum(Qtalunos) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS totalAlunos,
+ (select count(Escola) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS totalEscola,
+ (select avg(mediaGeral) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS totalMedia, 
+ (select avg(q1+q2+q3+q4+q5+q6+q7+q8+q9+q10)/10 from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS totalMediaPT,
+ (select avg(q11+q12+q13+q14+q15+q16+q17+q18+q19+q20)/10 from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS totalMediaMT,
+
+(select avg(q1) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_1,
+(select avg(q2) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_2,
+(select avg(q3) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_3,
+(select avg(q4) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_4,
+(select avg(q5) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_5,
+(select avg(q6) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_6,
+(select avg(q7) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_7,
+(select avg(q8) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_8,
+(select avg(q9) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_9,
+(select avg(q10) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_10,
+
+(select avg(q11) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_11,
+(select avg(q12) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_12,
+(select avg(q13) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_13,
+(select avg(q14) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_14,
+(select avg(q15) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_15,
+(select avg(q16) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_16,
+(select avg(q17) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_17,
+(select avg(q18) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_18,
+(select avg(q19) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_19,
+(select avg(q20) from `cs_media_escolas` where simulado = $P{simulado}
+ and codsiem = $P{codsiem} and ano = $P{ano} and nivel like $P{nivel} and situacao="Finalizada") AS Q_20
+
+
+FROM `cs_media_escolas`
+where simulado = $P{simulado}
+and ano = $P{ano}
+and nivel like $P{nivel}
+and codsiem = $P{codsiem}
+and situacao="Finalizada"
+ORDER BY simulado desc, mediaGeral DESC]]>
+	</queryString>
+	<field name="situacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ano" class="java.math.BigDecimal"/>
+	<field name="nivel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codsiem" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Escola" class="java.lang.String"/>
+	<field name="Simulado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Qtalunos" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q1" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q2" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q3" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q4" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q5" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q6" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q7" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q8" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q9" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q10" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q11" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q12" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q13" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q14" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q15" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q16" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q17" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q18" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q19" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q20" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mediaGeral" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq4" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq5" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq6" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq7" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq8" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq9" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq10" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq11" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq12" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq13" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq14" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq15" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq16" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq17" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq18" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq19" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="anuq20" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalAlunos" class="java.math.BigDecimal"/>
+	<field name="totalEscola" class="java.lang.Long"/>
+	<field name="totalMedia" class="java.math.BigDecimal"/>
+	<field name="totalMediaPT" class="java.math.BigDecimal"/>
+	<field name="totalMediaMT" class="java.math.BigDecimal"/>
+	<field name="Q_1" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q_2" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q_3" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q_4" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q_5" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q_6" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q_7" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q_8" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q_9" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Q_10" class="java.math.BigDecimal"/>
+	<field name="Q_11" class="java.math.BigDecimal"/>
+	<field name="Q_12" class="java.math.BigDecimal"/>
+	<field name="Q_13" class="java.math.BigDecimal"/>
+	<field name="Q_14" class="java.math.BigDecimal"/>
+	<field name="Q_15" class="java.math.BigDecimal"/>
+	<field name="Q_16" class="java.math.BigDecimal"/>
+	<field name="Q_17" class="java.math.BigDecimal"/>
+	<field name="Q_18" class="java.math.BigDecimal"/>
+	<field name="Q_19" class="java.math.BigDecimal"/>
+	<field name="Q_20" class="java.math.BigDecimal"/>
+	<variable name="variable1" class="java.lang.String"/>
+	<group name="Simulado" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{Simulado}]]></groupExpression>
+		<groupHeader>
+			<band height="56">
+				<textField>
+					<reportElement mode="Opaque" x="9" y="7" width="539" height="20" backcolor="#D5D5D5" uuid="106afb8d-c0fe-4402-ac7c-8ee3c2c23edd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Simulado em rede 0"+$F{Simulado}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="4" y="34" width="36" height="20" uuid="abf73cf0-ed5f-48e8-9410-3032b19f0ad0"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Siem]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="40" y="34" width="96" height="20" uuid="3840b791-ab10-4694-bcfe-30e1c56b3cf1"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Escola]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="445" y="34" width="43" height="20" uuid="cda6de06-56d8-4e74-b987-b2249dd8cf6e"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Alunos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="512" y="34" width="42" height="20" uuid="0b86bf03-5a5b-47cd-b253-fefe3505e2b7"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Média]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="287" splitType="Stretch">
+			<staticText>
+				<reportElement x="91" y="6" width="374" height="20" uuid="6bb2517c-1515-4a46-997c-cc3f3c891d48"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PREFEITURA MUNICIPAL DE JUAZEIRO BAHIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="24" width="374" height="20" uuid="94859bef-4519-4261-83b4-c156d0cfd58b"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEDUC - SECRETARIA DE EDUCAÇÃO E ESPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="44" width="240" height="20" uuid="6571c7a3-d9a0-4f64-8285-98d91d39c48f"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE SIMULADOS JUAZEIRO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement style="&lt;Valores diferentes&gt;" x="9" y="172" width="539" height="80" uuid="a0202c85-e5f1-4817-b027-c8fd250f0c15"/>
+			</rectangle>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="202" y="171" width="1" height="80" uuid="e8c860ca-44b0-4de1-a2bd-fd8d366def49"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="122" y="213" width="426" height="1" uuid="2acbf162-bc2d-4a7a-81f0-3aadec0f0abf"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="280" y="171" width="1" height="80" uuid="b568cd6f-329b-4167-b2e5-71d87372093a"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="359" y="193" width="1" height="58" uuid="2a8172a3-2791-46f1-b832-2e256de4d718"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="440" y="171" width="1" height="80" uuid="c1b54298-aef0-48cf-a7de-6a20dea8d9cd"/>
+			</line>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" x="124" y="180" width="77" height="29" uuid="7f3f7199-bcbe-4362-b022-6252f404006e"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total de escolas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" x="211" y="180" width="62" height="29" uuid="87607a43-cbc1-4cf1-a43a-fb325e8f5c93"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total de alunos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" x="297" y="177" width="121" height="21" uuid="743aa1a6-9683-445e-ba35-07a814529c33"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Média por Disciplinas]]></text>
+			</staticText>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="281" y="193" width="159" height="1" uuid="4a839202-a34d-4dfd-b09d-848235642b21"/>
+			</line>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" x="284" y="197" width="72" height="13" uuid="8b9fe915-80fc-409b-a856-29fe148b98a8"/>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Português]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" x="364" y="197" width="73" height="13" uuid="f1cc76d3-396f-439b-aeba-355df43c4b9b"/>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Matemática]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" x="441" y="184" width="107" height="21" uuid="d6fc5672-ebe0-4d89-9b4d-d87909334d3e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Média Geral]]></text>
+			</staticText>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="119" y="171" width="1" height="80" uuid="04474c1b-9b5f-48de-bf93-2f6bd69cdfb0"/>
+			</line>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" x="9" y="190" width="113" height="20" uuid="fe619e4e-554f-4991-aeda-a0c41f24ef62"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Fundamental]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" x="204" y="214" width="74" height="33" uuid="140824df-4909-4fa0-93bf-9dddc4f41cf9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalAlunos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" x="123" y="214" width="77" height="33" uuid="48469df1-dbcf-4305-bb92-172675f49684"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalEscola}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="284" y="212" width="72" height="37" uuid="a91f66ce-021e-4527-9c2a-fa301a2f291b">
+					<printWhenExpression><![CDATA[($F{totalMediaPT}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalMediaPT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="362" y="213" width="75" height="36" uuid="e12de681-ea53-4c95-b9ae-b86c2a7a9eff">
+					<printWhenExpression><![CDATA[($F{totalMedia}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalMediaMT}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement style="&lt;Valores diferentes&gt;" x="9" y="92" width="539" height="79" uuid="d7043338-0770-4369-82b5-c031059ecb1f"/>
+			</rectangle>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="9" y="141" width="539" height="1" uuid="302f5959-8893-44da-b4ba-3f7db48e6a3e"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="9" y="114" width="539" height="1" backcolor="#D3D3D3" uuid="7f9f72be-6f43-4adc-a81f-16d8f13b559e"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="73" y="92" width="1" height="79" uuid="ccb12728-bbbc-499d-81ef-3c1d9d0176ad"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="119" y="92" width="1" height="79" uuid="d9e986d5-8350-42f9-a290-c5ed43682d90"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="165" y="92" width="1" height="79" uuid="178f2045-996a-4752-8d31-2b430db0b98c"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="209" y="92" width="1" height="79" uuid="0eee796e-a5e1-4a08-a957-f41100ec8cd9"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="256" y="92" width="1" height="79" uuid="6f87c2fc-38b1-47e5-908e-f2103c6b7e3b"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="306" y="92" width="1" height="79" uuid="0e98ac25-9e7c-4521-9f64-1725102ec01d"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="357" y="92" width="1" height="79" uuid="a50ead9c-a507-4f81-8664-491878d2a2f9"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="405" y="92" width="1" height="79" uuid="4b43d259-85dc-4483-8f03-2db8100f9bca"/>
+			</line>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="453" y="92" width="1" height="79" uuid="78e5d25a-f620-435c-bcf1-b13b10640087"/>
+			</line>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="9" y="95" width="63" height="22" backcolor="#D3D3D3" uuid="75875fe6-e498-4ab0-ba52-61dab748307a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Questões]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="74" y="95" width="45" height="22" backcolor="#D3D3D3" uuid="a4438319-e371-4c1c-bcd9-24f8c560ad72"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Q1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="120" y="95" width="45" height="22" backcolor="#D3D3D3" uuid="fbc2a12f-33e4-43b2-9cf3-c0686fcc3dd6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Q2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="166" y="95" width="43" height="22" backcolor="#D3D3D3" uuid="454df4c1-0d62-4388-a8be-2b0046a891ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Q3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="210" y="95" width="46" height="22" backcolor="#D3D3D3" uuid="3f4345a5-d4ec-46f5-81cc-5ca870b34866"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Q4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="257" y="95" width="49" height="22" backcolor="#D3D3D3" uuid="b72b4923-3dd0-4873-b09f-ed9d36c9ba9a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Q5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="307" y="95" width="50" height="22" backcolor="#D3D3D3" uuid="6de9ca71-b1a7-45b5-ab32-dd646dce9ffe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Q6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="358" y="95" width="47" height="22" backcolor="#D3D3D3" uuid="932efcb3-22f3-49c1-a08e-3b15c4677bb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Q7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="406" y="95" width="47" height="22" backcolor="#D3D3D3" uuid="d8f191ad-8896-4a19-9a44-e8091941ee61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Q8]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="454" y="95" width="47" height="22" backcolor="#D3D3D3" uuid="3635612a-cd9e-4b0a-b460-92f7aee1e03b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Q9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" x="11" y="119" width="60" height="20" uuid="563ac1e1-0f5b-418b-9cf4-d9688a516df5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Português]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" x="11" y="148" width="60" height="20" uuid="4ddc8105-7aaa-49bb-8815-371279c01d9a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Matemática]]></text>
+			</staticText>
+			<line>
+				<reportElement style="&lt;Valores diferentes&gt;" x="499" y="93" width="1" height="79" uuid="c713bcc8-cf8c-47a0-94aa-9c579cbe2bc2"/>
+			</line>
+			<staticText>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="500" y="95" width="47" height="22" backcolor="#D3D3D3" uuid="92491de3-c148-47d2-85c7-6104b4f7db10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Q10]]></text>
+			</staticText>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Transparent" x="74" y="119" width="45" height="20" uuid="0cc009f3-4f30-487c-af43-a02a67710655">
+					<printWhenExpression><![CDATA[($F{Q_1}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="121" y="119" width="43" height="20" uuid="15b195f8-d874-431b-abeb-90c16dd40256">
+					<printWhenExpression><![CDATA[($F{Q_2}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="166" y="119" width="43" height="20" uuid="f0ec43c2-2cb9-4f19-b24d-5c19397e9018">
+					<printWhenExpression><![CDATA[($F{Q_3}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="210" y="119" width="45" height="20" uuid="6fdc2d3a-d0a3-46da-93fb-5c17e6fb539a">
+					<printWhenExpression><![CDATA[($F{Q_4}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_4}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="258" y="119" width="46" height="20" uuid="d214a319-4342-4a7d-a1be-1fa40ab29d35">
+					<printWhenExpression><![CDATA[($F{Q_5}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_5}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="307" y="119" width="49" height="20" uuid="f5b53ee5-9f13-44e6-8c89-67f40cf7bc24">
+					<printWhenExpression><![CDATA[($F{Q_6}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_6}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="359" y="119" width="46" height="20" uuid="2d49c255-57fa-4fb6-8fef-5ba1dd970c97">
+					<printWhenExpression><![CDATA[($F{Q_7}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_7}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="406" y="119" width="47" height="20" uuid="187b65cb-77f6-47c8-860f-ae9fe5eb8cea">
+					<printWhenExpression><![CDATA[($F{Q_8}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_8}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="454" y="119" width="45" height="20" uuid="d82fd4a6-a909-4ce3-b21d-e8ac57d67d65">
+					<printWhenExpression><![CDATA[($F{Q_9}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_9}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="501" y="119" width="46" height="20" uuid="b1d33a7c-a1b2-4b02-a86f-78fa5e2c079e">
+					<printWhenExpression><![CDATA[($F{Q_10}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_10}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="74" y="146" width="45" height="20" uuid="9c5946e2-2302-4d6a-bbaf-35f22f7667a6">
+					<printWhenExpression><![CDATA[($F{Q_11}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_11}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="121" y="146" width="44" height="20" uuid="080762db-6955-453d-9595-9ffd8d774e47">
+					<printWhenExpression><![CDATA[($F{Q_12}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_12}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="166" y="146" width="43" height="20" uuid="57206656-9a79-4864-9153-7546dd459618">
+					<printWhenExpression><![CDATA[($F{Q_13}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_13}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="210" y="146" width="45" height="20" uuid="931f8b23-0cf2-43b5-87e5-093ea4939518">
+					<printWhenExpression><![CDATA[($F{Q_14}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_14}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="257" y="146" width="49" height="20" uuid="adef2b9c-fc8c-41d0-8f4a-a885755a0107">
+					<printWhenExpression><![CDATA[($F{Q_15}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_15}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="307" y="146" width="49" height="20" uuid="8e71c759-bd7e-42cf-a97c-2b92a6aeb291">
+					<printWhenExpression><![CDATA[($F{Q_16}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_16}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="359" y="146" width="47" height="20" uuid="f80f5d90-ab68-4daa-ace4-1359b044579f">
+					<printWhenExpression><![CDATA[($F{Q_17}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_17}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="406" y="146" width="47" height="20" uuid="ced02c54-3ac4-41ff-9e27-b3d6f46125e4">
+					<printWhenExpression><![CDATA[($F{Q_18}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_18}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="454" y="146" width="45" height="20" uuid="0bbeda2f-c5bb-44d8-8943-af594ce7b893">
+					<printWhenExpression><![CDATA[($F{Q_19}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_19}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="500" y="146" width="46" height="20" uuid="fb685aa8-6dd4-40f7-8af7-5619d1c06e5f">
+					<printWhenExpression><![CDATA[($F{Q_20}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_20}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="441" y="216" width="107" height="33" uuid="a82fdb8c-abb1-4122-a00c-9a18d770822d">
+					<printWhenExpression><![CDATA[($F{totalMedia}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="28" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalMedia}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Transparent" x="74" y="120" width="45" height="20" forecolor="#F40C09" uuid="c8bdd91a-2f43-446d-bb7f-82ae937c64fc">
+					<printWhenExpression><![CDATA[($F{Q_1}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="166" y="118" width="43" height="20" forecolor="#FF0000" uuid="175aeb6b-21b8-453d-a016-a2752b0fbf18">
+					<printWhenExpression><![CDATA[($F{Q_3}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="210" y="118" width="45" height="20" forecolor="#FF0000" uuid="502dd438-1242-4c07-a666-6c4005496ced">
+					<printWhenExpression><![CDATA[($F{Q_4}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_4}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="258" y="118" width="46" height="20" forecolor="#FF0000" uuid="691ac81c-fdb8-4f50-96ba-6f86b4e51ca9">
+					<printWhenExpression><![CDATA[($F{Q_5}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_5}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="307" y="118" width="49" height="20" forecolor="#FF0000" uuid="031497ce-2f57-4e78-a9d4-f4cd3fe9587a">
+					<printWhenExpression><![CDATA[($F{Q_6}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_6}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="359" y="118" width="46" height="20" forecolor="#FF0000" uuid="7ffffeb3-8e02-444c-a7c3-2d3f8b59ee23">
+					<printWhenExpression><![CDATA[($F{Q_7}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_7}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="406" y="118" width="47" height="20" forecolor="#FF0000" uuid="f573b051-ba75-4630-a7d8-7a3e57497b55">
+					<printWhenExpression><![CDATA[($F{Q_8}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_8}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="454" y="118" width="45" height="20" forecolor="#FF0000" uuid="dbd47645-f86f-4c03-843b-aedfd8085617">
+					<printWhenExpression><![CDATA[($F{Q_9}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_9}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="501" y="118" width="46" height="20" forecolor="#FF0000" uuid="d0a05ad3-6a5b-414f-b21f-a59e894bf11b">
+					<printWhenExpression><![CDATA[($F{Q_10}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_10}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="false">
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Transparent" x="74" y="147" width="45" height="20" forecolor="#F40C09" uuid="87053edc-998c-407e-87a9-c5c48f272fbc">
+					<printWhenExpression><![CDATA[($F{Q_11}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_11}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="166" y="146" width="43" height="20" forecolor="#FF0000" uuid="8c344a41-5a87-4451-acdb-d81eb573c948">
+					<printWhenExpression><![CDATA[($F{Q_13}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_13}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="210" y="146" width="45" height="20" forecolor="#FF0000" uuid="544b1c7f-4718-43e4-99b9-36d4cd321310">
+					<printWhenExpression><![CDATA[($F{Q_14}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_14}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="258" y="146" width="46" height="20" forecolor="#FF0000" uuid="b8e3ab69-6260-4a02-8671-3e6fe3fb6d86">
+					<printWhenExpression><![CDATA[($F{Q_15}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_15}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="307" y="146" width="49" height="20" forecolor="#FF0000" uuid="999382f6-a097-4d7f-b12a-3f142cda4873">
+					<printWhenExpression><![CDATA[($F{Q_16}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_16}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="359" y="146" width="46" height="20" forecolor="#FF0000" uuid="887af40e-48ee-4597-bbf1-1d8fe0576c46">
+					<printWhenExpression><![CDATA[($F{Q_17}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_17}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="406" y="146" width="47" height="20" forecolor="#FF0000" uuid="fb91eec9-71b3-408b-adf1-3592c32a303d">
+					<printWhenExpression><![CDATA[($F{Q_18}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_18}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="454" y="146" width="45" height="20" forecolor="#FF0000" uuid="4da9982e-174e-4a68-9a18-6330e06e7bdb">
+					<printWhenExpression><![CDATA[($F{Q_19}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_19}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="501" y="146" width="46" height="20" forecolor="#FF0000" uuid="91133585-62da-44e3-8a40-df629c3985f8">
+					<printWhenExpression><![CDATA[($F{Q_20}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_20}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="284" y="216" width="72" height="33" forecolor="#FF0000" uuid="d959124c-cffc-4fae-a3eb-42595a06a458">
+					<printWhenExpression><![CDATA[($F{totalMediaPT}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalMediaPT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="362" y="216" width="75" height="33" forecolor="#FF0000" uuid="2578c2a5-26cb-4eb6-b532-20b662b8e080">
+					<printWhenExpression><![CDATA[($F{totalMediaMT}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalMediaMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="442" y="217" width="107" height="31" forecolor="#FF0000" uuid="7c40a9ee-b5bb-459e-91de-b5ea40e1ab49">
+					<printWhenExpression><![CDATA[($F{totalMedia}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalMedia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="259" width="535" height="24" uuid="89a47ae3-2166-46e2-89ab-583b548b3ed4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[A tabela acima apresenta as médias das escolas listadas abaixo. As questões marcadas com X foram anuladas.]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" x="22" y="209" width="86" height="38" uuid="b82aa49a-c746-458e-9e86-b735ebc0b803"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nivel}+"º ANO"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="16" y="0" width="57" height="56" uuid="f35ada9d-4637-410b-815d-c26241d6c31d"/>
+				<imageExpression><![CDATA["../img/logo_escudo_juazeiro.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="229" y="64" width="100" height="20" uuid="82af69a7-4839-4f1f-925b-36be7f7c7d20"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ANO: 20"+$F{ano}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="77" y="119" width="39" height="20" forecolor="#CC0000" uuid="0e97ecfd-a430-4a70-9b67-fd7ca5d75a37">
+					<printWhenExpression><![CDATA[($F{anuq1}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="168" y="119" width="39" height="20" forecolor="#CC0000" uuid="d16eedff-823f-4cce-96dd-7b118f137eef">
+					<printWhenExpression><![CDATA[($F{anuq3}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="213" y="120" width="39" height="20" forecolor="#CC0000" uuid="bff5e305-ef4b-429d-9292-b462ea9f727e">
+					<printWhenExpression><![CDATA[($F{anuq4}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="262" y="119" width="39" height="20" forecolor="#CC0000" uuid="418d1fc0-0e8f-40a0-8cfc-4a3a10e8d975">
+					<printWhenExpression><![CDATA[($F{anuq5}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="313" y="119" width="39" height="20" forecolor="#CC0000" uuid="44c9b276-aa09-4d1a-bf83-c10eec93dac6">
+					<printWhenExpression><![CDATA[($F{anuq6}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="362" y="119" width="39" height="20" forecolor="#CC0000" uuid="a4e593d3-6224-45bc-8683-53ac748fce45">
+					<printWhenExpression><![CDATA[($F{anuq7}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="411" y="119" width="39" height="20" forecolor="#CC0000" uuid="34dbbc22-1d26-4497-8148-7436cb2073d1">
+					<printWhenExpression><![CDATA[($F{anuq8}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="457" y="119" width="39" height="20" forecolor="#CC0000" uuid="d7d17302-99ad-4430-9b33-029968965829">
+					<printWhenExpression><![CDATA[($F{anuq9}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="504" y="120" width="39" height="20" forecolor="#CC0000" uuid="45e5fb38-7559-4933-b879-4d64dff0d083">
+					<printWhenExpression><![CDATA[($F{anuq10}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="77" y="147" width="39" height="20" forecolor="#CC0000" uuid="66e2fcaa-5264-43b2-9915-e218cc0110b3">
+					<printWhenExpression><![CDATA[($F{anuq11}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="168" y="146" width="39" height="20" forecolor="#CC0000" uuid="2cb073a7-e4f2-4f98-9d5f-b9c16e813230">
+					<printWhenExpression><![CDATA[($F{anuq13}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="213" y="147" width="39" height="20" forecolor="#CC0000" uuid="87989898-fc2d-44e2-8d46-294c701c7ed0">
+					<printWhenExpression><![CDATA[($F{anuq14}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="262" y="147" width="39" height="20" forecolor="#CC0000" uuid="22836448-2864-4b15-854f-720e02e62da6">
+					<printWhenExpression><![CDATA[($F{anuq15}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="313" y="147" width="39" height="20" forecolor="#CC0000" uuid="200c8103-7f6d-4832-b516-af382415c00b">
+					<printWhenExpression><![CDATA[($F{anuq16}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="362" y="147" width="39" height="20" forecolor="#CC0000" uuid="2826abad-fada-45b3-84d1-ec3b3a181ab6">
+					<printWhenExpression><![CDATA[($F{anuq17}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="410" y="147" width="39" height="20" forecolor="#CC0000" uuid="81af427e-a9ee-47d2-a719-79d95ba49429">
+					<printWhenExpression><![CDATA[($F{anuq18}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="457" y="147" width="39" height="20" forecolor="#CC0000" uuid="7ca5991d-ce17-4db8-bd7c-bd6e2ad0eea0">
+					<printWhenExpression><![CDATA[($F{anuq19}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="504" y="147" width="39" height="20" forecolor="#CC0000" uuid="c0454820-aefd-42af-bd4c-83695657b8ce">
+					<printWhenExpression><![CDATA[($F{anuq20}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="120" y="119" width="43" height="20" forecolor="#FF0000" uuid="dc218397-e212-4bdd-aa3a-f5156affa2c9">
+					<printWhenExpression><![CDATA[($F{Q_2}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="123" y="119" width="39" height="20" forecolor="#CC0000" uuid="dd320dd5-1407-4776-90ad-6e8fccd3f38e">
+					<printWhenExpression><![CDATA[($F{anuq2}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="&lt;Valores diferentes&gt;" x="121" y="146" width="43" height="20" forecolor="#FF0000" uuid="1822386f-f3f9-4f88-ae5f-c9ae7c9fc3f8">
+					<printWhenExpression><![CDATA[($F{Q_12}<5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Q_12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="&lt;Valores diferentes&gt;" mode="Opaque" x="123" y="147" width="39" height="20" forecolor="#CC0000" uuid="ed45b192-8dfd-4a51-a815-a03fac4ee1d2">
+					<printWhenExpression><![CDATA[($F{anuq12}==1)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[X]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="4"/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="0" width="377" height="20" uuid="340b00e9-bd5b-4900-a10b-09f67b4d10de"/>
+				<textFieldExpression><![CDATA[$F{Escola}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="0" width="25" height="20" uuid="becfeac3-9085-4ad8-ad3b-89c494684172"/>
+				<textFieldExpression><![CDATA[$F{codsiem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="0" width="43" height="20" uuid="20ae3ae4-44f2-4b4c-8c75-064184843a5c"/>
+				<textFieldExpression><![CDATA[$F{Qtalunos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="512" y="0" width="42" height="20" uuid="aa6b6453-fd26-469b-ad53-e59524fa5a1d">
+					<printWhenExpression><![CDATA[($F{mediaGeral}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{mediaGeral}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="16" width="553" height="1" uuid="41f95383-48a2-4ae6-a026-799d80b520d5"/>
+			</line>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="512" y="-1" width="42" height="20" forecolor="#FF0000" uuid="768f0c1e-6440-4561-ae9e-45aa42e103a4">
+					<printWhenExpression><![CDATA[($F{mediaGeral}<5)]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{mediaGeral}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="34" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="27" splitType="Stretch"/>
+	</summary>
+	<noData>
+		<band height="50"/>
+	</noData>
+</jasperReport>

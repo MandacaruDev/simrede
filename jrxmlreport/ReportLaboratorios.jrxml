@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lista_laboratorios" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8e6482a4-e7fb-48cb-9bd0-2ffdb6b98f61">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="1"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="distrito" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="articulador" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="internet" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     siems.`id` AS siems_s_id,
+     siems.`siem` AS siems_s_siems,
+     siems.`nome` AS siems_s_nome,
+     escolas.`id` AS escolas_e_id,
+     escolas.`siem_id` AS escolas_e_siems_id,
+     escolas.`status_escola` AS escolas_e_status_escolas,
+     escolas.`distrito` AS escolas_e_distrito,
+     escolas.`fone` AS escolas_e_fone,
+     escolas.`cel1` AS escolas_e_cel1,
+     escolas.`bairro` AS escolas_e_bairro,
+     escolas.`pregao1` AS pregao1,     
+     escolas.`pregao2` AS pregao2,
+     escolas.`pregao3` AS pregao3,
+     escolas.`pregao4` AS pregao4,
+     escolas.`possui_lab` AS escolas_e_possui_lab,
+     escolas.`possui_internet_escola` AS escolas_e_possui_internet_escolas,
+     escolas.`possui_analista` AS escolas_e_possui_analista,     
+     escolas.`pessoa_id` AS analista,
+     escolas.`qt_monitores_lab` AS qt_monitores, 
+     pessoas.`nome` AS nome_analista,
+
+	 (select count(escolas.`siem_id`) from `escolas`WHERE
+     distrito = $P{distrito}
+     and status_escola = "ATIVO"
+     and possui_analista = $P{articulador}
+     and possui_lab = "SIM"
+     and possui_internet_escola = $P{internet}) as totalescolass
+   
+FROM
+     `siems` siems INNER JOIN `escolas` escolas ON siems.`id` = escolas.`siem_id`
+     INNER JOIN `pessoas` pessoas ON escolas.`pessoa_id` = pessoas.`id`
+WHERE
+     escolas.distrito = $P{distrito}
+     and status_escola = "ATIVO"
+     and possui_analista = $P{articulador}
+     and possui_lab = "SIM"
+     and possui_internet_escola = $P{internet}
+ORDER BY
+     escolas.distrito ASC,
+     siems.`nome` ASC]]>
+	</queryString>
+	<field name="siems_s_id" class="java.lang.Long"/>
+	<field name="siems_s_siems" class="java.lang.String"/>
+	<field name="siems_s_nome" class="java.lang.String"/>
+	<field name="escolas_e_id" class="java.lang.Long"/>
+	<field name="escolas_e_siems_id" class="java.lang.Long"/>
+	<field name="escolas_e_status_escolas" class="java.lang.String"/>
+	<field name="escolas_e_distrito" class="java.lang.String"/>
+	<field name="escolas_e_fone" class="java.lang.String"/>
+	<field name="escolas_e_cel1" class="java.lang.String"/>
+	<field name="escolas_e_bairro" class="java.lang.String"/>
+	<field name="pregao1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pregao2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pregao3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pregao4" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="escolas_e_possui_lab" class="java.lang.String"/>
+	<field name="escolas_e_possui_internet_escolas" class="java.lang.String"/>
+	<field name="escolas_e_possui_analista" class="java.lang.String"/>
+	<field name="analista" class="java.lang.Long"/>
+	<field name="qt_monitores" class="java.lang.String"/>
+	<field name="nome_analista" class="java.lang.String"/>
+	<field name="totalescolass" class="java.lang.Long"/>
+	<group name="distrito" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{escolas_e_distrito}]]></groupExpression>
+		<groupHeader>
+			<band height="6"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="24">
+				<textField evaluationTime="Group" evaluationGroup="distrito" isBlankWhenNull="false">
+					<reportElement x="7" y="0" width="426" height="20" uuid="6f58bc86-6c31-428a-a31f-e149457c1d9f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Total de Laboratórios:   "+$V{distrito_COUNT}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="122" y="16" width="541" height="14" uuid="8803a9a5-cb4f-4fdf-be58-ec3c01b1d083"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[SECRETARIA DE EDUCAÇÃO E ESPORTE DE JUAZEIRO BAHIA- SEDUC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="33" width="541" height="14" uuid="85986098-e085-4cc9-ac23-278b5a37c590"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[NUCLEO DE TECNOLOGIA MUNICIPAL - NTM]]></text>
+			</staticText>
+			<image>
+				<reportElement x="673" y="13" width="69" height="42" uuid="f6065816-a2ce-477a-aebf-4a6bb780ddb9"/>
+				<imageExpression><![CDATA["/home/aetji649/sglab/jrxmlreport/img/logoNTM.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="54" y="0" width="78" height="71" uuid="59f7d818-d608-4109-9cad-47c8773a9b3a"/>
+				<imageExpression><![CDATA["/home/aetji649/sglab/jrxmlreport/img/logo_escudo_juazeiro.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="121" y="5" width="541" height="14" uuid="3692d302-37a1-4f98-9e6b-c1b6d2ccb07d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTA DE LABORATÓRIOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="60" width="37" height="20" uuid="f7727399-d4f2-44a4-81f3-2ae0ef0ccb2a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="60" width="36" height="20" uuid="bb77ce98-c575-4533-8c8e-d74d83be1c0b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIEM]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="7" y="30" width="252" height="20" uuid="4064923d-8806-4c18-ab2a-fec49b383837"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DISTRITO: " + $F{escolas_e_distrito}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="673" y="60" width="28" height="20" uuid="e3d0b78b-7410-49cb-95f0-d13cf4338998"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="720" y="60" width="79" height="20" uuid="94d6d5cd-ef81-4567-a0b4-8bc1657491be"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qtd. COMP.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="663" y="5" width="128" height="14" uuid="0e1af1fa-f80a-4f4b-a1f9-056b5841892c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total Geral:  "+$F{totalescolass}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="235" y="60" width="100" height="20" uuid="766b4706-1859-482e-9805-413467c9066e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANALISTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="60" width="122" height="20" uuid="c1a389ac-d939-448f-8128-7c23ffba2a40"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PREGÃO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="19" width="796" height="1" uuid="13396bed-1cdf-4b73-a042-b9a47665af89"/>
+			</line>
+			<textField>
+				<reportElement x="7" y="2" width="23" height="20" uuid="606c936a-0d6a-436b-a6c7-d58af6d5e037"/>
+				<textFieldExpression><![CDATA[$F{siems_s_siems}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="42" y="2" width="180" height="20" uuid="fb8276a4-31f2-4338-830e-f97458d30ad1"/>
+				<textFieldExpression><![CDATA[$F{siems_s_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="673" y="2" width="26" height="20" uuid="6b49313d-639d-4393-ac2e-a1a88849a8d6"/>
+				<textFieldExpression><![CDATA[$F{escolas_e_possui_internet_escolas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="2" width="65" height="20" uuid="2818aff8-b78d-40f9-84bb-128d199a68c3"/>
+				<textFieldExpression><![CDATA[$F{pregao1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="2" width="57" height="20" uuid="832651ac-4e78-44d2-aeb9-a3b777b00150"/>
+				<textFieldExpression><![CDATA[$F{pregao2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="2" width="66" height="20" uuid="0fa17566-dd03-4292-a575-4fcf781fdae6"/>
+				<textFieldExpression><![CDATA[$F{pregao3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="593" y="2" width="59" height="20" uuid="1dbe42cb-8f9c-47b9-bed3-2ae975f7d0ba"/>
+				<textFieldExpression><![CDATA[$F{pregao4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="2" width="100" height="20" uuid="3b5b60ed-ebe0-496f-9f9f-bec01e180a6d"/>
+				<textFieldExpression><![CDATA[$F{nome_analista}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="722" y="2" width="77" height="20" uuid="a320ec04-334c-4334-9689-370a55ca1788"/>
+				<textFieldExpression><![CDATA[$F{qt_monitores}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="13" splitType="Stretch"/>
+	</summary>
+</jasperReport>

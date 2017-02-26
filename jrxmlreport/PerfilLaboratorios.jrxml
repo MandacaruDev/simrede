@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PerfilLaboratorios" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8e6482a4-e7fb-48cb-9bd0-2ffdb6b98f61">
+	<property name="ireport.zoom" value="1.000000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="90"/>
+	<parameter name="escola" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     siems.`id` AS siem_s_id,
+     siems.`siem` AS siem_s_siems,
+     siems.`nome` AS siem_s_nome,
+     
+     escolas.`id` AS escola_e_id,
+     escolas.`siem_id` AS escola_e_siem_id,
+     escolas.`status_escola` AS escola_e_status_escola,
+     escolas.`distrito` AS escola_e_distrito,
+     escolas.`fone` AS escola_e_fone,
+     escolas.`cel1` AS escola_e_cel1,
+     escolas.`bairro` AS escola_e_bairro,
+     escolas.`possui_lab` AS escola_e_possui_lab,
+     escolas.`possui_internet_escola` AS escola_e_possui_internet_escola,
+     escolas.`possui_analista` AS escola_e_possui_analista,
+     escolas.`inep` AS escola_e_inep,
+     escolas.`cep` AS escola_e_cep,
+     escolas.`logradouro` AS escola_e_logradouro,
+     escolas.`numero` AS escola_e_numero,
+     escolas.`complemento` AS escola_e_complemento,
+     escolas.`email` AS escola_e_email,
+     escolas.`cel2` AS escola_e_cel2,
+     escolas.`sigla` AS escola_e_sigla,
+     escolas.`tipo_internet_escola` AS escola_e_tipo_internet_escola,
+     escolas.`pessoa_id` AS escola_e_funcionario,
+     escolas.`tipo_sala` AS escola_e_tipo_sala,
+     escolas.`pregao1` AS escola_e_pregao1,
+     escolas.`pregao2` AS escola_e_pregao2,
+     escolas.`pregao3` AS escola_e_pregao3,
+     escolas.`pregao4` AS escola_e_pregao4,
+     escolas.`possui_internet_lab` AS escola_e_possui_internet_lab,
+     escolas.`tipo_internet_lab` AS escola_e_tipo_internet_lab,
+     escolas.`lab_montado` AS escola_e_lab_montado,
+     escolas.`qt_computadores_lab` AS escola_e_qt_computadores_lab,
+     escolas.`qt_monitores_lab` AS escola_e_qt_monitores_lab,
+     escolas.`status_lab` AS escola_e_status_lab,
+     escolas.`ar_condicionado_lab` AS escola_e_ar_condicionado,
+     escolas.`impressora_lab` AS escola_e_impressora,
+     escolas.`qt_notebook_lab` AS escola_e_qt_notebook_lab,
+     escolas.`roteador_lab` AS escola_e_roteador,
+     escolas.`switch_lab` AS escola_e_switch,
+     escolas.`qt_cadeiras_lab` AS escola_e_qt_cadeiras_lab,
+ 
+     	pessoas.`nome` AS nome_analista,
+	pessoas.fone as pessoa_fone,
+    	pessoas.cel1 as pessoa_cel1,    	
+	pessoas.cel2 as pessoa_cel2,
+	pessoas.email as pessoa_email,
+
+	 (select count(escolas.`siem_id`) from `escolas` WHERE
+
+     status_escola = "ATIVO"
+     and possui_lab = "SIM"
+     and siems.id = $P{escola}) as totalescolas
+   
+FROM
+     `siems` siems INNER JOIN `escolas` escolas ON siems.`id` = escolas.`siem_id`
+     INNER JOIN `pessoas` pessoas ON escolas.`pessoa_id` = pessoas.`id`
+WHERE
+
+     status_escola = "ATIVO"
+     and possui_lab = "SIM"
+     and siems.id = $P{escola}
+ORDER BY
+     escolas.distrito ASC,
+     siems.`nome` ASC]]>
+	</queryString>
+	<field name="siem_s_id" class="java.lang.Long"/>
+	<field name="siem_s_siems" class="java.lang.String"/>
+	<field name="siem_s_nome" class="java.lang.String"/>
+	<field name="escola_e_id" class="java.lang.Long"/>
+	<field name="escola_e_siem_id" class="java.lang.Long"/>
+	<field name="escola_e_status_escola" class="java.lang.String"/>
+	<field name="escola_e_distrito" class="java.lang.String"/>
+	<field name="escola_e_fone" class="java.lang.String"/>
+	<field name="escola_e_cel1" class="java.lang.String"/>
+	<field name="escola_e_bairro" class="java.lang.String"/>
+	<field name="escola_e_possui_lab" class="java.lang.String"/>
+	<field name="escola_e_possui_internet_escola" class="java.lang.String"/>
+	<field name="escola_e_possui_analista" class="java.lang.String"/>
+	<field name="escola_e_inep" class="java.lang.String"/>
+	<field name="escola_e_cep" class="java.lang.String"/>
+	<field name="escola_e_logradouro" class="java.lang.String"/>
+	<field name="escola_e_numero" class="java.lang.String"/>
+	<field name="escola_e_complemento" class="java.lang.String"/>
+	<field name="escola_e_email" class="java.lang.String"/>
+	<field name="escola_e_cel2" class="java.lang.String"/>
+	<field name="escola_e_sigla" class="java.lang.String"/>
+	<field name="escola_e_tipo_internet_escola" class="java.lang.String"/>
+	<field name="escola_e_funcionario" class="java.lang.Long"/>
+	<field name="escola_e_tipo_sala" class="java.lang.String"/>
+	<field name="escola_e_pregao1" class="java.lang.String"/>
+	<field name="escola_e_pregao2" class="java.lang.String"/>
+	<field name="escola_e_pregao3" class="java.lang.String"/>
+	<field name="escola_e_pregao4" class="java.lang.String"/>
+	<field name="escola_e_possui_internet_lab" class="java.lang.String"/>
+	<field name="escola_e_tipo_internet_lab" class="java.lang.String"/>
+	<field name="escola_e_lab_montado" class="java.lang.String"/>
+	<field name="escola_e_qt_computadores_lab" class="java.lang.String"/>
+	<field name="escola_e_qt_monitores_lab" class="java.lang.String"/>
+	<field name="escola_e_status_lab" class="java.lang.String"/>
+	<field name="escola_e_ar_condicionado" class="java.lang.String"/>
+	<field name="escola_e_impressora" class="java.lang.String"/>
+	<field name="escola_e_qt_notebook_lab" class="java.lang.String"/>
+	<field name="escola_e_roteador" class="java.lang.String"/>
+	<field name="escola_e_switch" class="java.lang.String"/>
+	<field name="escola_e_qt_cadeiras_lab" class="java.lang.String"/>
+	<field name="nome_analista" class="java.lang.String"/>
+	<field name="pessoa_fone" class="java.lang.String"/>
+	<field name="pessoa_cel1" class="java.lang.String"/>
+	<field name="pessoa_cel2" class="java.lang.String"/>
+	<field name="pessoa_email" class="java.lang.String"/>
+	<field name="totalescolas" class="java.lang.Long"/>
+	<group name="escola" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{siem_s_id}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="107" splitType="Stretch">
+			<staticText>
+				<reportElement x="131" y="22" width="541" height="14" uuid="8803a9a5-cb4f-4fdf-be58-ec3c01b1d083"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[SECRETARIA DE EDUCAÇÃO E ESPORTE DE JUAZEIRO BAHIA- SEDUC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="42" width="541" height="14" uuid="85986098-e085-4cc9-ac23-278b5a37c590"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[NUCLEO DE TECNOLOGIA MUNICIPAL - NTM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="84" width="802" height="16" uuid="ac766139-0309-43e0-b2d1-52fbcec30d85"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERFIL LABORATÓRIO DE INFORMÁTICA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="701" y="26" width="69" height="42" uuid="c366d734-e8a8-4295-acb7-011d280fc5a1"/>
+				<imageExpression><![CDATA["/home/aetji649/sglab/jrxmlreport/img/logoNTM.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="28" y="13" width="78" height="71" uuid="29c97b96-cc9b-4323-9272-2e20af009d00"/>
+				<imageExpression><![CDATA["/home/aetji649/sglab/jrxmlreport/img/logo_escudo_juazeiro.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="328" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="0" y="21" width="802" height="20" backcolor="#DEDEDE" uuid="fd641eec-fff8-4532-b616-8717dc058657"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_sigla}+" - ESCOLA MUNICIPAL "+$F{siem_s_nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="280" width="288" height="20" backcolor="#CCCCCC" uuid="547858ba-d70a-41cd-85d3-a1d682fa1582"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Analista]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="288" y="280" width="263" height="20" backcolor="#CCCCCC" uuid="c3cb42b1-738d-4abc-b1ac-192fd93c4211"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefones]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="220" y="226" width="80" height="20" uuid="e604a581-000d-4ab8-af24-8059e8f678a1"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_roteador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="226" width="122" height="20" uuid="c5f3d66a-3449-4c07-9503-d999cd511b98"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_ar_condicionado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="447" y="159" width="355" height="20" backcolor="#CCCCCC" uuid="dc206446-2103-4570-a577-f45359246a92"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pregões]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="532" y="226" width="168" height="20" uuid="f022f3d9-559a-4014-988e-4855b9099e01"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_qt_monitores_lab}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="532" y="206" width="168" height="20" backcolor="#CCCCCC" uuid="7f728640-260b-4019-a569-55809adccdd5"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qt. Monitores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="122" y="206" width="98" height="20" backcolor="#CCCCCC" uuid="58d6e5ee-ab4d-41cc-913d-00a261512ab1"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Impressora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="220" y="206" width="80" height="20" backcolor="#CCCCCC" uuid="6c603d0c-d38d-4b5a-a990-2ac3c35ba5ff"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Roteador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="502" y="81" width="100" height="20" backcolor="#CCCCCC" uuid="6f2c6981-3d4a-4bbe-9f2e-b2be39ec76d8"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fone Fixo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="206" width="122" height="20" backcolor="#CCCCCC" uuid="259d3638-3977-4edc-907d-506060111080"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ar condicionado]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="502" y="101" width="100" height="20" uuid="d4a8149f-3927-4a0c-8be3-8adf928c46d6"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_fone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="447" y="179" width="355" height="20" uuid="8d3c7408-f452-447e-bc4c-1ccb1b0dec75"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["    "+$F{escola_e_pregao1}+"    "+$F{escola_e_pregao2}+"    "+$F{escola_e_pregao3}+"    "+$F{escola_e_pregao4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="226" width="102" height="20" uuid="a16c0911-cfca-4c81-85b4-41f065e628fd"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_qt_cadeiras_lab}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="61" width="191" height="20" uuid="896035ce-a79d-4319-861e-369c058a0a2c"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{escola_e_bairro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="41" width="160" height="20" backcolor="#CCCCCC" uuid="17389b10-52e5-4389-8e0e-95cc7be1337d"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Distrito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="602" y="81" width="100" height="20" backcolor="#CCCCCC" uuid="99c47907-df6f-476f-8933-7dcaf5c99834"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular 1]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="351" y="61" width="451" height="20" uuid="890e5ae0-2f5b-4e4e-83f6-48e6688a9993"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{logradouro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="702" y="101" width="100" height="20" uuid="e3fc83da-8ed2-4328-810d-22cff59d608e"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_cel2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="105" y="179" width="115" height="20" uuid="f32751f2-ba91-44c3-8155-d5b84c421299"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_status_lab}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="179" width="105" height="20" uuid="cc3a6cc8-19bd-45c0-8e69-a67abdb7a1a4"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_lab_montado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="702" y="81" width="100" height="20" backcolor="#CCCCCC" uuid="805ae40b-340a-4766-87df-18c80b60a3fe"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular 2]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="61" width="160" height="20" uuid="9ce3c946-ae26-4ab7-9968-4441aa8af783"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{escola_e_distrito}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="41" y="81" width="222" height="20" backcolor="#CCCCCC" uuid="beb49838-7996-4b3a-a4ed-ed070d92f0a0"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Complemento]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="122" y="226" width="98" height="20" uuid="4d8d863f-55fe-4255-b6d3-c50d2a7fa610"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_impressora}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="160" y="41" width="191" height="20" backcolor="#CCCCCC" uuid="0c5e0012-84ad-4a48-b845-f6f7f7e514c2"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bairro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="220" y="159" width="111" height="20" backcolor="#CCCCCC" uuid="45602f7b-71f4-493d-9d6f-e11986a21659"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Internet Lab]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="263" y="101" width="239" height="20" uuid="a6d26c3d-32dc-457b-80b9-3d0952dcb6c7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{escola_e_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="602" y="101" width="100" height="20" uuid="2bfa3081-53d9-4e85-a388-780b2632ec93"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_cel1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="105" y="159" width="115" height="20" backcolor="#CCCCCC" uuid="a2b73b3b-2958-46c4-bcd0-cb24ba150f28"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status Lab]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="331" y="179" width="116" height="20" uuid="c5108d0b-60b3-4105-bb01-e2fbcb24dbcc"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_tipo_internet_lab}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="263" y="81" width="239" height="20" backcolor="#CCCCCC" uuid="0a7bd239-adb6-4a4d-947f-b21621bdf0ce"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="81" width="41" height="20" backcolor="#CCCCCC" uuid="84749be2-e073-4755-8eb4-6067c14647f1"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="331" y="159" width="116" height="20" backcolor="#CCCCCC" uuid="df8b4537-1fe5-44b2-9490-a8801850a2fa"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Internet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="351" y="41" width="451" height="20" backcolor="#CCCCCC" uuid="693aceba-ef98-427b-b4fd-341642881137"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Endereço]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="41" y="101" width="222" height="20" uuid="893162fa-d045-46e4-ab6e-5d952532f212"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{escola_e_complemento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="373" y="206" width="159" height="20" backcolor="#CCCCCC" uuid="101936d2-ed65-4a97-8e37-9771650a1a21"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qt. Computuadores]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="101" width="41" height="20" uuid="9a14fc9f-1188-46b4-8e8f-b3d024e14cbb"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{escola_e_numero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="159" width="105" height="20" backcolor="#CCCCCC" uuid="22f6920a-c9a2-46e4-b6e7-ec1f75dee5e3"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lab Montado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="551" y="280" width="251" height="20" backcolor="#CCCCCC" uuid="a24f41be-911f-4f84-be71-98e0142f1633"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="300" y="206" width="73" height="20" backcolor="#CCCCCC" uuid="98fba105-113d-4e6f-a84e-3516a23fae30"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Switch]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="700" y="206" width="102" height="20" backcolor="#CCCCCC" uuid="c9df2366-8467-45c8-8f08-3a53d5d16555"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qt. Cadeiras]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="220" y="179" width="111" height="20" uuid="bbcb4827-c9fe-47bd-b0cc-bb4466371c1b"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_possui_internet_lab}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="1" width="802" height="20" backcolor="#CCCCCC" uuid="e141731e-2956-4d30-b9ea-f5ccc9f01549"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome da Escola]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="135" width="802" height="24" uuid="9632fff1-0d95-4398-92fe-1728a2418493"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTRUTURA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="373" y="226" width="159" height="20" uuid="7db13a09-1d7f-4a52-9f50-bcd9f16c4d49"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_qt_computadores_lab}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="257" width="802" height="23" uuid="2315f1a2-595c-480c-97ba-cf316832c1b2"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANALISTA EM EDUCAÇÃO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="300" y="226" width="73" height="20" uuid="238874f3-e04a-49d8-8a5c-95b45bf3c7cf"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{escola_e_switch}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="300" width="288" height="20" uuid="8ac79c12-d27d-443f-b690-ce1fffe4f197"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nome_analista}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="300" width="263" height="20" uuid="db5afcc5-6ce9-43ea-a1a4-532b18041e08"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pessoa_cel1}+"   "+$F{pessoa_cel2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="551" y="300" width="251" height="20" uuid="d50f32c4-f5f2-4cd5-9158-52f5a0a5feb6"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{pessoa_email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="38" splitType="Stretch"/>
+	</summary>
+</jasperReport>
