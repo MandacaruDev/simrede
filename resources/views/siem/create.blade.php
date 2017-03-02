@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Adicionar Siem</div>
+                <div class="panel-heading">Adicionar Escola</div>
                 <div class="panel-body">
                 
 
@@ -33,7 +33,30 @@
                        <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
-                            <label for="siem">Admin ou Número SIEM</label>
+                            <label for="estado">Estado</label>
+
+                                <input id="estado" type="text" class="form-control" name="estado"  required>
+                            </div> 
+                           
+                            <div class="form-group">
+                            <div class="col-md-6">
+                            <label for="tipo_escola">Município</label>
+                                <select class="form-control" name="tipo_escola" required>
+                                <option value="ESCOLA">ESCOLA</option>
+                                <option value="EMEI">EMEI</option>
+                                <option value="EXTENSÃO">EXTENSÃO</option>
+                               
+                                </select>
+                            </div> 
+                        </div>   
+                        </div><!--/row-->
+                      
+                        </div>
+
+                         <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                            <label for="siem">Código Identificação<small> (Apenas Número)</small>:</small></label>
 
                                 <input id="siem" type="text" class="form-control" name="siem"  required>
                             </div> 
@@ -51,7 +74,7 @@
                         </div>   
                         </div><!--/row-->
                       
-                        </div>
+                        </div>  
                 
                         <div class="form-group">
                             <label for="nome">Nome da Escola</label>
@@ -98,7 +121,7 @@
 
 <script type="text/javascript">
   jQuery(function($) {
-    // $("#siem").mask("000");
+    $("#siem").mask("000");
     $("#cod_ext").mask("000");
     $("#cep").mask("00.000-000");
     $("#cpf").mask("000.000.000-00");

@@ -44,7 +44,7 @@ require_once '/home/aetji649/simrede/connect.php';
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'SGLAB') }}</title>
+    <title>{{ config('app.name', 'SiemRede') }}</title>
 
     <!-- Styles -->
     <link href="http://aetj.info/sglab/css/app.css" rel="stylesheet">
@@ -103,14 +103,14 @@ require_once '/home/aetji649/simrede/connect.php';
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                    
+<!--                                    
                                     <li><a href="{{ url('/escola') }}"><i class="fa glyphicon glyphicon-home"></i>Escolas</a></li>
                                     <li><a href="{{ url('/funcionario') }}"><i class="fa fa-users"></i>Analistas</a></li>
                                     <li><a href="{{ url('/pessoa') }}"><i class="fa glyphicon glyphicon-user"></i>Pessoas</a></li>
-                                    <li><a href="{{ url('/turma') }}" ><i class="fa fa-users"></i>Turmas</a></li>
+                                    <li><a href="{{ url('/turma') }}" ><i class="fa fa-users"></i>Turmas</a></li>-->
 
                                     <!--submenu horário -->
-                                    <li class="dropdown-submenu">
+                                    <!--<li class="dropdown-submenu">
                                         <a tabindex="-1" href="#">Horários</a>
                                         <ul class="dropdown-menu">
                                         
@@ -118,16 +118,17 @@ require_once '/home/aetji649/simrede/connect.php';
                                         <li><a href="{{ url('/turma') }}" ><i class="glyphicon glyphicon-calendar"></i>Turmas</a></li>
                                         
                                         </ul>
-                                    </li>
+                                    </li>-->
                                     <!--submenu horário -->
                                     <li><a href="{{ url('/upload_csv') }}" ><i class="glyphicon glyphicon-upload"></i>Upload</a></li>
 
                         <?php
                         $usuario_logado = Auth::user()->name;
                         if ($usuario_logado == "Admin") { ?>
-                                    <li><a href="{{ url('/siem') }}"><i class="fa glyphicon glyphicon-modal-window"></i>Siem</a></li>
-                                    <li><a href="{{ url('/ocupacao') }}"><i class="fa glyphicon glyphicon-cog"></i>Ocupação</a></li>
+                                    <!--<li><a href="{{ url('/ocupacao') }}"><i class="fa glyphicon glyphicon-cog"></i>Ocupação</a></li>-->
                                     <li><a href="{{ url('/moodle_simulado') }}" ><i class="glyphicon glyphicon-download-alt"></i>Simulado CSV</a></li>
+                                    <li><a href="{{ url('/siem') }}"><i class="fa glyphicon glyphicon-modal-window"></i>Escola</a></li>
+                                    
                         <?php } ?>
 
                                     </li>
@@ -171,8 +172,8 @@ require_once '/home/aetji649/simrede/connect.php';
     <ul class="dropdown-menu">
     
     <li><a tabindex="-1" data-toggle="modal" href="#escolas"><i class="fa glyphicon glyphicon-home"></i>Lista Escolas</a></li>
-	<li><a tabindex="-1" data-toggle="modal" href="#funcionario"><i class="fa fa-users"></i>Lista Analistas</a></li>
-	<li><a tabindex="-1" data-toggle="modal" href="#laboratorios"><i class="fa glyphicon glyphicon-hdd"></i>Lista Laboratórios</a></li>
+	<!--<li><a tabindex="-1" data-toggle="modal" href="#funcionario"><i class="fa fa-users"></i>Lista Analistas</a></li>
+	<li><a tabindex="-1" data-toggle="modal" href="#laboratorios"><i class="fa glyphicon glyphicon-hdd"></i>Lista Laboratórios</a></li>-->
                                    
     </ul>
   </li>
@@ -182,16 +183,16 @@ require_once '/home/aetji649/simrede/connect.php';
     <ul class="dropdown-menu">
     
         <li><a data-toggle="modal" href="#perfilescolas"><i class="fa glyphicon glyphicon-home"></i>Perfil Escolas</a></li>
-		<li><a data-toggle="modal" href="#perfilfuncionarios"><i class="fa fa-users"></i>Perfil Analistas</a></li>
+		<!--<li><a data-toggle="modal" href="#perfilfuncionarios"><i class="fa fa-users"></i>Perfil Analistas</a></li>
 		<li><a data-toggle="modal" href="#perfillaboratorios"><i class="fa glyphicon glyphicon-hdd"></i>Perfil Laboratórios</a></li>
-                                    
+                                    -->
     </ul>
   </li>
 
 
  
  <!--submenu horário -->
- <li class="dropdown-submenu">
+ <!--<li class="dropdown-submenu">
  <a tabindex="-1" href="#">Horários</a>
  <ul class="dropdown-menu">
  
@@ -199,7 +200,7 @@ require_once '/home/aetji649/simrede/connect.php';
  <li><a data-toggle="modal" data-target="#" href="#"><i class="fa glyphicon glyphicon-calendar"></i>Horário Turmas</a></li>
  <li><a data-toggle="modal" data-target="#" href="#"><i class="fa glyphicon glyphicon-calendar"></i>Horário Laboratórios</a></li>
  </ul>
- </li>
+ </li>-->
  <!--submenu horário -->
 
 
@@ -251,16 +252,16 @@ require_once '/home/aetji649/simrede/connect.php';
 
 
   <li class="dropdown-submenu">
-    <a tabindex="-1" href="#">Superintendência Pedagógica</a>
+    <a tabindex="-1" href="#">Tutoriais</a>
     <ul class="dropdown-menu">
-        <li><a href="http://aetj.info/downloads/NTM/Calendário Escolar 2017- Atualizado 1.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Calendário Escolar 2017</a></li>
-        <li><a href="http://aetj.info/downloads/NTM/compressed-Caderno do Coordenador - 2017.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Caderno do Coordenador - 2017</a></li>
-        <li><a href="http://aetj.info/downloads/NTM/Caderno do Professor - 2017-compressed.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Caderno do Professor - 2017</a></li>
-        <li><a href="http://aetj.info/downloads/NTM/compressed-Caderno Ed. Infantil I - 2017.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Caderno Ed. Infantil I - 2017</a></li>
-        <li><a href="http://aetj.info/downloads/NTM/compressed-Caderno Ed. Infantil II e III - 2017.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Caderno Ed. Infantil II e III - 2017</a></li>
+        <li><a href="#" target="_blank"><i class="glyphicon glyphicon-file"></i>Enviando Arquivo CSV</a></li>
+        <li><a href="#" target="_blank"><i class="glyphicon glyphicon-file"></i>Gerando Relatórios</a></li>
+        <!--<li><a href="http://aetj.info/downloads/NTM/Caderno do Professor - 2017-compressed.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Caderno do Professor - 2017</a></li>-->
+        <!--<li><a href="http://aetj.info/downloads/NTM/compressed-Caderno Ed. Infantil I - 2017.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Caderno Ed. Infantil I - 2017</a></li>
+        <li><a href="http://aetj.info/downloads/NTM/compressed-Caderno Ed. Infantil II e III - 2017.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Caderno Ed. Infantil II e III - 2017</a></li>-->
     </ul>
   </li>
-
+<!--
     <li class="dropdown-submenu">
         <a tabindex="-1" href="#">NTM</a>
         <ul class="dropdown-menu">
@@ -273,7 +274,7 @@ require_once '/home/aetji649/simrede/connect.php';
         </ul>
     </li>
 
-    <li class="dropdown-submenu">
+    <li class="dropdown-submenu">   
         <a tabindex="-1" href="#">EFEP</a>
         <ul class="dropdown-menu">
             <li><a href="http://aetj.info/downloads/NTM/Lei_2.218_11.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Lei 2.218_11.pdf</a></li>
@@ -281,7 +282,7 @@ require_once '/home/aetji649/simrede/connect.php';
         </ul>
     </li>
 
-    <li><a href="http://aetj.info/downloads/NTM/Lei_2605_16.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>PCCR</a></li>
+    <li><a href="http://aetj.info/downloads/NTM/Lei_2605_16.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>PCCR</a></li>-->
 
 </ul>
 

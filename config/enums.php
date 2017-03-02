@@ -100,8 +100,8 @@ return [
     ],
 
     'simulado' => [
-        '01' => "Simuado em rede-1",
-        '02' => "Simuado em rede-2",
+        '01' => "Simulado em rede-1",
+        '02' => "Simulado em rede-2",
         // '03' => "Simuado em rede-3",
         // '04' => "Simuado em rede-4",
         // '05' => "Simuado em rede-5",
