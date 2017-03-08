@@ -1,4 +1,0 @@
-#!/bin/bash
-cd /home/aetji649/public_html/simrede
-xterm -e /opt/lampp/bin/php -S localhost:8000
-
