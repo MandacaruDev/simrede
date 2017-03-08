@@ -3,9 +3,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once ('/home/aetji649/sglab/class/tcpdf/tcpdf.php');
-include_once ("/home/aetji649/sglab/class/PHPJasperXML.inc.php");
-include_once ('/home/aetji649/sglab/connect.php');
+include_once ('/home/aetji649/simrede/class/tcpdf/tcpdf.php');
+include_once ("/home/aetji649/simrede/class/PHPJasperXML.inc.php");
+include_once ('/home/aetji649/simrede/connect.php');
 
 
 $PHPJasperXML = new PHPJasperXML();
