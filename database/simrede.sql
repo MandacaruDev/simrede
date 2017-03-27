@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 26, 2017 at 04:12 
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: Mar 27, 2017 at 03:07 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -68,6 +68,7 @@ INSERT INTO `anulada` (`id`, `ano`, `simulado`, `nivel`, `anuq1`, `anuq2`, `anuq
 
 --
 -- Stand-in structure for view `cs_media_alunos`
+-- (See below for the actual view)
 --
 CREATE TABLE `cs_media_alunos` (
 `nivel` varchar(10)
@@ -108,6 +109,7 @@ CREATE TABLE `cs_media_alunos` (
 
 --
 -- Stand-in structure for view `cs_media_escolas`
+-- (See below for the actual view)
 --
 CREATE TABLE `cs_media_escolas` (
 `situacao` varchar(50)
@@ -144,6 +146,7 @@ CREATE TABLE `cs_media_escolas` (
 
 --
 -- Stand-in structure for view `cs_simrede_base`
+-- (See below for the actual view)
 --
 CREATE TABLE `cs_simrede_base` (
 `idescola` int(11)
@@ -1233,7 +1236,7 @@ INSERT INTO `siem_escolas` (`IdEscola`, `nmEscola`, `nmArticulador`) VALUES
 (105, 'AMÉRICO TANURY - ABÓBORA', ''),
 (106, 'ANÁLIA BARBOSA DE SOUZA', 'Thiago santos'),
 (107, 'ANTONIO FRANCISCO DE OLIVEIRA', 'Alex Moreira'),
-(108, 'BOLIVAR SANT''ANNA', ''),
+(108, 'BOLIVAR SANT\'ANNA', ''),
 (109, 'BOM JESUS - BARAUNA', ''),
 (110, 'BOM JESUS - NH1', ''),
 (111, 'CAIC - MISAEL AGUILAR', 'Rafael Passos'),
@@ -8855,16 +8858,6 @@ CREATE TABLE `upload_csvs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `upload_csvs`
---
-
-INSERT INTO `upload_csvs` (`id`, `ano`, `simulado`, `nivel`, `siem_id`, `created_at`, `updated_at`) VALUES
-(8, '2017', '1', '3 ano', 100, '2017-02-08 23:42:43', '2017-02-08 23:42:43'),
-(9, '2017', '1', '4 ANO', 120, '2017-02-08 23:45:48', '2017-02-08 23:45:48'),
-(12, '2017', '1', '4/5 ANO', 110, '2017-02-08 23:47:03', '2017-02-08 23:47:03'),
-(13, '2017', '1', '8/9 ANO', 100, '2017-02-08 23:49:37', '2017-02-08 23:49:37');
-
 -- --------------------------------------------------------
 
 --
@@ -8886,9 +8879,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(12, 'Admin', '7miguelsilva7@gmail.com', '$2y$10$8YnfsZ6N5NsXxDXYbYc/UOgb/xvux3B/hXv1x574bsISvxk1xsnO.', 'WrVpvjMeRqU8Xfe3pE0pou6xCwE5qYgiRuRbbEQ0zdOJet2Ke20MDdk5Y7MA', '2016-11-12 17:44:03', '2017-02-03 20:41:18'),
+(12, 'Admin', '7miguelsilva7@gmail.com', '$2y$10$8YnfsZ6N5NsXxDXYbYc/UOgb/xvux3B/hXv1x574bsISvxk1xsnO.', 'XNJDI387SxBHuDZqhcrvPKa0woDYsPSNWJGpSKQPjGkvGEtPPjIBgyCdKKbt', '2016-11-12 17:44:03', '2017-03-09 17:24:12'),
 (17, 'Liberado', 'liberado@gmail.com', '$2y$10$XjCrpeKNG0ilPkwHslBdouPEmr1i6wdxLkZ4ZmIcPbjHM9cyo7066', 'ov1yW2XtE7dXU8V2cY5vniZjVb6srButRuQcOQSCAPKEf3N6etGzgExNeVxo', '2016-11-15 05:35:44', '2016-11-22 19:09:42'),
-(22, '15 DE JULHO', '29teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, '15 DE JULHO', '29teste@gmail.com', '$2y$10$bqXWdJnf5A3OOTsHbzXbvOJwDVkjPk3fsUjU8yjIZ0OPre6ZakjtO', 'TQtwRwBrpcoIYYWJtPGer65eaAGB7iuoCf5fnsZbkoCKBwTBOENOX0VdXIYL', '0000-00-00 00:00:00', '2017-03-09 17:23:21'),
 (23, '25 DE JULHO', 'escola25.dejulho@outlook.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (24, 'AMERICO TANURI - JUNCO', '3teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (25, 'AMÉRICO TANURY - ABÓBORA', 'emmsbonfim@hotmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -8942,7 +8935,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 (73, 'E.M.E.I PRIMAVERA', '1teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (74, 'E.M.E.I SEMENTE DO AMANHA', '42teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (75, 'E.M.E.I. ARCENIO JOSE DA SILVA', '43teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(76, 'EDUCANDÁRIO JOÃO XXIII', 'educandariojoao23@gmail.com', '$2y$10$gkS9F8a7yQzh2rV/GKnWgu.IQVMzf3q0Ycyrojc3uBm1plhZsqiG2', 'qdCJ249BrCF07GB1LEHQDpwpEaMmzETQzqWU9NgJlYtVDxjJpu8saD2KuzsC', '0000-00-00 00:00:00', '2016-12-23 18:43:39'),
+(76, 'EDUCANDÁRIO JOÃO XXIII', 'educandariojoao23@gmail.com', '$2y$10$1BOY6R0yemLFm4U/8.VTfuLQdfhURNtct0faAfH9NkMYY8BfIKs6O', 'sGcbfiCdHYLcVylirDVia2SPXCfm7HhR8tK459hGQpu0Gh7ItEHoTz081BG5', '0000-00-00 00:00:00', '2017-03-14 20:56:56'),
 (77, 'ELEOTÉRIO SOARES FONSÊCA', '44teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (78, 'ELISEU SANTOS', '24teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (79, 'ERUM - RURAL DA MASSAROCA', '25teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -9347,7 +9340,7 @@ ALTER TABLE `turmas`
 -- AUTO_INCREMENT for table `upload_csvs`
 --
 ALTER TABLE `upload_csvs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
