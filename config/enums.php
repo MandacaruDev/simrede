@@ -102,7 +102,7 @@ return [
     'simulado' => [
         '01' => "Simulado em rede-1",
         '02' => "Simulado em rede-2",
-        // '03' => "Simuado em rede-3",
+        '03' => "Simuado em rede-3",
         // '04' => "Simuado em rede-4",
         // '05' => "Simuado em rede-5",
         // '06' => "Simuado em rede-6",
@@ -124,8 +124,10 @@ return [
 
      'nivelSimCSV' => [
         '3º Ano' => "3º Ano",
-        '4º-5º Ano' => "4º/5º Ano",
-        '8º-9º Ano' => "8º/9º Ano",
+        '4º Ano' => "4º Ano",
+        '5º Ano' => "5º Ano",
+        '8º Ano' => "8º Ano",
+        '9º Ano' => "9º Ano",
        
     ]
 
