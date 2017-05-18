@@ -102,14 +102,14 @@ return [
     'simulado' => [
         '01' => "Simulado em rede-1",
         '02' => "Simulado em rede-2",
-        '03' => "Simuado em rede-3",
-        // '04' => "Simuado em rede-4",
-        // '05' => "Simuado em rede-5",
-        // '06' => "Simuado em rede-6",
-        // '07' => "Simuado em rede-7",
-        // '08' => "Simuado em rede-8",
-        // '09' => "Simuado em rede-9",
-        // '10' => "Simuado em rede-10",
+        '03' => "Simulado em rede-3",
+        // '04' => "Simulado em rede-4",
+        // '05' => "Simulado em rede-5",
+        // '06' => "Simulado em rede-6",
+        // '07' => "Simulado em rede-7",
+        // '08' => "Simulado em rede-8",
+        // '09' => "Simulado em rede-9",
+        // '10' => "Simulado em rede-10",
        
     ],
 
