@@ -126,7 +126,7 @@ require_once '/home/aetji649/simrede/connect.php';
                         $usuario_logado = Auth::user()->name;
                         if ($usuario_logado == "Admin") { ?>
                                     <!--<li><a href="{{ url('/ocupacao') }}"><i class="fa glyphicon glyphicon-cog"></i>Ocupação</a></li>-->
-                                    <li><a href="{{ url('/moodle_simulado') }}" ><i class="glyphicon glyphicon-download-alt"></i>Simulado CSV</a></li>
+                                    <li><a href="{{ url('/siem_simrede') }}" ><i class="glyphicon glyphicon-download-alt"></i>Simulado CSV</a></li>
                                     <li><a href="{{ url('/siem') }}"><i class="fa glyphicon glyphicon-modal-window"></i>Escola</a></li>
                                     
                         <?php } ?>

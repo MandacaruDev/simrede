@@ -1,0 +1,4 @@
+Excluindo Registro simrede
+
+DELETE FROM siem_simrede
+WHERE siem_simrede.datacad = 17;

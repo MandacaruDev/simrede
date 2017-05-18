@@ -1,0 +1,11 @@
+#!/bin/bash
+sed -i 's/Moodle_simulado/Siem_simrede/g'
+sed -i 's/moodle_simulado/siem_simrede/g'
+sed -i 's/siem_cod/codsiem/g'
+sed -i 's/aluno/nmaluno/g'
+sed -i 's/escola/nmescola/g'
+sed -i 's/cadastro/datacad/g'
+
+
+
+

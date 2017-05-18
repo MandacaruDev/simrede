@@ -4,25 +4,25 @@
 
 <section class="content">
     <h1>
-        Create moodle_simulado
+        Create siem_simrede
     </h1>
-    <form method = 'get' action = '{!!url("moodle_simulado")!!}'>
-        <button class = 'btn btn-danger'>moodle_simulado Index</button>
+    <form method = 'get' action = '{!!url("siem_simrede")!!}'>
+        <button class = 'btn btn-danger'>siem_simrede Index</button>
     </form>
     <br>
-    <form method = 'POST' action = '{!!url("moodle_simulado")!!}'>
+    <form method = 'POST' action = '{!!url("siem_simrede")!!}'>
         <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
         <div class="form-group">
-            <label for="siem_cod">siem_cod</label>
-            <input id="siem_cod" name = "siem_cod" type="text" class="form-control">
+            <label for="codsiem">codsiem</label>
+            <input id="codsiem" name = "codsiem" type="text" class="form-control">
         </div>
         <div class="form-group">
-            <label for="aluno">aluno</label>
-            <input id="aluno" name = "aluno" type="text" class="form-control">
+            <label for="nmaluno">nmaluno</label>
+            <input id="nmaluno" name = "nmaluno" type="text" class="form-control">
         </div>
         <div class="form-group">
-            <label for="escola">escola</label>
-            <input id="escola" name = "escola" type="text" class="form-control">
+            <label for="nmescola">nmescola</label>
+            <input id="nmescola" name = "nmescola" type="text" class="form-control">
         </div>
         <div class="form-group">
             <label for="serie">serie</label>
@@ -33,8 +33,8 @@
             <input id="simulado" name = "simulado" type="text" class="form-control">
         </div>
         <div class="form-group">
-            <label for="cadastro">cadastro</label>
-            <input id="cadastro" name = "cadastro" type="text" class="form-control">
+            <label for="datacad">datacad</label>
+            <input id="datacad" name = "datacad" type="text" class="form-control">
         </div>
         <div class="form-group">
             <label for="nota1">nota1</label>

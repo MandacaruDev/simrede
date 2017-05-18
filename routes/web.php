@@ -112,20 +112,20 @@ Route::group(['middleware'=> 'web'],function(){
   Route::get('turma/{id}/deleteMsg','\App\Http\Controllers\TurmaController@DeleteMsg');
 });
 
-//moodle_simulado Routes
+//siem_simrede Routes
 Route::group(['middleware'=> 'web'],function(){
-    Route::resource('moodle_simulado','\App\Http\Controllers\Moodle_simuladoController');
-    Route::post('moodle_simulado/{id}/update','\App\Http\Controllers\Moodle_simuladoController@update');
-    Route::get('moodle_simulado/{id}/delete','\App\Http\Controllers\Moodle_simuladoController@destroy');
-    Route::get('moodle_simulado/{id}/deleteMsg','\App\Http\Controllers\Moodle_simuladoController@DeleteMsg');
+    Route::resource('siem_simrede','\App\Http\Controllers\Siem_simredeController');
+    Route::post('siem_simrede/{id}/update','\App\Http\Controllers\Siem_simredeController@update');
+    Route::get('siem_simrede/{id}/delete','\App\Http\Controllers\Siem_simredeController@destroy');
+    Route::get('siem_simrede/{id}/deleteMsg','\App\Http\Controllers\Siem_simredeController@DeleteMsg');
 
-    Route::get('moodle_simulado/importExport', '\App\Http\Controllers\Moodle_simuladoController@importExport');
-    Route::get('moodle_simulado/downloadExcel/{type}', '\App\Http\Controllers\Moodle_simuladoController@downloadExcel');
-    Route::post('moodle_simulado/importExcel', '\App\Http\Controllers\Moodle_simuladoController@importExcel');
+    Route::get('siem_simrede/importExport', '\App\Http\Controllers\Siem_simredeController@importExport');
+    Route::get('siem_simrede/downloadExcel/{type}', '\App\Http\Controllers\Siem_simredeController@downloadExcel');
+    Route::post('siem_simrede/importExcel', '\App\Http\Controllers\Siem_simredeController@importExcel');
 });
 
 
-//moodle_simulado Routes
+//siem_simrede Routes
 
 Route::get('simulado_escola_report','Moodle_simulado_reportController@simulado_escola_report');
 Route::get('simulado_turma_report','Moodle_simulado_reportController@simulado_turma_report');
