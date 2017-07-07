@@ -1,49 +1,49 @@
-[18-Nov-2016 15:50:48 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(/home/aetji649/sglab/connect.php): failed to open stream: No such file or directory' in /home/aetji649/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php:5
+[18-Nov-2016 15:50:48 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(/opt/lampp/htdocs/sglab/connect.php): failed to open stream: No such file or directory' in /opt/lampp/htdocs/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php:5
 Stack trace:
-#0 /home/aetji649/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php(5): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(/h...', '/home/aetji649/...', 5, Array)
-#1 /home/aetji649/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php(5): require_once()
-#2 /home/aetji649/public_html/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(42): include('/home/aetji649/...')
-#3 /home/aetji649/public_html/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\View\Engines\PhpEngine->evaluatePath('/home/aetji649/...', Array)
-#4 /home/aetji649/public_html/sglab/vendor/laravel/framework/src/Illuminate/ in /home/aetji649/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php on line 5
-[18-Nov-2016 15:50:48 UTC] PHP Fatal error:  main(): Failed opening required '/home/aetji649/sglab/connect.php' (include_path='.:/opt/php56/lib/php') in /home/aetji649/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php on line 5
-[18-Nov-2016 15:53:52 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(/home/aetji649/sglab/connect.php): failed to open stream: No such file or directory' in /home/aetji649/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php:5
+#0 /opt/lampp/htdocs/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php(5): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(/h...', '/opt/lampp/htdocs/...', 5, Array)
+#1 /opt/lampp/htdocs/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php(5): require_once()
+#2 /opt/lampp/htdocs/public_html/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(42): include('/opt/lampp/htdocs/...')
+#3 /opt/lampp/htdocs/public_html/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\View\Engines\PhpEngine->evaluatePath('/opt/lampp/htdocs/...', Array)
+#4 /opt/lampp/htdocs/public_html/sglab/vendor/laravel/framework/src/Illuminate/ in /opt/lampp/htdocs/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php on line 5
+[18-Nov-2016 15:50:48 UTC] PHP Fatal error:  main(): Failed opening required '/opt/lampp/htdocs/sglab/connect.php' (include_path='.:/opt/php56/lib/php') in /opt/lampp/htdocs/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php on line 5
+[18-Nov-2016 15:53:52 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(/opt/lampp/htdocs/sglab/connect.php): failed to open stream: No such file or directory' in /opt/lampp/htdocs/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php:5
 Stack trace:
-#0 /home/aetji649/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php(5): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(/h...', '/home/aetji649/...', 5, Array)
-#1 /home/aetji649/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php(5): require_once()
-#2 /home/aetji649/public_html/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(42): include('/home/aetji649/...')
-#3 /home/aetji649/public_html/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\View\Engines\PhpEngine->evaluatePath('/home/aetji649/...', Array)
-#4 /home/aetji649/public_html/sglab/vendor/laravel/framework/src/Illuminate/ in /home/aetji649/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php on line 5
-[18-Nov-2016 15:53:52 UTC] PHP Fatal error:  main(): Failed opening required '/home/aetji649/sglab/connect.php' (include_path='.:/opt/php56/lib/php') in /home/aetji649/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php on line 5
-[18-Nov-2016 10:22:18 America/Chicago] PHP Warning:  require(/home/aetji649/public_html/public/../sglab/bootstrap/autoload.php): failed to open stream: No such file or directory in /home/aetji649/public_html/public/index.php on line 22
-[18-Nov-2016 10:22:18 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home/aetji649/public_html/public/../sglab/bootstrap/autoload.php' (include_path='.:/opt/php56/lib/php') in /home/aetji649/public_html/public/index.php on line 22
-[18-Nov-2016 10:23:39 America/Chicago] PHP Warning:  require(/home/aetji649/public_html/public/../sglab/bootstrap/autoload.php): failed to open stream: No such file or directory in /home/aetji649/public_html/public/index.php on line 22
-[18-Nov-2016 10:23:39 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home/aetji649/public_html/public/../sglab/bootstrap/autoload.php' (include_path='.:/opt/php56/lib/php') in /home/aetji649/public_html/public/index.php on line 22
-[18-Nov-2016 16:29:06 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(../connect.php): failed to open stream: No such file or directory' in /home/aetji649/sglab/storage/framework/views/1ae31cba5c53e506dca771fd4f06ad301f8dae5b.php:5
+#0 /opt/lampp/htdocs/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php(5): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(/h...', '/opt/lampp/htdocs/...', 5, Array)
+#1 /opt/lampp/htdocs/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php(5): require_once()
+#2 /opt/lampp/htdocs/public_html/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(42): include('/opt/lampp/htdocs/...')
+#3 /opt/lampp/htdocs/public_html/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\View\Engines\PhpEngine->evaluatePath('/opt/lampp/htdocs/...', Array)
+#4 /opt/lampp/htdocs/public_html/sglab/vendor/laravel/framework/src/Illuminate/ in /opt/lampp/htdocs/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php on line 5
+[18-Nov-2016 15:53:52 UTC] PHP Fatal error:  main(): Failed opening required '/opt/lampp/htdocs/sglab/connect.php' (include_path='.:/opt/php56/lib/php') in /opt/lampp/htdocs/public_html/sglab/storage/framework/views/5621ec0a28d2dbf8b4ff2d60c7c849e0eb543634.php on line 5
+[18-Nov-2016 10:22:18 America/Chicago] PHP Warning:  require(/opt/lampp/htdocs/public_html/public/../sglab/bootstrap/autoload.php): failed to open stream: No such file or directory in /opt/lampp/htdocs/public_html/public/index.php on line 22
+[18-Nov-2016 10:22:18 America/Chicago] PHP Fatal error:  require(): Failed opening required '/opt/lampp/htdocs/public_html/public/../sglab/bootstrap/autoload.php' (include_path='.:/opt/php56/lib/php') in /opt/lampp/htdocs/public_html/public/index.php on line 22
+[18-Nov-2016 10:23:39 America/Chicago] PHP Warning:  require(/opt/lampp/htdocs/public_html/public/../sglab/bootstrap/autoload.php): failed to open stream: No such file or directory in /opt/lampp/htdocs/public_html/public/index.php on line 22
+[18-Nov-2016 10:23:39 America/Chicago] PHP Fatal error:  require(): Failed opening required '/opt/lampp/htdocs/public_html/public/../sglab/bootstrap/autoload.php' (include_path='.:/opt/php56/lib/php') in /opt/lampp/htdocs/public_html/public/index.php on line 22
+[18-Nov-2016 16:29:06 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(../connect.php): failed to open stream: No such file or directory' in /opt/lampp/htdocs/sglab/storage/framework/views/1ae31cba5c53e506dca771fd4f06ad301f8dae5b.php:5
 Stack trace:
-#0 /home/aetji649/sglab/storage/framework/views/1ae31cba5c53e506dca771fd4f06ad301f8dae5b.php(5): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/aetji649/...', 5, Array)
-#1 /home/aetji649/sglab/storage/framework/views/1ae31cba5c53e506dca771fd4f06ad301f8dae5b.php(5): require_once()
-#2 /home/aetji649/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(42): include('/home/aetji649/...')
-#3 /home/aetji649/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\View\Engines\PhpEngine->evaluatePath('/home/aetji649/...', Array)
-#4 /home/aetji649/sglab/vendor/laravel/framework/src/Illuminate/View/View.php(149): Illuminate\View\Engines\CompilerEngine->get('/home/aetji649/...', Arra in /home/aetji649/sglab/storage/framework/views/1ae31cba5c53e506dca771fd4f06ad301f8dae5b.php on line 5
-[18-Nov-2016 16:29:06 UTC] PHP Fatal error:  main(): Failed opening required '../connect.php' (include_path='.:/opt/php56/lib/php') in /home/aetji649/sglab/storage/framework/views/1ae31cba5c53e506dca771fd4f06ad301f8dae5b.php on line 5
-[18-Nov-2016 16:31:14 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(../connect.php): failed to open stream: No such file or directory' in /home/aetji649/sglab/storage/framework/views/06936f12c412030ed7aa9fea1f01dbb46d8871dc.php:5
+#0 /opt/lampp/htdocs/sglab/storage/framework/views/1ae31cba5c53e506dca771fd4f06ad301f8dae5b.php(5): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/opt/lampp/htdocs/...', 5, Array)
+#1 /opt/lampp/htdocs/sglab/storage/framework/views/1ae31cba5c53e506dca771fd4f06ad301f8dae5b.php(5): require_once()
+#2 /opt/lampp/htdocs/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(42): include('/opt/lampp/htdocs/...')
+#3 /opt/lampp/htdocs/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\View\Engines\PhpEngine->evaluatePath('/opt/lampp/htdocs/...', Array)
+#4 /opt/lampp/htdocs/sglab/vendor/laravel/framework/src/Illuminate/View/View.php(149): Illuminate\View\Engines\CompilerEngine->get('/opt/lampp/htdocs/...', Arra in /opt/lampp/htdocs/sglab/storage/framework/views/1ae31cba5c53e506dca771fd4f06ad301f8dae5b.php on line 5
+[18-Nov-2016 16:29:06 UTC] PHP Fatal error:  main(): Failed opening required '../connect.php' (include_path='.:/opt/php56/lib/php') in /opt/lampp/htdocs/sglab/storage/framework/views/1ae31cba5c53e506dca771fd4f06ad301f8dae5b.php on line 5
+[18-Nov-2016 16:31:14 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(../connect.php): failed to open stream: No such file or directory' in /opt/lampp/htdocs/sglab/storage/framework/views/06936f12c412030ed7aa9fea1f01dbb46d8871dc.php:5
 Stack trace:
-#0 /home/aetji649/sglab/storage/framework/views/06936f12c412030ed7aa9fea1f01dbb46d8871dc.php(5): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/aetji649/...', 5, Array)
-#1 /home/aetji649/sglab/storage/framework/views/06936f12c412030ed7aa9fea1f01dbb46d8871dc.php(5): require_once()
-#2 /home/aetji649/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(42): include('/home/aetji649/...')
-#3 /home/aetji649/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\View\Engines\PhpEngine->evaluatePath('/home/aetji649/...', Array)
-#4 /home/aetji649/sglab/vendor/laravel/framework/src/Illuminate/View/View.php(149): Illuminate\View\Engines\CompilerEngine->get('/home/aetji649/...', Arra in /home/aetji649/sglab/storage/framework/views/06936f12c412030ed7aa9fea1f01dbb46d8871dc.php on line 5
-[18-Nov-2016 16:31:14 UTC] PHP Fatal error:  main(): Failed opening required '../connect.php' (include_path='.:/opt/php56/lib/php') in /home/aetji649/sglab/storage/framework/views/06936f12c412030ed7aa9fea1f01dbb46d8871dc.php on line 5
-[18-Nov-2016 16:39:10 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(../connect.php): failed to open stream: No such file or directory' in /home/aetji649/sglab/storage/framework/views/b41954a505702751ce77048047d3addd433dcace.php:6
+#0 /opt/lampp/htdocs/sglab/storage/framework/views/06936f12c412030ed7aa9fea1f01dbb46d8871dc.php(5): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/opt/lampp/htdocs/...', 5, Array)
+#1 /opt/lampp/htdocs/sglab/storage/framework/views/06936f12c412030ed7aa9fea1f01dbb46d8871dc.php(5): require_once()
+#2 /opt/lampp/htdocs/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(42): include('/opt/lampp/htdocs/...')
+#3 /opt/lampp/htdocs/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\View\Engines\PhpEngine->evaluatePath('/opt/lampp/htdocs/...', Array)
+#4 /opt/lampp/htdocs/sglab/vendor/laravel/framework/src/Illuminate/View/View.php(149): Illuminate\View\Engines\CompilerEngine->get('/opt/lampp/htdocs/...', Arra in /opt/lampp/htdocs/sglab/storage/framework/views/06936f12c412030ed7aa9fea1f01dbb46d8871dc.php on line 5
+[18-Nov-2016 16:31:14 UTC] PHP Fatal error:  main(): Failed opening required '../connect.php' (include_path='.:/opt/php56/lib/php') in /opt/lampp/htdocs/sglab/storage/framework/views/06936f12c412030ed7aa9fea1f01dbb46d8871dc.php on line 5
+[18-Nov-2016 16:39:10 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(../connect.php): failed to open stream: No such file or directory' in /opt/lampp/htdocs/sglab/storage/framework/views/b41954a505702751ce77048047d3addd433dcace.php:6
 Stack trace:
-#0 /home/aetji649/sglab/storage/framework/views/b41954a505702751ce77048047d3addd433dcace.php(6): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/home/aetji649/...', 6, Array)
-#1 /home/aetji649/sglab/storage/framework/views/b41954a505702751ce77048047d3addd433dcace.php(6): require_once()
-#2 /home/aetji649/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(42): include('/home/aetji649/...')
-#3 /home/aetji649/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\View\Engines\PhpEngine->evaluatePath('/home/aetji649/...', Array)
-#4 /home/aetji649/sglab/vendor/laravel/framework/src/Illuminate/View/View.php(149): Illuminate\View\Engines\CompilerEngine->get('/home/aetji649/...', Arra in /home/aetji649/sglab/storage/framework/views/b41954a505702751ce77048047d3addd433dcace.php on line 6
-[18-Nov-2016 16:39:10 UTC] PHP Fatal error:  main(): Failed opening required '../connect.php' (include_path='.:/opt/php56/lib/php') in /home/aetji649/sglab/storage/framework/views/b41954a505702751ce77048047d3addd433dcace.php on line 6
-[18-Nov-2016 16:50:17 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Auth' not found in /home/aetji649/sglab/app/Http/Controllers/SiemController.php on line 41
-[18-Nov-2016 17:43:38 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Auth' not found in /home/aetji649/sglab/app/Http/Controllers/SiemController.php on line 41
+#0 /opt/lampp/htdocs/sglab/storage/framework/views/b41954a505702751ce77048047d3addd433dcace.php(6): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(.....', '/opt/lampp/htdocs/...', 6, Array)
+#1 /opt/lampp/htdocs/sglab/storage/framework/views/b41954a505702751ce77048047d3addd433dcace.php(6): require_once()
+#2 /opt/lampp/htdocs/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(42): include('/opt/lampp/htdocs/...')
+#3 /opt/lampp/htdocs/sglab/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(59): Illuminate\View\Engines\PhpEngine->evaluatePath('/opt/lampp/htdocs/...', Array)
+#4 /opt/lampp/htdocs/sglab/vendor/laravel/framework/src/Illuminate/View/View.php(149): Illuminate\View\Engines\CompilerEngine->get('/opt/lampp/htdocs/...', Arra in /opt/lampp/htdocs/sglab/storage/framework/views/b41954a505702751ce77048047d3addd433dcace.php on line 6
+[18-Nov-2016 16:39:10 UTC] PHP Fatal error:  main(): Failed opening required '../connect.php' (include_path='.:/opt/php56/lib/php') in /opt/lampp/htdocs/sglab/storage/framework/views/b41954a505702751ce77048047d3addd433dcace.php on line 6
+[18-Nov-2016 16:50:17 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Auth' not found in /opt/lampp/htdocs/sglab/app/Http/Controllers/SiemController.php on line 41
+[18-Nov-2016 17:43:38 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Auth' not found in /opt/lampp/htdocs/sglab/app/Http/Controllers/SiemController.php on line 41
 [22-Nov-2016 07:37:46 America/Sao_Paulo] PHP Warning:  PHP Startup: imagick: Unable to initialize module
 Module compiled with module API=20121212
 PHP    compiled with module API=20131226
@@ -3644,7 +3644,7 @@ Module compiled with module API=20121212
 PHP    compiled with module API=20131226
 These options need to match
  in Unknown on line 0
-[03-Feb-2017 13:54:36 UTC] PHP Parse error:  syntax error, unexpected '<<' (T_SL) in /home/aetji649/sglab/connect.php on line 3
+[03-Feb-2017 13:54:36 UTC] PHP Parse error:  syntax error, unexpected '<<' (T_SL) in /opt/lampp/htdocs/sglab/connect.php on line 3
 [03-Feb-2017 11:56:07 America/Sao_Paulo] PHP Warning:  PHP Startup: imagick: Unable to initialize module
 Module compiled with module API=20121212
 PHP    compiled with module API=20131226
@@ -3660,7 +3660,7 @@ Module compiled with module API=20121212
 PHP    compiled with module API=20131226
 These options need to match
  in Unknown on line 0
-[03-Feb-2017 13:57:14 UTC] PHP Parse error:  syntax error, unexpected '<<' (T_SL) in /home/aetji649/sglab/connect.php on line 3
+[03-Feb-2017 13:57:14 UTC] PHP Parse error:  syntax error, unexpected '<<' (T_SL) in /opt/lampp/htdocs/sglab/connect.php on line 3
 [03-Feb-2017 11:59:32 America/Sao_Paulo] PHP Warning:  PHP Startup: imagick: Unable to initialize module
 Module compiled with module API=20121212
 PHP    compiled with module API=20131226

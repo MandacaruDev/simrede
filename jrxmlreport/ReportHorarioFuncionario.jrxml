@@ -116,11 +116,11 @@ and pessoas.id = $P{funcionario}]]>
 		<band height="72" splitType="Stretch">
 			<image>
 				<reportElement x="30" y="8" width="54" height="48" uuid="eaaca062-f9d0-4256-b411-ec249fc0e6cb"/>
-				<imageExpression><![CDATA["/home/aetji649/sglab/jrxmlreport/img/logo_escudo_juazeiro.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["/opt/lampp/htdocs/sglab/jrxmlreport/img/logo_escudo_juazeiro.jpg"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="461" y="15" width="69" height="42" uuid="8b26a33a-1bc3-4b3a-ab28-2693b1f77f92"/>
-				<imageExpression><![CDATA["/home/aetji649/sglab/jrxmlreport/img/logoNTM.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["/opt/lampp/htdocs/sglab/jrxmlreport/img/logoNTM.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="200" y="51" width="153" height="20" uuid="77462324-90bb-4c53-a023-5a894b77eade"/>

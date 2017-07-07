@@ -4,10 +4,10 @@
 
 #chama o arquivo de configuração com o banco
 
-require_once '/home/aetji649/simrede/connect.php';
+require_once '/opt/lampp/htdocs/simrede/connect.php';
 @include ('flash::message');
 #modals dos relatórios
-// require_once '/home/aetji649/sglab/resources/views/modals/horario_funcionario.php';
+// require_once '/opt/lampp/htdocs/sglab/resources/views/modals/horario_funcionario.php';
 # FIM modals dos relatórios
 
 ?>

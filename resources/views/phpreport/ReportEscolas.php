@@ -3,9 +3,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once ('/home/aetji649/simrede/class/tcpdf/tcpdf.php');
-include_once ("/home/aetji649/simrede/class/PHPJasperXML.inc.php");
-include_once ('/home/aetji649/simrede/connect.php');
+include_once ('/opt/lampp/htdocs/simrede/class/tcpdf/tcpdf.php');
+include_once ("/opt/lampp/htdocs/simrede/class/PHPJasperXML.inc.php");
+include_once ('/opt/lampp/htdocs/simrede/connect.php');
 
 $PHPJasperXML = new PHPJasperXML();
 //$PHPJasperXML->debugsql=true;
@@ -19,7 +19,7 @@ $internet=$_POST["internet"]; //recebendo o parâmetro que vem do formulário
 $PHPJasperXML->arrayParameter=  ["distrito"=>$distrito,"articulador"=>$articulador,"lab"=>$lab,"internet"=>$internet];
 
 
-$PHPJasperXML->load_xml_file("/home/aetji649/sglab/jrxmlreport/ReportEscolas.jrxml");
+$PHPJasperXML->load_xml_file("/opt/lampp/htdocs/sglab/jrxmlreport/ReportEscolas.jrxml");
 
 
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);

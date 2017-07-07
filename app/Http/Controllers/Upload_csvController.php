@@ -214,7 +214,7 @@ class Upload_csvController extends Controller
     {
      	$upload_csv = Upload_csv::findOrfail($id);
      	$upload_csv->delete();
-        File::delete('/home/aetji649/simrede/storage/app/csv/' . "$upload_csv->id.csv");
+        File::delete('/opt/lampp/htdocs/simrede/storage/app/csv/' . "$upload_csv->id.csv");
         return URL::to('upload_csv');
     }
 }

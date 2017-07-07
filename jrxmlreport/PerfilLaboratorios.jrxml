@@ -157,11 +157,11 @@ ORDER BY
 			</staticText>
 			<image>
 				<reportElement x="701" y="26" width="69" height="42" uuid="c366d734-e8a8-4295-acb7-011d280fc5a1"/>
-				<imageExpression><![CDATA["/home/aetji649/sglab/jrxmlreport/img/logoNTM.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["/opt/lampp/htdocs/sglab/jrxmlreport/img/logoNTM.jpg"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="28" y="13" width="78" height="71" uuid="29c97b96-cc9b-4323-9272-2e20af009d00"/>
-				<imageExpression><![CDATA["/home/aetji649/sglab/jrxmlreport/img/logo_escudo_juazeiro.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["/opt/lampp/htdocs/sglab/jrxmlreport/img/logo_escudo_juazeiro.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>

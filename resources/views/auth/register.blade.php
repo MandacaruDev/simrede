@@ -5,7 +5,7 @@
 <?php
 #chama o arquivo de configuração com o banco
 
-require_once '/home/aetji649/simrede/connect.php';
+require_once '/opt/lampp/htdocs/simrede/connect.php';
 
 #Seleciona dados da Tabela siem
  try{

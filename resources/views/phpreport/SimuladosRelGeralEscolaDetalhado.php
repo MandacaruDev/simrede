@@ -3,9 +3,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once ('/home/aetji649/simrede/class/tcpdf/tcpdf.php');
-include_once ("/home/aetji649/simrede/class/PHPJasperXML.inc.php");
-include_once ('/home/aetji649/simrede/connect.php');
+include_once ('/opt/lampp/htdocs/simrede/class/tcpdf/tcpdf.php');
+include_once ("/opt/lampp/htdocs/simrede/class/PHPJasperXML.inc.php");
+include_once ('/opt/lampp/htdocs/simrede/connect.php');
 
 $PHPJasperXML = new PHPJasperXML();
 //$PHPJasperXML->debugsql=true;
@@ -60,7 +60,7 @@ else
 
 $PHPJasperXML->arrayParameter=  ["ano"=>$ano,"codsiem"=>$codsiem,"nivel"=>$nivel,"simulado"=>$simulado];
 
-$PHPJasperXML->load_xml_file("/home/aetji649/simrede/jrxmlreport/SimuladosRelGeralEscolaDetalhado.jrxml");
+$PHPJasperXML->load_xml_file("/opt/lampp/htdocs/simrede/jrxmlreport/SimuladosRelGeralEscolaDetalhado.jrxml");
 
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 $PHPJasperXML->outpage("D");    //page output method I:standard output  D:Download file
