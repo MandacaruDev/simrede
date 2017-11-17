@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="simOnLineEscolas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bee613a5-a8d6-48f3-8b6d-75572103f8d6">
+	<property name="ireport.zoom" value="1.7715610000000224"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT 
+     SUBSTRING(u.`department`,2,5) AS Turma,
+     u.`firstname` AS Aluno,
+     u.`lastname` AS Siem,
+     u.`institution` AS Escola,
+     i.`itemname` AS Simulado,
+     g.`finalgrade` AS Nota, 
+
+(select count(u.`firstname`) 
+
+from 
+`mdl_grade_items` i INNER JOIN `mdl_grade_grades` g ON i.`id` = g.`itemid`
+INNER JOIN `mdl_user` u ON g.`userid` = u.`id`
+
+ 
+where itemid = 6 
+and courseid = 2 
+and lastname = 213
+AND finalgrade != "NULL") totalAlunos,
+
+(select avg(finalgrade) 
+
+from 
+`mdl_grade_items` i INNER JOIN `mdl_grade_grades` g ON i.`id` = g.`itemid`
+INNER JOIN `mdl_user` u ON g.`userid` = u.`id`
+
+ 
+where itemid = 6 
+and courseid = 2 
+and lastname = 213
+and department = ".5anoA") notaTurmaA,
+
+(select avg(finalgrade) 
+
+from 
+`mdl_grade_items` i INNER JOIN `mdl_grade_grades` g ON i.`id` = g.`itemid`
+INNER JOIN `mdl_user` u ON g.`userid` = u.`id`
+
+ 
+where itemid = 6 
+and courseid = 2 
+and lastname = 213
+and department = ".5anoB") notaTurmaB,
+
+(select avg(finalgrade)
+
+from 
+`mdl_grade_items` i INNER JOIN `mdl_grade_grades` g ON i.`id` = g.`itemid`
+INNER JOIN `mdl_user` u ON g.`userid` = u.`id`
+
+ 
+where itemid = 6 
+and courseid = 2 
+and lastname = 213) as NotaGeralEscola
+
+FROM
+     `mdl_grade_items` i INNER JOIN `mdl_grade_grades` g ON i.`id` = g.`itemid`
+     INNER JOIN `mdl_user` u ON g.`userid` = u.`id`
+
+WHERE
+     i.courseid = 2
+ AND itemtype = "mod"
+ AND itemmodule = "quiz"
+ AND finalgrade != "NULL"
+ AND g.`itemid` = 6
+
+
+ORDER BY
+     u.`department` ASC,
+finalgrade desc]]>
+	</queryString>
+	<field name="Turma" class="java.lang.String"/>
+	<field name="Aluno" class="java.lang.String"/>
+	<field name="Siem" class="java.lang.String"/>
+	<field name="Escola" class="java.lang.String"/>
+	<field name="Simulado" class="java.lang.String"/>
+	<field name="Nota" class="java.math.BigDecimal"/>
+	<field name="totalAlunos" class="java.lang.Long"/>
+	<field name="notaTurmaA" class="java.math.BigDecimal"/>
+	<field name="notaTurmaB" class="java.math.BigDecimal"/>
+	<field name="NotaGeralEscola" class="java.math.BigDecimal"/>
+	<group name="simulado">
+		<groupExpression><![CDATA[$F{Simulado}]]></groupExpression>
+		<groupHeader>
+			<band height="22">
+				<textField>
+					<reportElement x="2" y="2" width="162" height="20" uuid="d940c6c6-a30c-4abc-b054-ef001c5365e7"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Simulado}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="378" y="2" width="100" height="20" uuid="e69d55de-df29-468d-b7e9-4d7a93b5d5e8"/>
+					<textFieldExpression><![CDATA[$F{totalAlunos}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Siem" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{Siem}]]></groupExpression>
+		<groupHeader>
+			<band height="43">
+				<textField>
+					<reportElement x="52" y="0" width="52" height="20" uuid="42a8073f-de9d-4458-8970-536f88e18924"/>
+					<textFieldExpression><![CDATA[$F{Siem}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="2" y="0" width="50" height="20" uuid="8fc556ff-309c-4e79-8e17-78a56ecffe52"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Siem:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="2" y="22" width="50" height="20" uuid="485cf299-8304-4fbf-823a-37e509968361"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Escola:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="52" y="22" width="313" height="20" uuid="4d42c445-2b07-473c-8745-c13f3f8c7a52"/>
+					<textFieldExpression><![CDATA[$F{Escola}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00">
+					<reportElement x="382" y="22" width="100" height="20" uuid="e5984d6b-501e-413c-b0bd-7f81f06e9d3f"/>
+					<textFieldExpression><![CDATA[$F{NotaGeralEscola}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="turma">
+		<groupExpression><![CDATA[$F{Turma}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField>
+					<reportElement x="463" y="6" width="52" height="20" uuid="2ba4cc04-3de5-400f-857e-4b79a92ed121"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Turma}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="382" y="6" width="32" height="20" uuid="f17f3315-9473-4fa3-8154-54ab24ee4eb8"/>
+					<text><![CDATA[Geral]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="42" y="6" width="287" height="20" uuid="dce5c7bd-a900-4eaa-aca1-c93e1b2eaff8"/>
+					<text><![CDATA[Aluno]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="422" y="6" width="41" height="20" uuid="92de1670-5d37-4b19-bb73-92c84bc012fe"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Turma:]]></text>
+				</staticText>
+				<textField pattern="###0.00">
+					<reportElement x="503" y="6" width="30" height="20" uuid="bc80e671-311b-44ea-8ef4-b2b56059bf53">
+						<printWhenExpression><![CDATA[($F{Turma}=="5anoA")]]></printWhenExpression>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{notaTurmaA}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00">
+					<reportElement x="533" y="6" width="33" height="20" uuid="c616b61b-afbb-4373-9168-b6e998264828">
+						<printWhenExpression><![CDATA[($F{Turma}=="5anoB")]]></printWhenExpression>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{notaTurmaB}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="42" y="1" width="323" height="20" uuid="da378c1f-70bb-401b-aa24-ddefd239af73"/>
+				<textFieldExpression><![CDATA[$F{Aluno}]]></textFieldExpression>
+			</textField>
+			<elementGroup>
+				<textField pattern="###0.0">
+					<reportElement x="382" y="2" width="32" height="20" uuid="b16d68f7-4d30-4d10-80b5-b44bc9a773d7"/>
+					<textFieldExpression><![CDATA[$F{Nota}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="31" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="21" splitType="Stretch"/>
+	</summary>
+</jasperReport>
