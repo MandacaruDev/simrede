@@ -120,13 +120,13 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
                                         </ul>
                                     </li>-->
                                     <!--submenu horário -->
-                                    <li><a href="{{ url('/upload_csv') }}" ><i class="glyphicon glyphicon-upload"></i>Upload</a></li>
+                                    <!--<li><a href="{{ url('/upload_csv') }}" ><i class="glyphicon glyphicon-upload"></i>Upload</a></li>-->
 
                         <?php
                         $usuario_logado = Auth::user()->name;
                         if ($usuario_logado == "Admin") { ?>
                                     <!--<li><a href="{{ url('/ocupacao') }}"><i class="fa glyphicon glyphicon-cog"></i>Ocupação</a></li>-->
-                                    <li><a href="{{ url('/siem_simrede') }}" ><i class="glyphicon glyphicon-download-alt"></i>Simulado CSV</a></li>
+                                    <!--<li><a href="{{ url('/siem_simrede') }}" ><i class="glyphicon glyphicon-download-alt"></i>Simulado CSV</a></li>-->
                                     <li><a href="{{ url('/siem') }}"><i class="fa glyphicon glyphicon-modal-window"></i>Escola</a></li>
                                     
                         <?php } ?>
@@ -177,17 +177,17 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
                                    
     </ul>
   </li>
-
+<!--
   <li class="dropdown-submenu">
     <a tabindex="-1" href="#">Perfis</a>
     <ul class="dropdown-menu">
     
         <li><a data-toggle="modal" href="#"><i class="fa glyphicon glyphicon-home"></i>Perfil Escolas</a></li>
-		<!--<li><a data-toggle="modal" href="#perfilfuncionarios"><i class="fa fa-users"></i>Perfil Analistas</a></li>
+		<li><a data-toggle="modal" href="#perfilfuncionarios"><i class="fa fa-users"></i>Perfil Analistas</a></li>
 		<li><a data-toggle="modal" href="#perfillaboratorios"><i class="fa glyphicon glyphicon-hdd"></i>Perfil Laboratórios</a></li>
-                                    -->
+                                    
     </ul>
-  </li>
+  </li>-->
 
 
  
@@ -254,7 +254,7 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
   <li class="dropdown-submenu">
     <a tabindex="-1" href="#">Tutoriais</a>
     <ul class="dropdown-menu">
-        <li><a href="#" target="_blank"><i class="glyphicon glyphicon-file"></i>Enviando Arquivo CSV</a></li>
+        <!--<li><a href="#" target="_blank"><i class="glyphicon glyphicon-file"></i>Enviando Arquivo CSV</a></li>-->
         <li><a href="#" target="_blank"><i class="glyphicon glyphicon-file"></i>Gerando Relatórios</a></li>
         <!--<li><a href="http://aetj.info/downloads/NTM/Caderno do Professor - 2017-compressed.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Caderno do Professor - 2017</a></li>-->
         <!--<li><a href="http://aetj.info/downloads/NTM/compressed-Caderno Ed. Infantil I - 2017.pdf" target="_blank"><i class="glyphicon glyphicon-file"></i>Caderno Ed. Infantil I - 2017</a></li>
