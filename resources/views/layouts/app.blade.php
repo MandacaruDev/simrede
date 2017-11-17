@@ -72,7 +72,7 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'SimRede') }}
                     </a>
 
 
@@ -96,6 +96,10 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
                         @elseif (Auth::user()->name == "Report")
                         <!---->
                         @else
+
+                        <?php
+                        $usuario_logado = Auth::user()->name;
+                        if ($usuario_logado == "Admin") { ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                    Cadastrar <span class="caret"></span>
@@ -122,9 +126,7 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
                                     <!--submenu horário -->
                                     <!--<li><a href="{{ url('/upload_csv') }}" ><i class="glyphicon glyphicon-upload"></i>Upload</a></li>-->
 
-                        <?php
-                        $usuario_logado = Auth::user()->name;
-                        if ($usuario_logado == "Admin") { ?>
+                        
                                     <!--<li><a href="{{ url('/ocupacao') }}"><i class="fa glyphicon glyphicon-cog"></i>Ocupação</a></li>-->
                                     <!--<li><a href="{{ url('/siem_simrede') }}" ><i class="glyphicon glyphicon-download-alt"></i>Simulado CSV</a></li>-->
                                     <li><a href="{{ url('/siem') }}"><i class="fa glyphicon glyphicon-modal-window"></i>Escola</a></li>

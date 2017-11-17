@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.2
+-- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Tempo de geração: 09/10/2017 às 21:54
--- Versão do servidor: 10.1.21-MariaDB
--- Versão do PHP: 5.6.30
+-- Generation Time: 17-Nov-2017 às 17:38
+-- Versão do servidor: 10.1.19-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `simrede`
+-- Database: `simrede`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `anulada`
+-- Estrutura da tabela `anulada`
 --
 
 CREATE TABLE `anulada` (
@@ -54,7 +54,7 @@ CREATE TABLE `anulada` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `anulada`
+-- Extraindo dados da tabela `anulada`
 --
 
 INSERT INTO `anulada` (`id`, `ano`, `simulado`, `nivel`, `anuq1`, `anuq2`, `anuq3`, `anuq4`, `anuq5`, `anuq6`, `anuq7`, `anuq8`, `anuq9`, `anuq10`, `anuq11`, `anuq12`, `anuq13`, `anuq14`, `anuq15`, `anuq16`, `anuq17`, `anuq18`, `anuq19`, `anuq20`) VALUES
@@ -67,8 +67,7 @@ INSERT INTO `anulada` (`id`, `ano`, `simulado`, `nivel`, `anuq1`, `anuq2`, `anuq
 -- --------------------------------------------------------
 
 --
--- Estrutura stand-in para view `cs_media_alunos`
--- (Veja abaixo para a visão atual)
+-- Stand-in structure for view `cs_media_alunos`
 --
 CREATE TABLE `cs_media_alunos` (
 `nivel` varchar(100)
@@ -108,8 +107,7 @@ CREATE TABLE `cs_media_alunos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura stand-in para view `cs_media_escolas`
--- (Veja abaixo para a visão atual)
+-- Stand-in structure for view `cs_media_escolas`
 --
 CREATE TABLE `cs_media_escolas` (
 `situacao` varchar(50)
@@ -145,8 +143,7 @@ CREATE TABLE `cs_media_escolas` (
 -- --------------------------------------------------------
 
 --
--- Estrutura stand-in para view `cs_simrede_base`
--- (Veja abaixo para a visão atual)
+-- Stand-in structure for view `cs_simrede_base`
 --
 CREATE TABLE `cs_simrede_base` (
 `idescola` int(11)
@@ -184,7 +181,7 @@ CREATE TABLE `cs_simrede_base` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `escolas`
+-- Estrutura da tabela `escolas`
 --
 
 CREATE TABLE `escolas` (
@@ -234,7 +231,7 @@ CREATE TABLE `escolas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `escolas`
+-- Extraindo dados da tabela `escolas`
 --
 
 INSERT INTO `escolas` (`id`, `vinculo`, `inep`, `cep`, `distrito`, `bairro`, `logradouro`, `numero`, `complemento`, `fone`, `email`, `cel1`, `cel2`, `sigla`, `possui_internet_escola`, `tipo_internet_escola`, `status_escola`, `possui_lab`, `possui_analista`, `tipo_sala`, `pregao1`, `pregao2`, `pregao3`, `pregao4`, `possui_internet_lab`, `tipo_internet_lab`, `lab_montado`, `qt_computadores_lab`, `qt_monitores_lab`, `qt_projetores`, `qt_tablets`, `status_lab`, `ar_condicionado_lab`, `impressora_lab`, `qt_notebook_lab`, `roteador_lab`, `switch_lab`, `qt_cadeiras_lab`, `siem_id`, `pessoa_id`, `user_id`, `created_at`, `updated_at`) VALUES
@@ -374,7 +371,7 @@ INSERT INTO `escolas` (`id`, `vinculo`, `inep`, `cep`, `distrito`, `bairro`, `lo
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `funcionarios`
+-- Estrutura da tabela `funcionarios`
 --
 
 CREATE TABLE `funcionarios` (
@@ -391,7 +388,7 @@ CREATE TABLE `funcionarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `funcionarios`
+-- Extraindo dados da tabela `funcionarios`
 --
 
 INSERT INTO `funcionarios` (`id`, `adicionado_por`, `vinculo`, `status_funcionario`, `siem_id`, `ocupacao_id`, `pessoa_id`, `user_id`, `created_at`, `updated_at`) VALUES
@@ -403,7 +400,7 @@ INSERT INTO `funcionarios` (`id`, `adicionado_por`, `vinculo`, `status_funcionar
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `horario_funcionarios`
+-- Estrutura da tabela `horario_funcionarios`
 --
 
 CREATE TABLE `horario_funcionarios` (
@@ -444,7 +441,7 @@ CREATE TABLE `horario_funcionarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `horario_funcionarios`
+-- Extraindo dados da tabela `horario_funcionarios`
 --
 
 INSERT INTO `horario_funcionarios` (`id`, `adicionado_por`, `seg_m`, `ter_m`, `qua_m`, `qui_m`, `sex_m`, `sab_m`, `dom_m`, `seg_t`, `ter_t`, `qua_t`, `qui_t`, `sex_t`, `sab_t`, `dom_t`, `seg_n`, `ter_n`, `qua_n`, `qui_n`, `sex_n`, `sab_n`, `dom_n`, `seg_c`, `ter_c`, `qua_c`, `qui_c`, `sex_c`, `sab_c`, `dom_c`, `siem_id`, `pessoa_id`, `created_at`, `updated_at`) VALUES
@@ -454,7 +451,7 @@ INSERT INTO `horario_funcionarios` (`id`, `adicionado_por`, `seg_m`, `ter_m`, `q
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `migrations`
+-- Estrutura da tabela `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -464,7 +461,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `migrations`
+-- Extraindo dados da tabela `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -485,7 +482,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `moodle_simulados`
+-- Estrutura da tabela `moodle_simulados`
 --
 
 CREATE TABLE `moodle_simulados` (
@@ -524,7 +521,7 @@ CREATE TABLE `moodle_simulados` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `ocupacaos`
+-- Estrutura da tabela `ocupacaos`
 --
 
 CREATE TABLE `ocupacaos` (
@@ -536,7 +533,7 @@ CREATE TABLE `ocupacaos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `ocupacaos`
+-- Extraindo dados da tabela `ocupacaos`
 --
 
 INSERT INTO `ocupacaos` (`id`, `usuario`, `nome`, `created_at`, `updated_at`) VALUES
@@ -547,7 +544,7 @@ INSERT INTO `ocupacaos` (`id`, `usuario`, `nome`, `created_at`, `updated_at`) VA
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `password_resets`
+-- Estrutura da tabela `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -557,7 +554,7 @@ CREATE TABLE `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `password_resets`
+-- Extraindo dados da tabela `password_resets`
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
@@ -566,7 +563,7 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `permissions`
+-- Estrutura da tabela `permissions`
 --
 
 CREATE TABLE `permissions` (
@@ -577,7 +574,7 @@ CREATE TABLE `permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `permissions`
+-- Extraindo dados da tabela `permissions`
 --
 
 INSERT INTO `permissions` (`id`, `name`, `created_at`, `updated_at`) VALUES
@@ -586,7 +583,7 @@ INSERT INTO `permissions` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pessoas`
+-- Estrutura da tabela `pessoas`
 --
 
 CREATE TABLE `pessoas` (
@@ -619,7 +616,7 @@ CREATE TABLE `pessoas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `pessoas`
+-- Extraindo dados da tabela `pessoas`
 --
 
 INSERT INTO `pessoas` (`id`, `vinculo`, `nome`, `cep`, `distrito`, `bairro`, `logradouro`, `numero`, `complemento`, `fone`, `cel1`, `cel2`, `email`, `cpf`, `rg`, `expedicao_rg`, `naturalidade`, `nascionalidade`, `nis`, `escolaridade`, `data_nascimento`, `nome_mae`, `nome_pai`, `user_id`, `created_at`, `updated_at`) VALUES
@@ -989,7 +986,7 @@ INSERT INTO `pessoas` (`id`, `vinculo`, `nome`, `cep`, `distrito`, `bairro`, `lo
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `roles`
+-- Estrutura da tabela `roles`
 --
 
 CREATE TABLE `roles` (
@@ -1000,7 +997,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `roles`
+-- Extraindo dados da tabela `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
@@ -1009,7 +1006,7 @@ INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `role_has_permissions`
+-- Estrutura da tabela `role_has_permissions`
 --
 
 CREATE TABLE `role_has_permissions` (
@@ -1020,7 +1017,7 @@ CREATE TABLE `role_has_permissions` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `scaffoldinterfaces`
+-- Estrutura da tabela `scaffoldinterfaces`
 --
 
 CREATE TABLE `scaffoldinterfaces` (
@@ -1036,7 +1033,7 @@ CREATE TABLE `scaffoldinterfaces` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `scaffoldinterfaces`
+-- Extraindo dados da tabela `scaffoldinterfaces`
 --
 
 INSERT INTO `scaffoldinterfaces` (`id`, `package`, `migration`, `model`, `controller`, `views`, `tablename`, `created_at`, `updated_at`) VALUES
@@ -1053,7 +1050,7 @@ INSERT INTO `scaffoldinterfaces` (`id`, `package`, `migration`, `model`, `contro
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `siems`
+-- Estrutura da tabela `siems`
 --
 
 CREATE TABLE `siems` (
@@ -1068,7 +1065,7 @@ CREATE TABLE `siems` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `siems`
+-- Extraindo dados da tabela `siems`
 --
 
 INSERT INTO `siems` (`id`, `usuario`, `siem`, `nome`, `tipo_escola`, `cod_ext`, `created_at`, `updated_at`) VALUES
@@ -1214,7 +1211,7 @@ INSERT INTO `siems` (`id`, `usuario`, `siem`, `nome`, `tipo_escola`, `cod_ext`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `siem_escolas`
+-- Estrutura da tabela `siem_escolas`
 --
 
 CREATE TABLE `siem_escolas` (
@@ -1224,7 +1221,7 @@ CREATE TABLE `siem_escolas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `siem_escolas`
+-- Extraindo dados da tabela `siem_escolas`
 --
 
 INSERT INTO `siem_escolas` (`IdEscola`, `nmEscola`, `nmArticulador`) VALUES
@@ -1236,7 +1233,7 @@ INSERT INTO `siem_escolas` (`IdEscola`, `nmEscola`, `nmArticulador`) VALUES
 (105, 'AMÉRICO TANURY - ABÓBORA', ''),
 (106, 'ANÁLIA BARBOSA DE SOUZA', 'Thiago santos'),
 (107, 'ANTONIO FRANCISCO DE OLIVEIRA', 'Alex Moreira'),
-(108, 'BOLIVAR SANT\'ANNA', ''),
+(108, 'BOLIVAR SANT''ANNA', ''),
 (109, 'BOM JESUS - BARAUNA', ''),
 (110, 'BOM JESUS - NH1', ''),
 (111, 'CAIC - MISAEL AGUILAR', 'Rafael Passos'),
@@ -1361,12 +1358,12 @@ INSERT INTO `siem_escolas` (`IdEscola`, `nmEscola`, `nmArticulador`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `siem_simrede`
+-- Estrutura da tabela `siem_simrede`
 --
 
 CREATE TABLE `siem_simrede` (
   `idescola` int(11) NOT NULL COMMENT '		',
-  `codsiem` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `codsiem` varchar(100) NOT NULL,
   `nmaluno` varchar(100) NOT NULL,
   `nmescola` varchar(100) NOT NULL,
   `serie` varchar(100) NOT NULL,
@@ -1397,102 +1394,10 @@ CREATE TABLE `siem_simrede` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Fazendo dump de dados para tabela `siem_simrede`
---
-
-INSERT INTO `siem_simrede` (`idescola`, `codsiem`, `nmaluno`, `nmescola`, `serie`, `simulado`, `datacad`, `nota1`, `nota2`, `nota3`, `nota4`, `nota5`, `nota6`, `nota7`, `nota8`, `nota9`, `nota10`, `nota11`, `nota12`, `nota13`, `nota14`, `nota15`, `nota16`, `nota17`, `nota18`, `nota19`, `nota20`, `situacao`, `updated_at`, `created_at`) VALUES
-(1, '﻿Sobrenome', 'Nome', 'Instituição', 'Departamento', 1, '17', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Estado', '2017-10-09 22:09:43', '2017-10-09 22:09:43'),
-(2, '222', 'LUCAS KAUÂ FRANCELINO DOS SANTOS', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '0', '1', '1', '1', '0', '1', '1', '1', '1', '0', '0', '1', '1', '0', '0', '1', '0', '0', '1', 'Finalizada', '2017-10-09 22:09:43', '2017-10-09 22:09:43'),
-(3, '222', 'ALESSANDRA SANTOS DA SILVA', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '0', '0', '0', '0', '1', '0', '1', '0', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:43', '2017-10-09 22:09:43'),
-(4, '222', 'ADRIELLE LARISSA DOS SANTOS SILVA', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '0', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '0', '1', '1', '1', '0', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(5, '222', 'JAMERSON ALEXANDRE DOS SANTOS OLIVEIRA', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '0', '1', '1', '0', '0', '1', '0', '0', '1', '1', '1', '1', '1', '0', '0', '1', '1', '0', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(6, '222', 'ERICK ARTHUR RODRIGUES CARDOSO', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '0', '0', '1', '0', '0', '1', '1', '1', '0', '1', '1', '0', '0', '1', '0', '0', '0', '0', '0', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(7, '222', 'ERICA LETICIA NASCIMENTO SANTOS', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '0', '1', '0', '0', '0', '1', '0', '1', '1', '1', '1', '1', '1', '0', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(8, '222', 'FLÁVIA LETÍCIA NASCIMENTO SANTOS', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '0', '1', '1', '0', '0', '1', '1', '1', '0', '1', '1', '1', '1', '1', '0', '0', '1', '0', '0', '0', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(9, '222', 'LUDIMILA SOUZA DOS SANTOS', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '0', '0', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(10, '222', 'DAVY LIMA DOS SANTOS', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '0', '0', '1', '1', '1', '1', '1', '0', '1', '0', '1', '1', '0', '1', '0', '1', '1', '0', '0', '0', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(11, '222', 'ÁLEF KAUÃ FEITOSA RIBEIRO', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '0', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(12, '222', 'JONAS DA SILVA SANTANA', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '0', '1', '1', '1', '0', '1', '0', '1', '0', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(13, '222', 'LUCAYAN FERREIRA DOS SANTOS', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '0', '1', '1', '0', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(14, '222', 'PAULO RICARDO REIS SOARES DE MENEZES', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(15, '222', 'NILZA VITÓRIA ALVES ALMEIDA', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(16, '222', 'RHANA IASMIN DA SILVA SOUZA', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '1', '1', '0', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(17, '222', 'MIRELE DA SILVA FERREIRA', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '1', '0', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(18, '222', 'RONALD DE CASTRO DA SILVA', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '0', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(19, '222', 'VÌCTOR YAN SOUZA VIEGAS', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '1', '1', '0', '0', '1', '1', '0', '0', '0', '1', '1', '0', '1', '1', '0', '1', '0', '0', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(20, '222', 'TALITA DA SILVA SANTANA', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '0', '1', '1', '0', '0', '1', 'Finalizada', '2017-10-09 22:09:44', '2017-10-09 22:09:44'),
-(21, '222', 'VITÒRIA  APARECIDA DOS SANTOS', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '0', '0', '1', '1', '1', '0', '1', '0', '1', '1', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(22, '222', 'WINNY BEATRIZ BRITO SOUZA', 'PROFª MARIA FRANCA PIRES', '.5anoA', 1, '17', '0', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '0', '1', '1', '1', '1', '0', '0', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(23, '222', 'FELIPE DIÊGO NUNES CARVALHO', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '0', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(24, '222', 'JOSÉ ADILSON LIMA DOS SANTOS', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '0', '0', '0', '0', '0', '0', '1', '0', '1', '1', '1', '0', '0', '1', '1', '0', '1', '1', '1', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(25, '222', 'DENÍSON CIPRIANO DE SÁ PACHECO', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '1', '0', '0', '1', '0', '0', '1', '0', '1', '1', '1', '1', '1', '1', '0', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(26, '222', 'IASMIM KAUANE SANTOS LOPES', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '0', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '0', '1', '1', '0', '0', '1', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(27, '222', 'BEATRIZ MOURA DA SILVA', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '1', '0', '0', '1', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(28, '222', 'HELOISA MARTINS DA SILVA', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '0', '1', '1', '0', '0', '0', '1', '1', '0', '1', '1', '0', '1', '1', '1', '0', '1', '0', '1', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(29, '222', 'MARIA LUIZA LIMA DE ALMEIDA', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(30, '222', 'BIANCA DE LIMA SILVA', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '1', '1', '0', '1', '1', '1', '1', '0', '1', '1', '1', '0', '1', '1', '0', '0', '1', '1', '0', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(31, '222', 'SULAMITA SILVA DE JESUS', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '0', '1', '1', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '0', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(32, '222', 'MAURICIO PEREIRA JÚNIOR', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '1', '0', '1', '1', '0', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(33, '222', 'MARIANA DE SOUZA RODRIGUES', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(34, '222', 'SAMIR SANTOS SILVA', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '0', '0', '1', '1', '0', '1', '1', '0', '0', '1', '1', '0', '1', '1', '1', '1', '1', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(35, '222', 'LUIZ HENRIQUE  FERREIRA DE DE SOUZA', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '0', '0', '1', '0', '1', '0', '1', '0', '0', '1', '1', '0', '1', '1', '0', '0', '1', '0', '0', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(36, '222', 'RAFAEL FERREIRA DE SALES', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '1', '1', '0', '1', '0', '0', '0', '1', '0', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(37, '222', 'JOÃO VITOR SOUZA ALVES', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '0', '1', '0', '0', '0', '0', '1', '1', '0', '0', '1', '1', '0', '1', '1', '1', '1', '0', '1', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(38, '222', 'LAYANE BARBOSA LIMA', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '1', '0', '0', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '0', '0', '0', '0', '0', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(39, '222', 'MARIA EDUARDA RODRIGUES DE MORAES ALVES CLEMENTE.', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '0', '0', '0', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(40, '222', 'MARIA PAULA AMARAL DA SILVA', 'PROFª MARIA FRANCA PIRES', '.5anoB', 1, '17', '0', '0', '0', '1', '0', '0', '1', '0', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(41, '213', 'Cauã Ravich Santos da Silva', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '0', '0', '0', '0', '0', '0', '1', '0', '1', '1', '1', '1', '0', '1', '0', '0', '1', '1', '0', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(42, '213', 'Alan Vieira dos Santos', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '1', '0', '0', '1', '1', '1', '1', '1', '1', '0', '0', '0', '1', '0', '1', '1', '1', '0', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(43, '213', 'Erick Allan Alves dos Santos Silva', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(44, '213', 'Ana Luiza Mendonça de Mello', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '1', '0', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(45, '213', 'Ana Júlia Santos Rodrigues', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '1', '1', '0', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(46, '213', 'Fernanda dos Santos de Souza', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '0', '0', '0', '0', '0', '1', '0', '0', '1', '0', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(47, '213', 'Antônia Yasmin Barbosa Guimarães', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(48, '213', 'Ana Júlia Pereira Alves da Silva', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '1', '0', '0', '1', '1', '1', '0', '1', '1', '1', '0', '1', '1', '0', '0', '1', '1', '1', '0', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(49, '213', 'Daniel Braga da Costa Conceição', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '1', '0', '0', '0', '1', '0', '1', '1', '0', '1', '0', '0', '1', '0', '1', '1', '0', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(50, '213', 'Clara Letícia dos Santos Bastos', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '1', '1', '1', '0', '1', '1', '0', '0', '1', '1', '0', '1', '1', '1', '1', '1', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(51, '213', 'Gabriel de Carvalho Ribeiro', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '0', '0', '0', '1', '1', '1', '1', '0', '1', '1', '0', '1', '1', '1', '1', '0', '1', '0', '0', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(52, '213', 'Irlanderson Mario Bezerra Carneiro', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(53, '213', 'Ivan Ferreira Teles Júnior', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:45', '2017-10-09 22:09:45'),
-(54, '213', 'Ingrid Vitória Dias da Silva', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '0', '0', '1', '0', '1', '0', '1', '0', '0', '0', '1', '0', '0', '0', '1', '1', '0', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(55, '213', 'Kleiton Henrique da Silva Ferreira', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '1', '0', '0', '0', '1', '0', '0', '0', '0', '1', '1', '1', '0', '0', '1', '1', '0', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(56, '213', 'Matheus Alan do Nascimento Vidal', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '1', '1', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '0', '0', '1', '0', '1', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(57, '213', 'Maria Clara Ferreira da Conceição', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '0', '0', '1', '0', '1', '0', '1', '1', '0', '1', '1', '1', '0', '1', '0', '0', '0', '0', '1', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(58, '213', 'Miquéias Mikael Santana Lima', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '1', '0', '0', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(59, '213', 'Neandra da Silva', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '1', '0', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(60, '213', 'Pâmela Mikely Bezerra de Souza', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '0', '0', '1', '0', '0', '0', '1', '0', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(61, '213', 'Raí de Jesus Gama', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '0', '0', '0', '0', '0', '1', '1', '0', '1', '1', '1', '1', '0', '1', '0', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(62, '213', 'Rebeca de Jesus Vieira', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Em progresso', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(63, '213', 'Samuel Victor Santana Ferreira', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '1', '1', '0', '0', '1', '1', '1', '1', '1', '1', '1', '0', '1', '0', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(64, '213', 'Silvia Beatriz Barbosa dos Santos', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '0', '0', '0', '0', '0', '0', '1', '0', '1', '1', '1', '0', '0', '1', '0', '0', '0', '1', '1', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(65, '213', 'Talita Fernanda dos Santos Silva', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '0', '0', '1', '1', '1', '0', '1', '1', '1', '1', '1', '0', '0', '0', '1', '1', '0', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(66, '213', 'Ycaro Reynan da Costa Ribeiro', 'EDUCANDÁRIO JOÃO XXIII', '.5anoA', 1, '17', '1', '0', '1', '0', '1', '1', '1', '0', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(67, '213', 'João Gabriel Barros Duarte', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '0', '1', '1', '0', '1', '1', '1', '0', '1', '1', '0', '0', '0', '1', '0', '0', '1', '0', '0', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(68, '213', 'Iarley da Silva Dias', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '0', '1', '0', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(69, '213', 'Daniela Nascimento Costa Silva', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '1', '0', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(70, '213', 'Ana Clara Barbosa dos Santos', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '1', '0', '0', '0', '0', '1', '0', '0', '1', '0', '0', '1', '1', '0', '1', '1', '0', '1', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(71, '213', 'Elen Vitoria Rocha Lima', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '0', '0', '1', '0', '0', '1', '1', '1', '1', '1', '1', '0', '1', '1', '0', '0', '1', '0', '0', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(72, '213', 'Harley Freitas de Almeida', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '1', '0', '0', '0', '1', '1', '0', '1', '1', '1', '0', '0', '1', '1', '1', '1', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(73, '213', 'Claudio Rejane Ferreira Farias', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '0', '1', '0', '0', '1', '1', '0', '1', '1', '1', '0', '1', '1', '0', '0', '0', '1', '1', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(74, '213', 'Ana Vitória Jesus da Conceição', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '0', '1', '1', '1', '1', '1', '1', '1', '0', '1', '0', '1', '1', '0', '0', '1', '1', '0', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(75, '213', 'Maria Eduarda Santos Silva', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '1', '1', '0', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(76, '213', 'Maria Luiza Ribeiro da Silva', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '1', '1', '1', '0', '1', '1', '0', '0', '1', '0', '0', '1', '1', '1', '0', '1', '1', '1', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(77, '213', 'Pedro Pacheco de Castro', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '0', '1', '0', '0', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '0', '0', '1', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(78, '213', 'Remerson Dias Tavares', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '1', '1', '1', '0', '1', '1', '0', '1', '1', '1', '0', '1', '1', '1', '0', '1', '0', '1', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(79, '213', 'Sabrina Esther Rodrigues', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '0', '0', '0', '1', '1', '1', '0', '1', '1', '1', '1', '0', '1', '1', '1', '0', '0', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(80, '213', 'Silvia Kethelem Lorrane', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(81, '213', 'Vanderson de Sena Oliveira', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '1', '1', '1', '0', '1', '1', '1', '0', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(82, '213', 'Jenifer da Silva Oliveira', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '0', '1', '0', '0', '0', '1', '1', '1', '1', '1', '0', '0', '0', '0', '0', '1', '1', '1', '1', '1', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(83, '213', 'Helen Andressa Alves Ribeiro', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '0', '1', '1', '0', '0', '1', '0', '0', '0', '0', '1', '1', '1', '1', '0', '0', '1', '0', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(84, '213', 'Felipe Riquelme de Oliveira Barbosa', 'EDUCANDÁRIO JOÃO XXIII', '.5anoB', 1, '17', '1', '1', '0', '1', '0', '1', '1', '0', '1', '1', '0', '1', '1', '1', '1', '0', '1', '1', '1', '0', 'Finalizada', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(85, '187', 'ADRIELLE  ARAUJO DE SOUSA', 'PROFº LUIZ CURSINO DA FRANÇA CARDOSO', '.5anoA', 1, '17', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Em progresso', '2017-10-09 22:09:46', '2017-10-09 22:09:46'),
-(86, 'Média geral', '', '', '', 1, '17', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '', '2017-10-09 22:09:46', '2017-10-09 22:09:46');
-
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `turmas`
+-- Estrutura da tabela `turmas`
 --
 
 CREATE TABLE `turmas` (
@@ -1544,7 +1449,7 @@ CREATE TABLE `turmas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `turmas`
+-- Extraindo dados da tabela `turmas`
 --
 
 INSERT INTO `turmas` (`id`, `turno`, `nivel`, `serie`, `turma`, `seg1`, `ter1`, `qua1`, `qui1`, `sex1`, `sab1`, `seg2`, `ter2`, `qua2`, `qui2`, `sex2`, `sab2`, `seg3`, `ter3`, `qua3`, `qui3`, `sex3`, `sab3`, `seg4`, `ter4`, `qua4`, `qui4`, `sex4`, `sab4`, `seg5`, `ter5`, `qua5`, `qui5`, `sex5`, `sab5`, `seg6`, `ter6`, `qua6`, `qui6`, `sex6`, `sab6`, `adicionado_por`, `siem_id`, `created_at`, `updated_at`) VALUES
@@ -1557,7 +1462,7 @@ INSERT INTO `turmas` (`id`, `turno`, `nivel`, `serie`, `turma`, `seg1`, `ter1`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `upload_csvs`
+-- Estrutura da tabela `upload_csvs`
 --
 
 CREATE TABLE `upload_csvs` (
@@ -1571,7 +1476,7 @@ CREATE TABLE `upload_csvs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `upload_csvs`
+-- Extraindo dados da tabela `upload_csvs`
 --
 
 INSERT INTO `upload_csvs` (`id`, `ano`, `simulado`, `nivel`, `siem_id`, `created_at`, `updated_at`) VALUES
@@ -1582,7 +1487,7 @@ INSERT INTO `upload_csvs` (`id`, `ano`, `simulado`, `nivel`, `siem_id`, `created
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `users`
+-- Estrutura da tabela `users`
 --
 
 CREATE TABLE `users` (
@@ -1596,11 +1501,11 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `users`
+-- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(12, 'Admin', '7miguelsilva7@gmail.com', '$2y$10$8YnfsZ6N5NsXxDXYbYc/UOgb/xvux3B/hXv1x574bsISvxk1xsnO.', 'XydNB8QLiRqbgY44NaffOCS8tecF6Y4Xdu3fXpuuVAA58U7a3JCiAwPxiLa5', '2016-11-12 17:44:03', '2017-06-01 17:20:47'),
+(12, 'Admin', '7miguelsilva7@gmail.com', '$2y$10$8YnfsZ6N5NsXxDXYbYc/UOgb/xvux3B/hXv1x574bsISvxk1xsnO.', 'vl30ufEd6rm28ObX2oSc7RutpXw8nrTH3Ae2Rp3NNZUI0HbVI29qYfVr5E3b', '2016-11-12 17:44:03', '2017-11-17 19:15:21'),
 (17, 'Liberado', 'liberado@gmail.com', '$2y$10$XjCrpeKNG0ilPkwHslBdouPEmr1i6wdxLkZ4ZmIcPbjHM9cyo7066', 'ov1yW2XtE7dXU8V2cY5vniZjVb6srButRuQcOQSCAPKEf3N6etGzgExNeVxo', '2016-11-15 05:35:44', '2016-11-22 19:09:42'),
 (22, '15 DE JULHO', '29teste@gmail.com', '$2y$10$bqXWdJnf5A3OOTsHbzXbvOJwDVkjPk3fsUjU8yjIZ0OPre6ZakjtO', 'TQtwRwBrpcoIYYWJtPGer65eaAGB7iuoCf5fnsZbkoCKBwTBOENOX0VdXIYL', '0000-00-00 00:00:00', '2017-03-09 17:23:21'),
 (23, '25 DE JULHO', 'escola25.dejulho@outlook.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -1656,7 +1561,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 (73, 'E.M.E.I PRIMAVERA', '1teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (74, 'E.M.E.I SEMENTE DO AMANHA', '42teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (75, 'E.M.E.I. ARCENIO JOSE DA SILVA', '43teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(76, 'EDUCANDÁRIO JOÃO XXIII', 'educandariojoao23@gmail.com', '$2y$10$1BOY6R0yemLFm4U/8.VTfuLQdfhURNtct0faAfH9NkMYY8BfIKs6O', '0CCfWEL9n7i6A6W8yPM5S61SDA99TdACD53nlezzfe2h4S34ZlUbaU2I2O9y', '0000-00-00 00:00:00', '2017-06-02 14:53:04'),
+(76, 'EDUCANDÁRIO JOÃO XXIII', 'educandariojoao23@gmail.com', '$2y$10$1BOY6R0yemLFm4U/8.VTfuLQdfhURNtct0faAfH9NkMYY8BfIKs6O', 'RzxowoK5sy4m9HwkKy6jCQyO8BYY7MyefpSTGBZsoivOlDxHaYC3AqwfXjJw', '0000-00-00 00:00:00', '2017-11-17 19:14:08'),
 (77, 'ELEOTÉRIO SOARES FONSÊCA', '44teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (78, 'ELISEU SANTOS', '24teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (79, 'ERUM - RURAL DA MASSAROCA', '25teste@gmail.com', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -1745,7 +1650,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `user_has_permissions`
+-- Estrutura da tabela `user_has_permissions`
 --
 
 CREATE TABLE `user_has_permissions` (
@@ -1754,7 +1659,7 @@ CREATE TABLE `user_has_permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `user_has_permissions`
+-- Extraindo dados da tabela `user_has_permissions`
 --
 
 INSERT INTO `user_has_permissions` (`user_id`, `permission_id`) VALUES
@@ -1763,7 +1668,7 @@ INSERT INTO `user_has_permissions` (`user_id`, `permission_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `user_has_roles`
+-- Estrutura da tabela `user_has_roles`
 --
 
 CREATE TABLE `user_has_roles` (
@@ -1772,7 +1677,7 @@ CREATE TABLE `user_has_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Fazendo dump de dados para tabela `user_has_roles`
+-- Extraindo dados da tabela `user_has_roles`
 --
 
 INSERT INTO `user_has_roles` (`role_id`, `user_id`) VALUES
@@ -1781,7 +1686,7 @@ INSERT INTO `user_has_roles` (`role_id`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -1792,7 +1697,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `usuario`, `senha`) VALUES
@@ -1801,7 +1706,7 @@ INSERT INTO `usuarios` (`id`, `nome`, `usuario`, `senha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para view `cs_media_alunos`
+-- Structure for view `cs_media_alunos`
 --
 DROP TABLE IF EXISTS `cs_media_alunos`;
 
@@ -1810,7 +1715,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Estrutura para view `cs_media_escolas`
+-- Structure for view `cs_media_escolas`
 --
 DROP TABLE IF EXISTS `cs_media_escolas`;
 
@@ -1819,31 +1724,31 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Estrutura para view `cs_simrede_base`
+-- Structure for view `cs_simrede_base`
 --
 DROP TABLE IF EXISTS `cs_simrede_base`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cs_simrede_base`  AS  select `siem_simrede`.`idescola` AS `idescola`,`siem_simrede`.`codsiem` AS `codsiem`,`siem_simrede`.`nmaluno` AS `nmaluno`,`siem_simrede`.`nmescola` AS `nmescola`,`siem_simrede`.`serie` AS `serie`,replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(`siem_simrede`.`serie`,'.',''),'ano',''),'A',''),'B',''),'C',''),'D',''),'E',''),'F',''),'G',''),'H',''),'I',''),'J','') AS `nivel`,replace(replace(replace(replace(replace(`siem_simrede`.`serie`,'.3ano',''),'.4ano',''),'.5ano',''),'.8ano',''),'.9ano','') AS `turma`,`siem_simrede`.`simulado` AS `simulado`,`siem_simrede`.`datacad` AS `datacad`,`siem_simrede`.`nota1` AS `nota1`,`siem_simrede`.`nota2` AS `nota2`,`siem_simrede`.`nota3` AS `nota3`,`siem_simrede`.`nota4` AS `nota4`,`siem_simrede`.`nota5` AS `nota5`,`siem_simrede`.`nota6` AS `nota6`,`siem_simrede`.`nota7` AS `nota7`,`siem_simrede`.`nota8` AS `nota8`,`siem_simrede`.`nota9` AS `nota9`,`siem_simrede`.`nota10` AS `nota10`,`siem_simrede`.`nota11` AS `nota11`,`siem_simrede`.`nota12` AS `nota12`,`siem_simrede`.`nota13` AS `nota13`,`siem_simrede`.`nota14` AS `nota14`,`siem_simrede`.`nota15` AS `nota15`,`siem_simrede`.`nota16` AS `nota16`,`siem_simrede`.`nota17` AS `nota17`,`siem_simrede`.`nota18` AS `nota18`,`siem_simrede`.`nota19` AS `nota19`,`siem_simrede`.`nota20` AS `nota20`,`siem_simrede`.`situacao` AS `situacao` from `siem_simrede` ;
 
 --
--- Índices de tabelas apagadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `anulada`
+-- Indexes for table `anulada`
 --
 ALTER TABLE `anulada`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `escolas`
+-- Indexes for table `escolas`
 --
 ALTER TABLE `escolas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `escolas_siem_id_foreign` (`siem_id`);
 
 --
--- Índices de tabela `funcionarios`
+-- Indexes for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
   ADD PRIMARY KEY (`id`),
@@ -1853,7 +1758,7 @@ ALTER TABLE `funcionarios`
   ADD KEY `funcionarios_user_id_foreign` (`user_id`);
 
 --
--- Índices de tabela `horario_funcionarios`
+-- Indexes for table `horario_funcionarios`
 --
 ALTER TABLE `horario_funcionarios`
   ADD PRIMARY KEY (`id`),
@@ -1861,19 +1766,19 @@ ALTER TABLE `horario_funcionarios`
   ADD KEY `horario_funcionarios_pessoa_id_foreign` (`pessoa_id`);
 
 --
--- Índices de tabela `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `moodle_simulados`
+-- Indexes for table `moodle_simulados`
 --
 ALTER TABLE `moodle_simulados`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `ocupacaos`
+-- Indexes for table `ocupacaos`
 --
 ALTER TABLE `ocupacaos`
   ADD PRIMARY KEY (`id`),
@@ -1881,21 +1786,21 @@ ALTER TABLE `ocupacaos`
   ADD UNIQUE KEY `nome_2` (`nome`);
 
 --
--- Índices de tabela `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`),
   ADD KEY `password_resets_token_index` (`token`);
 
 --
--- Índices de tabela `permissions`
+-- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `permissions_name_unique` (`name`);
 
 --
--- Índices de tabela `pessoas`
+-- Indexes for table `pessoas`
 --
 ALTER TABLE `pessoas`
   ADD PRIMARY KEY (`id`),
@@ -1903,187 +1808,187 @@ ALTER TABLE `pessoas`
   ADD KEY `pessoas_user_id_foreign` (`user_id`);
 
 --
--- Índices de tabela `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `roles_name_unique` (`name`);
 
 --
--- Índices de tabela `role_has_permissions`
+-- Indexes for table `role_has_permissions`
 --
 ALTER TABLE `role_has_permissions`
   ADD PRIMARY KEY (`permission_id`,`role_id`),
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
--- Índices de tabela `scaffoldinterfaces`
+-- Indexes for table `scaffoldinterfaces`
 --
 ALTER TABLE `scaffoldinterfaces`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `siems`
+-- Indexes for table `siems`
 --
 ALTER TABLE `siems`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `siem` (`siem`);
 
 --
--- Índices de tabela `siem_escolas`
+-- Indexes for table `siem_escolas`
 --
 ALTER TABLE `siem_escolas`
   ADD PRIMARY KEY (`IdEscola`);
 
 --
--- Índices de tabela `siem_simrede`
+-- Indexes for table `siem_simrede`
 --
 ALTER TABLE `siem_simrede`
   ADD PRIMARY KEY (`idescola`);
 
 --
--- Índices de tabela `turmas`
+-- Indexes for table `turmas`
 --
 ALTER TABLE `turmas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `turmas_siem_id_foreign` (`siem_id`);
 
 --
--- Índices de tabela `upload_csvs`
+-- Indexes for table `upload_csvs`
 --
 ALTER TABLE `upload_csvs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `upload_csvs_siem_id_foreign` (`siem_id`);
 
 --
--- Índices de tabela `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Índices de tabela `user_has_permissions`
+-- Indexes for table `user_has_permissions`
 --
 ALTER TABLE `user_has_permissions`
   ADD PRIMARY KEY (`user_id`,`permission_id`),
   ADD KEY `user_has_permissions_permission_id_foreign` (`permission_id`);
 
 --
--- Índices de tabela `user_has_roles`
+-- Indexes for table `user_has_roles`
 --
 ALTER TABLE `user_has_roles`
   ADD PRIMARY KEY (`role_id`,`user_id`),
   ADD KEY `user_has_roles_user_id_foreign` (`user_id`);
 
 --
--- Índices de tabela `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `usuario` (`usuario`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `anulada`
+-- AUTO_INCREMENT for table `anulada`
 --
 ALTER TABLE `anulada`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT de tabela `escolas`
+-- AUTO_INCREMENT for table `escolas`
 --
 ALTER TABLE `escolas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1075;
 --
--- AUTO_INCREMENT de tabela `funcionarios`
+-- AUTO_INCREMENT for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT de tabela `horario_funcionarios`
+-- AUTO_INCREMENT for table `horario_funcionarios`
 --
 ALTER TABLE `horario_funcionarios`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT de tabela `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
--- AUTO_INCREMENT de tabela `moodle_simulados`
+-- AUTO_INCREMENT for table `moodle_simulados`
 --
 ALTER TABLE `moodle_simulados`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de tabela `ocupacaos`
+-- AUTO_INCREMENT for table `ocupacaos`
 --
 ALTER TABLE `ocupacaos`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `permissions`
+-- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de tabela `pessoas`
+-- AUTO_INCREMENT for table `pessoas`
 --
 ALTER TABLE `pessoas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2177;
 --
--- AUTO_INCREMENT de tabela `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de tabela `scaffoldinterfaces`
+-- AUTO_INCREMENT for table `scaffoldinterfaces`
 --
 ALTER TABLE `scaffoldinterfaces`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
--- AUTO_INCREMENT de tabela `siems`
+-- AUTO_INCREMENT for table `siems`
 --
 ALTER TABLE `siems`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 --
--- AUTO_INCREMENT de tabela `siem_simrede`
+-- AUTO_INCREMENT for table `siem_simrede`
 --
 ALTER TABLE `siem_simrede`
-  MODIFY `idescola` int(11) NOT NULL AUTO_INCREMENT COMMENT '		', AUTO_INCREMENT=87;
+  MODIFY `idescola` int(11) NOT NULL AUTO_INCREMENT COMMENT '		';
 --
--- AUTO_INCREMENT de tabela `turmas`
+-- AUTO_INCREMENT for table `turmas`
 --
 ALTER TABLE `turmas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT de tabela `upload_csvs`
+-- AUTO_INCREMENT for table `upload_csvs`
 --
 ALTER TABLE `upload_csvs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de tabela `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 --
--- AUTO_INCREMENT de tabela `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- Restrições para dumps de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `escolas`
+-- Limitadores para a tabela `escolas`
 --
 ALTER TABLE `escolas`
   ADD CONSTRAINT `escolas_siem_id_foreign` FOREIGN KEY (`siem_id`) REFERENCES `siems` (`id`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `funcionarios`
+-- Limitadores para a tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
   ADD CONSTRAINT `funcionarios_ocupacao_id_foreign` FOREIGN KEY (`ocupacao_id`) REFERENCES `ocupacaos` (`id`) ON DELETE CASCADE,
@@ -2092,46 +1997,46 @@ ALTER TABLE `funcionarios`
   ADD CONSTRAINT `funcionarios_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `horario_funcionarios`
+-- Limitadores para a tabela `horario_funcionarios`
 --
 ALTER TABLE `horario_funcionarios`
   ADD CONSTRAINT `horario_funcionarios_pessoa_id_foreign` FOREIGN KEY (`pessoa_id`) REFERENCES `pessoas` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `horario_funcionarios_siem_id_foreign` FOREIGN KEY (`siem_id`) REFERENCES `siems` (`id`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `pessoas`
+-- Limitadores para a tabela `pessoas`
 --
 ALTER TABLE `pessoas`
   ADD CONSTRAINT `pessoas_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `role_has_permissions`
+-- Limitadores para a tabela `role_has_permissions`
 --
 ALTER TABLE `role_has_permissions`
   ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `turmas`
+-- Limitadores para a tabela `turmas`
 --
 ALTER TABLE `turmas`
   ADD CONSTRAINT `turmas_siem_id_foreign` FOREIGN KEY (`siem_id`) REFERENCES `siems` (`id`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `upload_csvs`
+-- Limitadores para a tabela `upload_csvs`
 --
 ALTER TABLE `upload_csvs`
   ADD CONSTRAINT `upload_csvs_siem_id_foreign` FOREIGN KEY (`siem_id`) REFERENCES `siems` (`id`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `user_has_permissions`
+-- Limitadores para a tabela `user_has_permissions`
 --
 ALTER TABLE `user_has_permissions`
   ADD CONSTRAINT `user_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `user_has_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `user_has_roles`
+-- Limitadores para a tabela `user_has_roles`
 --
 ALTER TABLE `user_has_roles`
   ADD CONSTRAINT `user_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
