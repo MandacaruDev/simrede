@@ -177,17 +177,17 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
                                    
     </ul>
   </li>
-
+<!--
   <li class="dropdown-submenu">
     <a tabindex="-1" href="#">Perfis</a>
     <ul class="dropdown-menu">
     
         <li><a data-toggle="modal" href="#"><i class="fa glyphicon glyphicon-home"></i>Perfil Escolas</a></li>
-		<!--<li><a data-toggle="modal" href="#perfilfuncionarios"><i class="fa fa-users"></i>Perfil Analistas</a></li>
+		<li><a data-toggle="modal" href="#perfilfuncionarios"><i class="fa fa-users"></i>Perfil Analistas</a></li>
 		<li><a data-toggle="modal" href="#perfillaboratorios"><i class="fa glyphicon glyphicon-hdd"></i>Perfil Laboratórios</a></li>
-                                    -->
+                                    
     </ul>
-  </li>
+  </li>-->
 
 
  
