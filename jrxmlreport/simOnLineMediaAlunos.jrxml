@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="simOnlineMediaAlunos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bee613a5-a8d6-48f3-8b6d-75572103f8d6">
-	<property name="ireport.zoom" value="1.610510000000035"/>
+	<property name="ireport.zoom" value="1.9487171000000438"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="codsiem" class="java.lang.String">
@@ -127,11 +127,20 @@ ORDER BY turma ASC, `Aluno` ASC, cat DESC]]>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField pattern="###0.00">
+				<reportElement x="403" y="0" width="57" height="20" uuid="14a371ac-e68a-4249-a14a-fda5401ad62d">
+					<printWhenExpression><![CDATA[$F{cat}=="PORTUGUES"&$F{NotaGeral}>=5]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NotaGeral}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
 				<reportElement x="403" y="0" width="57" height="20" forecolor="#FF0000" uuid="bf861cd8-c013-440a-bd02-b69c1d88e70a">
 					<printWhenExpression><![CDATA[$F{cat}=="PORTUGUES"&$F{NotaGeral}<=4.9]]></printWhenExpression>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="17" isBold="true"/>
+				<textElement verticalAlignment="Top">
+					<font size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{NotaGeral}]]></textFieldExpression>
 			</textField>
@@ -156,15 +165,6 @@ ORDER BY turma ASC, `Aluno` ASC, cat DESC]]>
 			<textField>
 				<reportElement x="261" y="0" width="83" height="18" uuid="a9982181-9707-4f57-84f9-6d5256975a53"/>
 				<textFieldExpression><![CDATA[$F{cat}]]></textFieldExpression>
-			</textField>
-			<textField pattern="###0.00">
-				<reportElement x="403" y="0" width="57" height="20" uuid="14a371ac-e68a-4249-a14a-fda5401ad62d">
-					<printWhenExpression><![CDATA[$F{cat}=="PORTUGUES"&$F{NotaGeral}>=5]]></printWhenExpression>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font size="17" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{NotaGeral}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

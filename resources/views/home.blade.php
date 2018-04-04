@@ -12,7 +12,7 @@
 		<hr>
 
 		<footer>
-			<p>&copy; <?php echo date('Y'); ?> simOnline</p>
+			<p>&copy; <?php echo date('Y'); ?> SimRede</p>
 		</footer>                </div>
             </div>
         </div>

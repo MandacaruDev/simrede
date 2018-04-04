@@ -19,10 +19,10 @@
 		<![CDATA[SELECT qs.slot as Questao, avg(fraction) * 10 as Media, qs.quizid as Quiz, qs.questionid as QuestaoID, q.name as Descritor, SUBSTRING(u.`department`,2,1) as Nivel, q.category as cat, quiz.name as Simulado, u.institution as Escola, substr(qc.name,3) as area,
 
 (Select count(totalAlunosQa.id)
-from fhrw_quiz_attempts totalAlunosQa
+from mdl_quiz_attempts totalAlunosQa
 
-INNER JOIN fhrw_user totalAlunosu ON totalAlunosu.id=totalAlunosQa.userid
-INNER JOIN fhrw_quiz totalAlunosq ON totalAlunosq.id=totalAlunosQa.quiz
+INNER JOIN mdl_user totalAlunosu ON totalAlunosu.id=totalAlunosQa.userid
+INNER JOIN mdl_quiz totalAlunosq ON totalAlunosq.id=totalAlunosQa.quiz
 
 where substr(totalAlunosq.name,-1)= $P{simulado}
 and totalAlunosu.lastname=$P{codsiem}
@@ -31,13 +31,13 @@ and totalAlunosQa.state="finished"
 and substr(totalAlunosq.ano,1,4) = $P{ano}
 ) as totalAlunos,
 
-(select avg(fraction) * 10 as mediaPT FROM fhrw_question_attempt_steps mediaqas 
-INNER JOIN fhrw_user mediau ON mediau.id=mediaqas.userid
-INNER JOIN fhrw_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
-INNEr JOIN fhrw_question mediaq ON mediaq.id=mediaqa.questionid
-INNER JOIN fhrw_quiz_slots mediaqs ON mediaqs.questionid=mediaqa.questionid
-Inner Join fhrw_quiz mediaquiz ON mediaquiz.id=mediaqs.quizid
-inner join fhrw_question_categories mediaqc ON mediaqc.id=mediaq.category
+(select avg(fraction) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
+INNER JOIN mdl_user mediau ON mediau.id=mediaqas.userid
+INNER JOIN mdl_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
+INNEr JOIN mdl_question mediaq ON mediaq.id=mediaqa.questionid
+INNER JOIN mdl_quiz_slots mediaqs ON mediaqs.questionid=mediaqa.questionid
+Inner Join mdl_quiz mediaquiz ON mediaquiz.id=mediaqs.quizid
+inner join mdl_question_categories mediaqc ON mediaqc.id=mediaq.category
 
 where 
 SUBSTRING(mediau.`department`,2,1) = $P{nivel}
@@ -51,13 +51,13 @@ and substr(mediaquiz.ano,1,4) = $P{ano}
 and substr(mediaqas.ano,1,4) = $P{ano}
 ) as mediaGeralPT,
 
-(select avg(fraction) * 10 as mediaPT FROM fhrw_question_attempt_steps mediaqas 
-INNER JOIN fhrw_user mediau ON mediau.id=mediaqas.userid
-INNER JOIN fhrw_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
-INNEr JOIN fhrw_question mediaq ON mediaq.id=mediaqa.questionid
-INNER JOIN fhrw_quiz_slots mediaqs ON mediaqs.questionid=mediaqa.questionid
-Inner Join fhrw_quiz mediaquiz ON mediaquiz.id=mediaqs.quizid
-inner join fhrw_question_categories mediaqc ON mediaqc.id=mediaq.category
+(select avg(fraction) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
+INNER JOIN mdl_user mediau ON mediau.id=mediaqas.userid
+INNER JOIN mdl_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
+INNEr JOIN mdl_question mediaq ON mediaq.id=mediaqa.questionid
+INNER JOIN mdl_quiz_slots mediaqs ON mediaqs.questionid=mediaqa.questionid
+Inner Join mdl_quiz mediaquiz ON mediaquiz.id=mediaqs.quizid
+inner join mdl_question_categories mediaqc ON mediaqc.id=mediaq.category
 
 where
 SUBSTRING(mediau.`department`,2,1) = $P{nivel}
@@ -71,12 +71,12 @@ and substr(mediaquiz.ano,1,4) = $P{ano}
 and substr(mediaqas.ano,1,4) = $P{ano}
 ) as mediaGeralMT,
 
-(select avg(fraction) * 10 as mediaPT FROM fhrw_question_attempt_steps mediaqas 
-INNER JOIN fhrw_user mediau ON mediau.id=mediaqas.userid
-INNER JOIN fhrw_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
-INNEr JOIN fhrw_question mediaq ON mediaq.id=mediaqa.questionid
-INNER JOIN fhrw_quiz_slots mediaqs ON mediaqs.questionid=mediaqa.questionid
-Inner Join fhrw_quiz mediaquiz ON mediaquiz.id=mediaqs.quizid
+(select avg(fraction) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
+INNER JOIN mdl_user mediau ON mediau.id=mediaqas.userid
+INNER JOIN mdl_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
+INNEr JOIN mdl_question mediaq ON mediaq.id=mediaqa.questionid
+INNER JOIN mdl_quiz_slots mediaqs ON mediaqs.questionid=mediaqa.questionid
+Inner Join mdl_quiz mediaquiz ON mediaquiz.id=mediaqs.quizid
 
 
 where
@@ -90,14 +90,14 @@ and substr(mediaquiz.ano,1,4) = $P{ano}
 and substr(mediaqas.ano,1,4) = $P{ano}
 ) as mediaGeral
 
-FROM `fhrw_question_attempt_steps` qas
+FROM `mdl_question_attempt_steps` qas
 
-INNER JOIN fhrw_question_attempts qa ON qa.id=qas.`questionattemptid`
-INNER JOIN fhrw_quiz_slots qs ON qs.questionid=qa.questionid
-INNER JOIN fhrw_user u ON u.id = qas.userid
-INNER JOIN fhrw_question q ON q.id=qa.questionid
-Inner Join fhrw_quiz quiz ON quiz.id=qs.quizid
-inner join fhrw_question_categories qc ON qc.id=q.category
+INNER JOIN mdl_question_attempts qa ON qa.id=qas.`questionattemptid`
+INNER JOIN mdl_quiz_slots qs ON qs.questionid=qa.questionid
+INNER JOIN mdl_user u ON u.id = qas.userid
+INNER JOIN mdl_question q ON q.id=qa.questionid
+Inner Join mdl_quiz quiz ON quiz.id=qs.quizid
+inner join mdl_question_categories qc ON qc.id=q.category
 
 
 where 

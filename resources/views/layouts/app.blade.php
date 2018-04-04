@@ -44,7 +44,7 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'simOnline') }}</title>
+    <title>{{ config('app.name', 'SimRede') }}</title>
 
     <!-- Styles -->
     <link href="http://aetj.info/sglab/css/app.css" rel="stylesheet">
@@ -72,7 +72,7 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'simOnline') }}
+                        {{ config('app.name', 'SimRede') }}
                     </a>
 
 

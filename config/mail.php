@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => '7miguelsilva7@gmail.com',
-        'name' => 'simOnline',
+        'name' => 'SimRede',
     ],
 
     /*
