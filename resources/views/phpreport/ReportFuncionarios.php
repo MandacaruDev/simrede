@@ -21,7 +21,7 @@ $PHPJasperXML->arrayParameter=  ["ocupacao"=>$ocupacao,"vinculo"=>$vinculo,"esco
 
 
 
-$PHPJasperXML->load_xml_file("/opt/lampp/htdocs/sglab/jrxmlreport/ReportFuncionarios.jrxml");
+$PHPJasperXML->load_xml_file("/sglab/jrxmlreport/ReportFuncionarios.jrxml");
 
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 $PHPJasperXML->outpage("D");    //page output method I:standard output  D:Download file

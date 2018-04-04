@@ -28,7 +28,7 @@ $PHPJasperXML->arrayParameter=  [
 
 
 
-$PHPJasperXML->load_xml_file("/opt/lampp/htdocs/sglab/jrxmlreport/PerfilLaboratorios.jrxml");
+$PHPJasperXML->load_xml_file("/sglab/jrxmlreport/PerfilLaboratorios.jrxml");
 
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 $PHPJasperXML->outpage("D");    //page output method I:standard output  D:Download file

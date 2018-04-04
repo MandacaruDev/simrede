@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="simOnLineGabarito" language="groovy" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e3815b62-505d-49ba-b723-2fd519d8a712">
+	<property name="ireport.zoom" value="1.610510000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     @n:=@n+1 AS Questão,
+     name AS Descritor,
+     SUBSTRING(answer,2,1) AS Resposta,
+     category as cat
+
+FROM
+(select @n:=0) As nada,
+     `mdl_question_answers` a INNER JOIN `mdl_quiz_slots` s ON a.`question` = s.`questionid`
+     INNER JOIN `mdl_question` q ON s.`questionid` = q.`id`
+
+WHERE
+     quizid = 4
+     and a.fraction = 1]]>
+	</queryString>
+	<field name="Questão" class="java.lang.Double"/>
+	<field name="Descritor" class="java.lang.String"/>
+	<field name="Resposta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cat" class="java.lang.Long"/>
+	<group name="cat" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{cat}]]></groupExpression>
+		<groupHeader>
+			<band height="61">
+				<staticText>
+					<reportElement x="74" y="39" width="137" height="20" uuid="bfcadc8b-09d6-466c-a4e4-8c27c920c087"/>
+					<box leftPadding="5" rightPadding="0"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Descritor]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="39" y="10" width="54" height="20" forecolor="#FEFEFE" uuid="8d405f70-48ac-4f79-a809-91f3cd37ec79"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cat}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="29" y="10" width="220" height="20" printWhenGroupChanges="cat" uuid="a0ef18f1-e2a7-45e7-8bb9-217aab9b2cc8">
+						<printWhenExpression><![CDATA[($F{cat}==3)]]></printWhenExpression>
+					</reportElement>
+					<box leftPadding="5" rightPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PORTUGUÊS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="29" y="10" width="220" height="20" printWhenGroupChanges="cat" uuid="f4e853c3-2a88-4957-bef9-defb4e66647f">
+						<printWhenExpression><![CDATA[($F{cat}==11)]]></printWhenExpression>
+					</reportElement>
+					<box leftPadding="5" rightPadding="0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MATEMÁTICA]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="29" y="39" width="45" height="20" uuid="5f0a0379-87a3-4104-9da3-83bba09e935a"/>
+					<textElement verticalAlignment="Middle" markup="none">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Quest."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="211" y="39" width="38" height="20" uuid="3f7f8dbf-626e-4b3d-b2d0-c60215b19d81"/>
+					<box leftPadding="5" rightPadding="0"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Resp.]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="145" y="53" width="265" height="16" uuid="65bffe25-effc-4693-92e1-dc4e062a4a90"/>
+				<box leftPadding="5" rightPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gabarito Simulado]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="9" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="9" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField pattern="###0">
+				<reportElement x="74" y="0" width="137" height="20" uuid="a4d0989f-033e-4a3d-a954-5c9ddbdcf06a"/>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Descritor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="0" width="38" height="20" uuid="22a13a66-1167-47ea-851d-8030b8d8135d"/>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Resposta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00">
+				<reportElement x="29" y="0" width="45" height="20" uuid="8c374922-f56f-4ed0-9426-47b52d89a95f"/>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Questão}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="18" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="17" splitType="Stretch"/>
+	</summary>
+</jasperReport>

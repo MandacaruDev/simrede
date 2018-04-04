@@ -19,7 +19,7 @@
 |
 */
 
-require __DIR__.'/../../../simrede/bootstrap/autoload.php';
+require __DIR__.'/../../simrede/bootstrap/autoload.php';
 
 /*
 |--------------------------------------------------------------------------

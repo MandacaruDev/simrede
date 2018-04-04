@@ -1,6 +1,6 @@
 <?php
 $server="localhost";
-$db="simrede";
+$db="bitnami_moodle";
 $user="root";
 $pass="";
 $version="0.9d";

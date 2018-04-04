@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="simOnlineGabarito" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e3815b62-505d-49ba-b723-2fd519d8a712">
+	<property name="ireport.zoom" value="1.7715610000000093"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="simulado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nivel" class="java.lang.String">
+		<defaultValueExpression><![CDATA[5]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ano" class="java.lang.String">
+		<defaultValueExpression><![CDATA[2018]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     @n:=@n+1 AS Questão,
+     q.name AS Descritor,
+     substr(answer, (POSITION(")" IN answer) - 1), 1) AS Resposta,
+     q.category as disciplina,
+SUBSTRING(q.name,1,2) as categoria,
+qz.name as simulado,
+c.fullname as nivel,
+
+substr(qc.name,3) AS area
+
+FROM
+(select @n:=0) As nada,
+     `mdl_question_answers` a INNER JOIN `mdl_quiz_slots` s ON a.`question` = s.`questionid`
+     INNER JOIN `mdl_question` q ON s.`questionid` = q.`id`
+     INNER JOIN mdl_quiz qz on qz.id=s.quizid
+     inner join mdl_course c on qz.course
+     inner join mdl_question_categories qc ON qc.id=q.category
+
+WHERE
+     substring(qz.name,-1) = $P{simulado}
+     and a.fraction = 1
+     and substring(c.shortname,8,1) = $P{nivel}
+     and substring(qz.ano,1,4) = $P{ano}
+     and substring(s.ano,1,4) = $P{ano}]]>
+	</queryString>
+	<field name="Questão" class="java.lang.Double"/>
+	<field name="Descritor" class="java.lang.String"/>
+	<field name="Resposta" class="java.lang.String"/>
+	<field name="disciplina" class="java.lang.Long"/>
+	<field name="categoria" class="java.lang.String"/>
+	<field name="simulado" class="java.lang.String"/>
+	<field name="nivel" class="java.lang.String"/>
+	<field name="area" class="java.lang.String"/>
+	<group name="disciplina">
+		<groupExpression><![CDATA[$F{disciplina}]]></groupExpression>
+		<groupHeader>
+			<band height="45">
+				<textField>
+					<reportElement x="160" y="0" width="27" height="20" uuid="ba94dea8-42df-498b-8b34-940404b8dee6"/>
+					<textFieldExpression><![CDATA[$F{categoria}+" - "]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="230" y="20" width="89" height="20" uuid="bcae03e1-eee0-44c0-aee5-bba2c7e7f5ae"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Descritor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="319" y="20" width="39" height="20" uuid="6d95eea3-c32d-429d-ac7b-4d3eaf18bdd9"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Resp]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="187" y="0" width="155" height="20" uuid="e5e416cf-bad9-4f0b-969b-d128d42d86c7"/>
+					<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="197" y="20" width="33" height="20" uuid="cc9439b8-ad0d-4bf9-9cc4-bf470bb7c349"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Quest]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="41"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="63" height="50" uuid="a7f4c977-9a13-4c06-9f67-19289327f4af"/>
+				<imageExpression><![CDATA["/opt/lampp/htdocs/simrede/jrxmlreport/img/simOnline.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="141" y="0" width="265" height="27" uuid="65bffe25-effc-4693-92e1-dc4e062a4a90"/>
+				<box leftPadding="5" rightPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GABARITO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="27" width="555" height="25" uuid="191e9a3c-5bd9-4a61-9e32-5c72521b1eaf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nivel}+" ("+$F{simulado}+")"+" - ("+$P{ano}+")"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="230" y="0" width="89" height="20" uuid="0ff272e0-d055-4a78-987f-d4d44aedf8e8"/>
+				<box leftPadding="5" rightPadding="5">
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Descritor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="197" y="0" width="33" height="20" uuid="2296867d-409a-4fb9-b193-76f2b69c840f"/>
+				<box leftPadding="5" rightPadding="5">
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Questão}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="0" width="39" height="20" uuid="036c66f5-3d74-481c-b123-b535fa21cef3"/>
+				<box leftPadding="5" rightPadding="5">
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Resposta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

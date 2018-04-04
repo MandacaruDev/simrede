@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="simOnlineMediaQuestoesTurma" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ff995abd-64eb-4318-8a8e-db24ab653bfb">
+	<property name="ireport.zoom" value="1.4641000000000197"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="simulado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="codsiem" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nivel" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="turma" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ano" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT qs.slot as Questao, avg(fraction) * 10 as Media, qs.quizid as Quiz, qs.questionid as QuestaoID, q.name as Descritor, SUBSTRING(u.`department`,2,4) as Nivel, SUBSTRING(u.`department`,6,1) as Turma, q.category as cat, quiz.name as Simulado, u.institution as Escola,
+
+substr(qc.name,3) as area,
+
+(Select count(totalAlunosQa.id)
+from mdl_quiz_attempts totalAlunosQa
+
+INNER JOIN mdl_user totalAlunosu ON totalAlunosu.id=totalAlunosQa.userid
+INNER JOIN mdl_quiz totalAlunosq ON totalAlunosq.id=totalAlunosQa.quiz
+
+where substr(totalAlunosq.name,-1)= $P{simulado}
+and totalAlunosu.lastname= $P{codsiem}
+and SUBSTRING(totalAlunosu.`department`,2,1) = $P{nivel}
+and SUBSTRING(totalAlunosu.`department`,6,1) = $P{turma}
+and totalAlunosQa.state="finished"
+and substr(totalAlunosq.ano,1,4)= $P{ano}
+) as totalAlunos,
+
+(select avg(fraction) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
+INNER JOIN mdl_user mediau ON mediau.id=mediaqas.userid
+INNER JOIN mdl_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
+INNEr JOIN mdl_question mediaq ON mediaq.id=mediaqa.questionid
+INNER JOIN mdl_quiz_slots mediaqs ON mediaqs.questionid=mediaqa.questionid
+Inner Join mdl_quiz mediaquiz ON mediaquiz.id=mediaqs.quizid
+inner join mdl_question_categories mediaqc ON mediaqc.id=mediaq.category
+
+where 
+SUBSTRING(mediau.`department`,2,1) = $P{nivel}
+and SUBSTRING(mediau.`department`,6,1) = $P{turma}
+and substr(mediaqc.name,3) = "PORTUGUES"
+and substr(mediaquiz.name,-1)= $P{simulado}
+and mediau.lastname= $P{codsiem}
+and mediaqas.state!="todo"
+and mediaqas.state!="complete"
+and substr(mediaqas.ano,1,4)= $P{ano}
+and substr(mediaquiz.ano,1,4)= $P{ano}
+) as mediaGeralPT,
+
+(select avg(fraction) * 10 as mediaMT FROM mdl_question_attempt_steps mediaqas 
+INNER JOIN mdl_user mediau ON mediau.id=mediaqas.userid
+INNER JOIN mdl_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
+INNEr JOIN mdl_question mediaq ON mediaq.id=mediaqa.questionid
+INNER JOIN mdl_quiz_slots mediaqs ON mediaqs.questionid=mediaqa.questionid
+Inner Join mdl_quiz mediaquiz ON mediaquiz.id=mediaqs.quizid
+inner join mdl_question_categories mediaqc ON mediaqc.id=mediaq.category
+
+where
+SUBSTRING(mediau.`department`,2,1) = $P{nivel} 
+and SUBSTRING(mediau.`department`,6,1) = $P{turma}
+and substr(mediaqc.name,3) = "MATEMATICA"
+and substr(mediaquiz.name,-1)= $P{simulado}
+and mediau.lastname= $P{codsiem}
+and mediaqas.state!="todo"
+and mediaqas.state!="complete"
+and substr(mediaqas.ano,1,4)= $P{ano}
+and substr(mediaquiz.ano,1,4)= $P{ano}
+) as mediaGeralMT,
+
+(select avg(fraction) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
+INNER JOIN mdl_user mediau ON mediau.id=mediaqas.userid
+INNER JOIN mdl_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
+INNEr JOIN mdl_question mediaq ON mediaq.id=mediaqa.questionid
+INNER JOIN mdl_quiz_slots mediaqs ON mediaqs.questionid=mediaqa.questionid
+Inner Join mdl_quiz mediaquiz ON mediaquiz.id=mediaqs.quizid
+
+where
+SUBSTRING(mediau.`department`,2,1) = $P{nivel}
+and SUBSTRING(mediau.`department`,6,1) = $P{turma} 
+and substr(mediaquiz.name,-1)= $P{simulado}
+and mediau.lastname= $P{codsiem}
+and mediaqas.state!="todo"
+and mediaqas.state!="complete"
+and substr(mediaqas.ano,1,4)= $P{ano}
+and substr(mediaquiz.ano,1,4)= $P{ano}
+) as mediaGeral
+
+
+
+
+
+FROM `mdl_question_attempt_steps` qas
+
+INNER JOIN mdl_question_attempts qa ON qa.id=qas.`questionattemptid`
+INNER JOIN mdl_quiz_slots qs ON qs.questionid=qa.questionid
+INNER JOIN mdl_user u ON u.id = qas.userid
+INNER JOIN mdl_question q ON q.id=qa.questionid
+Inner Join mdl_quiz quiz ON quiz.id=qs.quizid
+inner join mdl_question_categories qc ON qc.id=q.category
+
+
+where 
+substr(quiz.name,-1)= $P{simulado}
+and u.lastname= $P{codsiem}
+and SUBSTRING(u.`department`,2,1) = $P{nivel}
+and SUBSTRING(u.`department`,6,1) = $P{turma}
+and substr(qas.ano,1,4)= $P{ano}
+and substr(quiz.ano,1,4)= $P{ano}
+and state!="todo"
+and state!="complete"
+
+group by qa.questionid  
+ORDER BY `Questao` ASC]]>
+	</queryString>
+	<field name="Questao" class="java.lang.Long"/>
+	<field name="Media" class="java.math.BigDecimal"/>
+	<field name="Quiz" class="java.lang.Long"/>
+	<field name="QuestaoID" class="java.lang.Long"/>
+	<field name="Descritor" class="java.lang.String"/>
+	<field name="Nivel" class="java.lang.String"/>
+	<field name="Turma" class="java.lang.String"/>
+	<field name="cat" class="java.lang.Long"/>
+	<field name="Simulado" class="java.lang.String"/>
+	<field name="Escola" class="java.lang.String"/>
+	<field name="area" class="java.lang.String"/>
+	<field name="totalAlunos" class="java.lang.Long"/>
+	<field name="mediaGeralPT" class="java.math.BigDecimal"/>
+	<field name="mediaGeralMT" class="java.math.BigDecimal"/>
+	<field name="mediaGeral" class="java.math.BigDecimal"/>
+	<group name="disciplina">
+		<groupExpression><![CDATA[$F{cat}]]></groupExpression>
+		<groupHeader>
+			<band height="51">
+				<staticText>
+					<reportElement x="171" y="29" width="36" height="20" uuid="3b705540-9d8e-4d50-914f-4baca8cd01f9"/>
+					<box leftPadding="5"/>
+					<text><![CDATA[Q]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="207" y="29" width="140" height="20" uuid="0560cabb-4eb3-4bf5-bb9a-623cfa2c1a9f"/>
+					<box leftPadding="5"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Descritor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="346" y="29" width="41" height="20" uuid="d5f3b6fb-19ac-4206-ba13-143167a40fb0"/>
+					<box leftPadding="5"/>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[Média]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="10" y="5" width="537" height="20" backcolor="#BDBDBD" uuid="8d25a67e-4305-4b4b-8f96-1c0aca94edec"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="211" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="63" height="50" uuid="f6dc4f09-fa8e-41d3-9b6b-36204c3dd791"/>
+				<imageExpression><![CDATA["/opt/lampp/htdocs/simrede/jrxmlreport/img/simOnline.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="28" width="555" height="20" uuid="6ba554d9-fad4-41c4-bff1-af1870deb624"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Media das Questões por Turma]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="-116" width="555" height="84" uuid="e5b582c7-c8ba-48aa-a53a-9a8324353208"/>
+			</rectangle>
+			<textField>
+				<reportElement x="171" y="-26" width="216" height="20" uuid="542cb80b-f207-4666-b131-11a16a6c97c6"/>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Simulado}+" - "+$P{ano}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="143" y="-116" width="1" height="84" uuid="5e0e3eda-95f2-4bb0-be65-531701450773"/>
+			</line>
+			<line>
+				<reportElement x="254" y="-116" width="1" height="84" uuid="8dd11e3a-3f44-4222-a162-173b4fcf3823"/>
+			</line>
+			<line>
+				<reportElement x="346" y="-93" width="1" height="61" uuid="dabba7ef-38bf-413d-9fa9-4d8b57722fde"/>
+			</line>
+			<line>
+				<reportElement x="441" y="-116" width="1" height="84" uuid="6de6d71d-617b-4940-963a-1f328006ffe3"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-69" width="555" height="1" uuid="f824f08f-4a8b-46dd-aed9-01937e72cf29"/>
+			</line>
+			<line>
+				<reportElement x="255" y="-94" width="186" height="1" uuid="706dfb92-5bf4-4acd-860f-cedc78fa5bd3"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="-113" width="144" height="42" uuid="8c3f2e47-097f-4595-9de8-c2f9fb113a25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nível]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="-115" width="186" height="20" uuid="87c5b983-baa9-4655-875f-1f98fc9f2d29"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Disciplina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="-93" width="92" height="20" uuid="5d730a5c-d7de-457f-8987-cbd03f72724a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Português]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="-93" width="95" height="20" uuid="0166f6c6-d994-4430-a471-bae6a37cadb6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Matemática]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="442" y="-101" width="113" height="20" uuid="743558c9-0a32-48f3-9b53-7f5424812bda"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Média Geral]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="-109" width="91" height="36" uuid="d2958eaa-b48e-4f06-b24c-3e69920e4849"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total de 
+Alunos]]></text>
+			</staticText>
+			<textField pattern="###0.00">
+				<reportElement x="256" y="-69" width="90" height="36" uuid="6f78c4b0-e58a-415e-bc3b-eb0d8f0149fa">
+					<printWhenExpression><![CDATA[($F{mediaGeralPT}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mediaGeralPT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="347" y="-69" width="94" height="37" uuid="88085890-c4be-4045-a636-7533a2d7c290">
+					<printWhenExpression><![CDATA[($F{mediaGeralMT}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mediaGeralMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="442" y="-68" width="113" height="36" uuid="1650e785-10b9-494e-a846-e2b9f1738037">
+					<printWhenExpression><![CDATA[($F{mediaGeral}>=5)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mediaGeral}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="-68" width="91" height="36" uuid="22cadecc-8aab-4f9f-9ddc-c196766d9dc9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalAlunos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="-69" width="86" height="37" uuid="a655a082-d817-4075-8e9e-ac955d039512"/>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nivel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="-68" width="36" height="36" uuid="0fee2ddd-404f-4dd7-8f5c-5e3a690a8ef7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Turma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="-140" width="502" height="20" uuid="978dff46-7a0b-416b-ac29-d68a8a10d9aa"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Escola}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="256" y="-69" width="90" height="36" forecolor="#FF0000" uuid="712303f0-ddd2-4cca-9e5d-6c1f8a96a81c">
+					<printWhenExpression><![CDATA[($F{mediaGeralPT}<=4.9)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mediaGeralPT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="347" y="-69" width="94" height="37" forecolor="#FF0000" uuid="4f7fc783-9633-4661-8142-8ac9afb70ea7">
+					<printWhenExpression><![CDATA[($F{mediaGeralMT}<=4.9)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mediaGeralMT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="442" y="-68" width="113" height="36" forecolor="#FF0000" uuid="fb0e3372-b87c-470e-8f99-83ae3b4ed1e2">
+					<printWhenExpression><![CDATA[($F{mediaGeral}<=4.9)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mediaGeral}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="-138" width="53" height="20" uuid="121a74d4-986e-4496-9471-7d499fc057cd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Escola: ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField pattern="###0.0">
+				<reportElement x="348" y="1" width="39" height="20" uuid="2e23bd5a-f00e-4926-9103-307813e39a88">
+					<printWhenExpression><![CDATA[($F{Media}>=5)]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Media}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.0">
+				<reportElement x="348" y="0" width="39" height="20" forecolor="#FF0000" uuid="f865d470-e629-4a14-9b63-dfa62b2bebc8">
+					<printWhenExpression><![CDATA[($F{Media}<=4.9)]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Media}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="171" y="1" width="36" height="20" uuid="150e2db9-f523-4d5e-b12e-9b3234fcde34"/>
+				<box leftPadding="5"/>
+				<textFieldExpression><![CDATA[$F{Questao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="1" width="138" height="20" uuid="fbce0531-05af-4093-8e21-0bc04b3bbbe8"/>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Descritor}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="171" y="21" width="216" height="1" uuid="4fea2bbb-d72a-4187-bffc-371160cc0e47"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="19" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="14" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="15" splitType="Stretch"/>
+	</summary>
+</jasperReport>

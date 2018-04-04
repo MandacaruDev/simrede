@@ -15,7 +15,6 @@ use App\Pessoa;
 use App\Siem;
 use App\User;
 
-
 /**
  * Class ModalController.
  *
@@ -29,34 +28,75 @@ class ModalController extends Controller
      *
      * @return  \Illuminate\Http\Response
      */
-    public function modalSimuladoEscola()
+    public function modalGabarito()
 
     {
         $siems = Siem::all()->pluck('nome','siem');
 
-        // $title = 'ModalSimuladoEscola - modal';
-        return view('modal.modalSimuladoEscola',compact('siems'));
+        // $title = 'modalMediaEscola - modal';
+        return view('modal.modalGabarito',compact('siems'));
     }
 
-     public function modalSimuladoTurma()
+    public function modalMediaRede()
+    
+        {
+            $siems = Siem::all()->pluck('nome','siem');
+    
+            // $title = 'modalMediaEscola - modal';
+            return view('modal.modalMediaRede',compact('siems'));
+        }    
+
+    public function modalMediaEscola()
+    
+        {
+            $siems = Siem::all()->pluck('nome','siem');
+    
+            // $title = 'modalMediaEscola - modal';
+            return view('modal.modalMediaEscola',compact('siems'));
+        }
+
+    public function modalMediaTurma()
+        
+            {
+                $siems = Siem::all()->pluck('nome','siem');
+        
+                // $title = 'modalMediaEscola - modal';
+                return view('modal.modalMediaTurma',compact('siems'));
+            }        
+
+     public function modalMediaAluno()
 
     {
         $siems = Siem::all()->pluck('nome','siem');
 
-        // $title = 'ModalSimuladoEscola - modal';
-        return view('modal.modalSimuladoTurma',compact('siems'));
+        // $title = 'modalMediaEscola - modal';
+        return view('modal.modalMediaAluno',compact('siems'));
     }
 
 
-        // Funções Relatórios Simulados
+// Funções Relatórios Simulados
+    public function simulado_rede_report()
+{
+    return view('phpreport.simOnLineMediaQuestoesPorRede');
+}
+
     public function simulado_escola_report()
     {
-        return view('phpreport.SimuladosRelGeralEscolaDetalhado');
+        return view('phpreport.simOnLineMediaQuestoesPorEscolas');
     }
 
     public function simulado_turma_report()
     {
-        return view("phpreport.SimuladosRelGeralAlunoDetalhado");
+        return view("phpreport.simOnLineMediaQuestoesPorTurmas");
     }
 
+    public function simulado_aluno_report()
+    {
+        return view("phpreport.simOnLineMediaAlunos");
+    }
+
+    public function simulado_gabarito_report()
+    {
+        return view("phpreport.simOnLineGabaritos");
+    }
 }

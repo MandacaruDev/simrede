@@ -23,7 +23,7 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Sistema de Gestão de Laboratórios - Cadastrar</div>
+                <div class="panel-heading">Sistema Simulados Prova Brasil Online - Cadastrar</div>
                 <div class="panel-body">
 
                 

@@ -20,7 +20,7 @@ $PHPJasperXML->arrayParameter=  ["distrito"=>$distrito,"articulador"=>$articulad
 
 
 
-$PHPJasperXML->load_xml_file("/opt/lampp/htdocs/sglab/jrxmlreport/ReportLaboratorios.jrxml");
+$PHPJasperXML->load_xml_file("/sglab/jrxmlreport/ReportLaboratorios.jrxml");
 
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
 $PHPJasperXML->outpage("D");    //page output method I:standard output  D:Download file

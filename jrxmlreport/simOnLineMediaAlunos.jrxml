@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="simOnlineMediaAlunos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bee613a5-a8d6-48f3-8b6d-75572103f8d6">
+	<property name="ireport.zoom" value="1.610510000000035"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codsiem" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="simulado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ano" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nivel" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select avg(fraction)*10 as Media, gg.finalgrade as NotaGeral, u.firstname as Aluno, u.lastname as siem, qas.userid, u.department as Turma, u.institution as Escola, substr(qc.name,3) as cat
+
+FROM mdl_question_attempt_steps qas
+
+inner join mdl_user u on u.id=qas.userid
+INNER JOIN mdl_question_attempts qa ON qa.id=qas.questionattemptid
+INNER JOIN mdl_question q On q.id=qa.questionid
+inner join mdl_grade_grades gg on gg.userid=u.id
+INNER JOIN mdl_grade_items gi ON gi.`id` = gg.`itemid`
+INNER JOIN mdl_quiz_slots qs ON qs.questionid=qa.questionid
+Inner Join mdl_quiz quiz ON quiz.id=qs.quizid
+inner join mdl_question_categories qc ON qc.id=q.category
+
+where substring(u.department,2,1) = $P{nivel}
+ AND itemtype = "mod"
+ AND itemmodule = "quiz"
+ AND finalgrade != "NULL"
+ and substr(quiz.name,-1)=$P{simulado}
+ and substr(quiz.ano,1,4)=$P{ano}
+ and u.lastname=$P{codsiem}
+ and qas.state!="todo"
+ and qas.state!="complete"
+
+group by turma, q.category, u.id
+ORDER BY turma ASC, `Aluno` ASC, cat DESC]]>
+	</queryString>
+	<field name="Media" class="java.math.BigDecimal"/>
+	<field name="NotaGeral" class="java.math.BigDecimal"/>
+	<field name="Aluno" class="java.lang.String"/>
+	<field name="siem" class="java.lang.String"/>
+	<field name="userid" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Turma" class="java.lang.String"/>
+	<field name="Escola" class="java.lang.String"/>
+	<field name="cat" class="java.lang.String"/>
+	<group name="Turma">
+		<groupExpression><![CDATA[$F{Turma}]]></groupExpression>
+		<groupHeader>
+			<band height="48">
+				<staticText>
+					<reportElement mode="Opaque" x="32" y="21" width="312" height="20" backcolor="#CFCFCF" uuid="a0187952-3a71-4b56-919a-e3d58b8c740a"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Aluno]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="344" y="21" width="59" height="20" backcolor="#CFCFCF" uuid="d9096738-3d9e-4d99-983d-9ff493a0920a"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Media]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="32" y="0" width="44" height="20" uuid="923bacdf-8585-4a28-afad-7c8b5ad4c313"/>
+					<text><![CDATA[Turma]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="76" y="0" width="90" height="20" uuid="24441479-040c-4ebd-95ba-a78155d318bd"/>
+					<textFieldExpression><![CDATA[$F{Turma}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="403" y="21" width="121" height="20" backcolor="#CFCFCF" uuid="ab016079-bc08-4476-904a-7263077d333a"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[NotaGeral]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="24"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="63" height="50" uuid="564bc29e-982e-4948-90df-396020c89d57"/>
+				<imageExpression><![CDATA["/opt/lampp/htdocs/simrede/jrxmlreport/img/simOnline.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="18" width="555" height="20" uuid="6fa3bc77-59aa-46d8-bf62-77827d05f8fc"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Media dos Alunos por Escola]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="129" y="61" width="100" height="20" uuid="91afbe54-f662-4647-93c5-a2e97a638663"/>
+				<textFieldExpression><![CDATA["Simulado: "+$P{simulado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="229" y="61" width="140" height="20" uuid="9ae12c58-1e59-4a5f-b008-d61a93f9d9d5"/>
+				<textFieldExpression><![CDATA["Nível: "+$P{nivel}+"º Ano"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="369" y="61" width="100" height="20" uuid="595f68d9-f568-4647-9c08-18d2eb76a736"/>
+				<textFieldExpression><![CDATA["Ano: "+$P{ano}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="32" y="0" width="399" height="20" uuid="62f3c905-883c-4b42-9165-a345f94d9b06"/>
+				<textFieldExpression><![CDATA["Escola: "+$F{Escola}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField pattern="###0.00">
+				<reportElement x="403" y="0" width="57" height="20" forecolor="#FF0000" uuid="bf861cd8-c013-440a-bd02-b69c1d88e70a">
+					<printWhenExpression><![CDATA[$F{cat}=="PORTUGUES"&$F{NotaGeral}<=4.9]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="17" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NotaGeral}]]></textFieldExpression>
+			</textField>
+			<elementGroup/>
+			<textField>
+				<reportElement x="32" y="0" width="229" height="20" uuid="dc20b991-3364-45e7-aae0-3317b13060d8">
+					<printWhenExpression><![CDATA[$F{cat}=="PORTUGUES"]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{Aluno}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="344" y="0" width="29" height="20" uuid="69f94944-a47a-493a-946a-79cf22a3afd5"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{Media}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="30" y="17" width="494" height="1" uuid="70c32312-6979-40fa-8093-db457af859be">
+					<printWhenExpression><![CDATA[$F{cat}=="MATEMATICA"]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="261" y="0" width="83" height="18" uuid="a9982181-9707-4f57-84f9-6d5256975a53"/>
+				<textFieldExpression><![CDATA[$F{cat}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="403" y="0" width="57" height="20" uuid="14a371ac-e68a-4249-a14a-fda5401ad62d">
+					<printWhenExpression><![CDATA[$F{cat}=="PORTUGUES"&$F{NotaGeral}>=5]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="17" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NotaGeral}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

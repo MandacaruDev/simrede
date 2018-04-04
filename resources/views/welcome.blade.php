@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>SimRede</title>
+        <title>simOnline</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -77,12 +77,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    SimRede
+                    simOnline
                 </div>
-                <hr><h4>Sistema de Simulados em Rede</h4><hr>
+                <hr><h4>Sistema de Simulados Prova Brasil Online</h4><hr>
                 <div class="links">
                    
-                    <a href="http://portaldoprofessor.mec.gov.br/index.html" target="_blank">[ Portal do Professor ]</a>
+                <a href="http://portaldoprofessor.mec.gov.br/index.html" target="_blank">[ Portal do Professor ]</a>
+                <a href="http://educar.esy.es/moodle" target="_blank">[ Simulados ]</a>
                 </div>
             </div>
         </div>

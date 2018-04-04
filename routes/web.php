@@ -127,16 +127,23 @@ Route::group(['middleware'=> 'web'],function(){
 
 //siem_simrede Routes
 
-Route::get('simulado_escola_report','Moodle_simulado_reportController@simulado_escola_report');
-Route::get('simulado_turma_report','Moodle_simulado_reportController@simulado_turma_report');
+// Route::get('simulado_escola_report','Moodle_simulado_reportController@simulado_escola_report');
+// Route::get('simulado_turma_report','Moodle_simulado_reportController@simulado_turma_report');
+// Route::get('simulado_aluno_report','Moodle_simulado_reportController@simulado_aluno_report');
 
 
 //modal Routes
 Route::group(['middleware'=> 'web'],function(){
-  Route::resource('modal/modalSimuladoEscola','ModalController@modalSimuladoEscola');
-  Route::resource('modal/modalSimuladoTurma','ModalController@modalSimuladoTurma');
+  Route::resource('modal/modalGabarito','ModalController@modalGabarito');
+  Route::resource('modal/modalMediaRede','ModalController@modalMediaRede');
+  Route::resource('modal/modalMediaEscola','ModalController@modalMediaEscola');
+  Route::resource('modal/modalMediaTurma','ModalController@modalMediaTurma');
+  Route::resource('modal/modalMediaAluno','ModalController@modalMediaAluno');
+  Route::get('modal/simulado_gabarito_report','\App\Http\Controllers\ModalController@simulado_gabarito_report');
+  Route::get('modal/simulado_rede_report','\App\Http\Controllers\ModalController@simulado_rede_report');
   Route::get('modal/simulado_escola_report','\App\Http\Controllers\ModalController@simulado_escola_report');
   Route::get('modal/simulado_turma_report','\App\Http\Controllers\ModalController@simulado_turma_report');
+  Route::get('modal/simulado_aluno_report','\App\Http\Controllers\ModalController@simulado_aluno_report');
 });
 
 

@@ -19,7 +19,7 @@ $internet=$_POST["internet"]; //recebendo o parâmetro que vem do formulário
 $PHPJasperXML->arrayParameter=  ["distrito"=>$distrito,"articulador"=>$articulador,"lab"=>$lab,"internet"=>$internet];
 
 
-$PHPJasperXML->load_xml_file("/opt/lampp/htdocs/sglab/jrxmlreport/ReportEscolas.jrxml");
+$PHPJasperXML->load_xml_file("/sglab/jrxmlreport/ReportEscolas.jrxml");
 
 
 $PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);

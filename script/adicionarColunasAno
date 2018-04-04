@@ -1,0 +1,3 @@
+ALTER TABLE mdl_quiz ADD ano TIMESTAMP;
+ALTER TABLE mdl_quiz_slots ADD ano TIMESTAMP;
+ALTER TABLE mdl_question_attempt_steps ADD ano TIMESTAMP;

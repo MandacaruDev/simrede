@@ -7,7 +7,7 @@
 require_once '/opt/lampp/htdocs/simrede/connect.php';
 @include ('flash::message');
 #modals dos relatórios
-// require_once '/opt/lampp/htdocs/sglab/resources/views/modals/horario_funcionario.php';
+// require_once '/sglab/resources/views/modals/horario_funcionario.php';
 # FIM modals dos relatórios
 
 ?>
@@ -44,7 +44,7 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'SiemRede') }}</title>
+    <title>{{ config('app.name', 'simOnline') }}</title>
 
     <!-- Styles -->
     <link href="http://aetj.info/sglab/css/app.css" rel="stylesheet">
@@ -72,7 +72,7 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'SimRede') }}
+                        {{ config('app.name', 'simOnline') }}
                     </a>
 
 
@@ -211,10 +211,14 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
     <a tabindex="-1" href="#">Simulados</a>
     <ul class="dropdown-menu">
 
-        <li><a href="{{ url('/modal') }}/modalSimuladoEscola" data-toggle="modal" data-target="#meuModal"><i class="fa glyphicon glyphicon-home"></i> Escolas</a> </li>                                       
-        <li><a href="{{ url('/modal') }}/modalSimuladoTurma" data-toggle="modal" data-target="#meuModal"><i class="fa fa-users"></i> Turmas</a> </li>                                       
-  
-        <!--<li><a data-toggle="modal" href="{{ url('/modal') }}/modalSimuladoEscola/#modalSimuladoEscola"><i class="fa glyphicon glyphicon-home"></i>Escolas</a></li>-->
+   
+        <li><a href="{{ url('/modal') }}/modalGabarito" data-toggle="modal" data-target="#meuModal"><i class="glyphicon glyphicon-file"></i> Gabaritos</a> </li>                                       
+        <li><a href="{{ url('/modal') }}/modalMediaRede" data-toggle="modal" data-target="#meuModal"><i class="fa fa-users"></i> Media Rede</a> </li>                                       
+        <li><a href="{{ url('/modal') }}/modalMediaEscola" data-toggle="modal" data-target="#meuModal"><i class="fa glyphicon glyphicon-home"></i> Media Escola</a> </li>                                       
+        <li><a href="{{ url('/modal') }}/modalMediaTurma" data-toggle="modal" data-target="#meuModal"><i class="fa glyphicon glyphicon-home"></i> Media Turma</a> </li>                                       
+        <li><a href="{{ url('/modal') }}/modalMediaAluno" data-toggle="modal" data-target="#meuModal"><i class="fa fa-users"></i> Media Alunos</a> </li>                                       
+        
+        <!--<li><a data-toggle="modal" href="{{ url('/modal') }}/modalMediaEscola/#modalMediaEscola"><i class="fa glyphicon glyphicon-home"></i>Escolas</a></li>-->
 		<!--<li><a data-toggle="modal" href="#"><i class="fa fa-users"></i>Turmas</a></li>-->
                                     
     </ul>

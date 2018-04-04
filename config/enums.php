@@ -62,7 +62,7 @@ return [
         'K' => "Turma K",
     ],
 
-     'turmasim' => [
+     'turmaSim' => [
         '"A"' => "Turma A",
         '"B"' => "Turma B",
         '"C"' => "Turma C",
@@ -93,28 +93,29 @@ return [
     // enums simulados
 
     'ano' => [
-        '17' => "2017",
-        '16' => "2016",
-        '15' => "2015",
+        '2018' => "2018",
+        '2017' => "2017",
+        '2016' => "2016",
+        '2015' => "2015",
        
     ],
 
     'simulado' => [
-        '01' => "Simulado em rede-1",
-        '02' => "Simulado em rede-2",
-        '03' => "Simulado em rede-3",
-        '04' => "Simulado em rede-4",
-        '05' => "Simulado em rede-5",
-        '06' => "Simulado em rede-6",
-        '07' => "Simulado em rede-7",
-        '08' => "Simulado em rede-8",
-        '09' => "Simulado em rede-9",
-        '10' => "Simulado em rede-10",
+        '1' => "Simulado em rede-1",
+        '2' => "Simulado em rede-2",
+        '3' => "Simulado em rede-3",
+        '4' => "Simulado em rede-4",
+        '5' => "Simulado em rede-5",
+        '6' => "Simulado em rede-6",
+        '7' => "Simulado em rede-7",
+        '8' => "Simulado em rede-8",
+        '9' => "Simulado em rede-9",
+        '0' => "Simulado em rede-10",
        
     ],
 
     'nivelSim' => [
-        '3' => "3º Ano",
+        // '3' => "3º Ano",
         '4' => "4º Ano",
         '5' => "5º Ano",
         '8' => "8º Ano",
