@@ -28,7 +28,6 @@ Execute os seguintes comandos no terminal
 
 ## 4 - acesse o phpmyadmin http://localhost/phpmyadmin e crie uma base de dados "simrede"
 ## 5 - ainda no phpmyadmin importe o banco que se encontra na pasta database do projeto
-Mãe vai que dia?
 
 ## 6 - Acesse o diretório /opt/lampp/htdocs/simrede e atualize-o:
 
