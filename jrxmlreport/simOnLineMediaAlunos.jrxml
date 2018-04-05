@@ -16,7 +16,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select avg(fraction)*10 as Media, gg.finalgrade as NotaGeral, u.firstname as Aluno, u.lastname as siem, qas.userid, u.department as Turma, u.institution as Escola, substr(qc.name,3) as cat
+		<![CDATA[select avg(IFNULL(fraction, 0))*10 as Media, gg.finalgrade as NotaGeral, u.firstname as Aluno, u.lastname as siem, qas.userid, u.department as Turma, u.institution as Escola, substr(qc.name,3) as cat
 
 FROM mdl_question_attempt_steps qas
 

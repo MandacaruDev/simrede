@@ -13,7 +13,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT qs.slot as Questao, avg(fraction) * 10 as Media, qs.quizid as Quiz, qs.questionid as QuestaoID, q.name as Descritor, SUBSTRING(u.`department`,2,1) as Nivel, q.category as cat, quiz.name as Simulado, substr(qc.name,3) as area,
+		<![CDATA[SELECT qs.slot as Questao, avg(IFNULL(fraction, 0)) * 10 as Media, qs.quizid as Quiz, qs.questionid as QuestaoID, q.name as Descritor, SUBSTRING(u.`department`,2,1) as Nivel, q.category as cat, quiz.name as Simulado, substr(qc.name,3) as area,
 
 (Select count(totalAlunosQa.id)
 from mdl_quiz_attempts totalAlunosQa
@@ -27,7 +27,7 @@ and totalAlunosQa.state="finished"
 and substr(totalAlunosq.ano,1,4) = $P{ano}
 ) as totalAlunos,
 
-(select avg(fraction) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
+(select avg(IFNULL(fraction, 0)) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
 INNER JOIN mdl_user mediau ON mediau.id=mediaqas.userid
 INNER JOIN mdl_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
 INNEr JOIN mdl_question mediaq ON mediaq.id=mediaqa.questionid
@@ -46,7 +46,7 @@ and substr(mediaquiz.ano,1,4) = $P{ano}
 and substr(mediaqas.ano,1,4) = $P{ano}
 ) as mediaGeralPT,
 
-(select avg(fraction) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
+(select avg(IFNULL(fraction, 0)) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
 INNER JOIN mdl_user mediau ON mediau.id=mediaqas.userid
 INNER JOIN mdl_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
 INNEr JOIN mdl_question mediaq ON mediaq.id=mediaqa.questionid
@@ -65,7 +65,7 @@ and substr(mediaquiz.ano,1,4) = $P{ano}
 and substr(mediaqas.ano,1,4) = $P{ano}
 ) as mediaGeralMT,
 
-(select avg(fraction) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
+(select avg(IFNULL(fraction, 0)) * 10 as mediaPT FROM mdl_question_attempt_steps mediaqas 
 INNER JOIN mdl_user mediau ON mediau.id=mediaqas.userid
 INNER JOIN mdl_question_attempts mediaqa ON mediaqa.id=mediaqas.questionattemptid
 INNEr JOIN mdl_question mediaq ON mediaq.id=mediaqa.questionid
