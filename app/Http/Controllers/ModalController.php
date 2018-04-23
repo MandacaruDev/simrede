@@ -28,14 +28,22 @@ class ModalController extends Controller
      *
      * @return  \Illuminate\Http\Response
      */
-    public function modalGabarito()
+    public function modalAlunos()
 
     {
         $siems = Siem::all()->pluck('nome','siem');
 
-        // $title = 'modalMediaEscola - modal';
-        return view('modal.modalGabarito',compact('siems'));
+        return view('modal.modalAlunos',compact('siems'));
     }
+
+    public function modalGabarito()
+    
+        {
+            $siems = Siem::all()->pluck('nome','siem');
+    
+            // $title = 'modalMediaEscola - modal';
+            return view('modal.modalGabarito',compact('siems'));
+        }
 
     public function modalMediaRede()
     
@@ -75,10 +83,16 @@ class ModalController extends Controller
 
 
 // Funções Relatórios Simulados
+
+    public function simulado_lista_alunos_report()
+    {
+    return view('phpreport.simOnLineAlunos');
+    }
+
     public function simulado_rede_report()
-{
-    return view('phpreport.simOnLineMediaQuestoesPorRede');
-}
+    {
+        return view('phpreport.simOnLineMediaQuestoesPorRede');
+    }
 
     public function simulado_escola_report()
     {

@@ -212,8 +212,9 @@ require_once '/opt/lampp/htdocs/simrede/connect.php';
     <ul class="dropdown-menu">
 
    
-        <li><a href="{{ url('/modal') }}/modalGabarito" data-toggle="modal" data-target="#meuModal"><i class="glyphicon glyphicon-file"></i> Gabaritos</a> </li>                                       
-        <li><a href="{{ url('/modal') }}/modalMediaRede" data-toggle="modal" data-target="#meuModal"><i class="fa fa-users"></i> Media Rede</a> </li>                                       
+    <li><a href="{{ url('/modal') }}/modalAlunos" data-toggle="modal" data-target="#meuModal"><i class="glyphicon glyphicon-file"></i> Lista de Alunos</a> </li>                                       
+    <li><a href="{{ url('/modal') }}/modalGabarito" data-toggle="modal" data-target="#meuModal"><i class="glyphicon glyphicon-file"></i> Gabaritos</a> </li>                                       
+    <li><a href="{{ url('/modal') }}/modalMediaRede" data-toggle="modal" data-target="#meuModal"><i class="fa fa-users"></i> Media Rede</a> </li>                                       
         <li><a href="{{ url('/modal') }}/modalMediaEscola" data-toggle="modal" data-target="#meuModal"><i class="fa glyphicon glyphicon-home"></i> Media Escola</a> </li>                                       
         <li><a href="{{ url('/modal') }}/modalMediaTurma" data-toggle="modal" data-target="#meuModal"><i class="fa glyphicon glyphicon-home"></i> Media Turma</a> </li>                                       
         <li><a href="{{ url('/modal') }}/modalMediaAluno" data-toggle="modal" data-target="#meuModal"><i class="fa fa-users"></i> Media Alunos</a> </li>                                       
