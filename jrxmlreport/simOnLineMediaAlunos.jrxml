@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="simOnlineMediaAlunos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bee613a5-a8d6-48f3-8b6d-75572103f8d6">
-	<property name="ireport.zoom" value="1.9487171000000438"/>
+	<property name="ireport.zoom" value="1.9487171000000463"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="codsiem" class="java.lang.String">
@@ -16,7 +16,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select avg(IFNULL(fraction, 0))*10 as Media, gg.finalgrade as NotaGeral, u.firstname as Aluno, u.lastname as siem, qas.userid, u.department as Turma, u.institution as Escola, substr(qc.name,3) as cat
+		<![CDATA[select avg(IFNULL(fraction, 0))*10 as Media, gg.finalgrade as NotaGeral, u.firstname as Aluno, u.username as Usuario, u.lastname as siem, qas.userid, u.department as Turma, u.institution as Escola, substr(qc.name,3) as cat
 
 FROM mdl_question_attempt_steps qas
 
@@ -45,6 +45,7 @@ ORDER BY turma ASC, `Aluno` ASC, cat DESC]]>
 	<field name="Media" class="java.math.BigDecimal"/>
 	<field name="NotaGeral" class="java.math.BigDecimal"/>
 	<field name="Aluno" class="java.lang.String"/>
+	<field name="Usuario" class="java.lang.String"/>
 	<field name="siem" class="java.lang.String"/>
 	<field name="userid" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -57,12 +58,12 @@ ORDER BY turma ASC, `Aluno` ASC, cat DESC]]>
 		<groupHeader>
 			<band height="48">
 				<staticText>
-					<reportElement mode="Opaque" x="32" y="21" width="312" height="20" backcolor="#CFCFCF" uuid="a0187952-3a71-4b56-919a-e3d58b8c740a"/>
+					<reportElement mode="Opaque" x="99" y="21" width="318" height="20" backcolor="#CFCFCF" uuid="a0187952-3a71-4b56-919a-e3d58b8c740a"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Aluno]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="344" y="21" width="59" height="20" backcolor="#CFCFCF" uuid="d9096738-3d9e-4d99-983d-9ff493a0920a"/>
+					<reportElement mode="Opaque" x="417" y="21" width="43" height="20" backcolor="#CFCFCF" uuid="d9096738-3d9e-4d99-983d-9ff493a0920a"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Media]]></text>
 				</staticText>
@@ -75,9 +76,14 @@ ORDER BY turma ASC, `Aluno` ASC, cat DESC]]>
 					<textFieldExpression><![CDATA[$F{Turma}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement mode="Opaque" x="403" y="21" width="121" height="20" backcolor="#CFCFCF" uuid="ab016079-bc08-4476-904a-7263077d333a"/>
+					<reportElement mode="Opaque" x="460" y="21" width="64" height="20" backcolor="#CFCFCF" uuid="ab016079-bc08-4476-904a-7263077d333a"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[NotaGeral]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="32" y="21" width="67" height="20" forecolor="#010101" backcolor="#D1D1D1" uuid="8e79daec-6459-43b9-a2f3-68c077c4d5b8"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Usuario]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
@@ -127,7 +133,7 @@ ORDER BY turma ASC, `Aluno` ASC, cat DESC]]>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField pattern="###0.00">
-				<reportElement x="403" y="0" width="57" height="20" uuid="14a371ac-e68a-4249-a14a-fda5401ad62d">
+				<reportElement x="460" y="0" width="64" height="20" uuid="14a371ac-e68a-4249-a14a-fda5401ad62d">
 					<printWhenExpression><![CDATA[$F{cat}=="PORTUGUES"&$F{NotaGeral}>=5]]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
@@ -136,7 +142,7 @@ ORDER BY turma ASC, `Aluno` ASC, cat DESC]]>
 				<textFieldExpression><![CDATA[$F{NotaGeral}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
-				<reportElement x="403" y="0" width="57" height="20" forecolor="#FF0000" uuid="bf861cd8-c013-440a-bd02-b69c1d88e70a">
+				<reportElement x="460" y="0" width="64" height="20" forecolor="#FF0000" uuid="bf861cd8-c013-440a-bd02-b69c1d88e70a">
 					<printWhenExpression><![CDATA[$F{cat}=="PORTUGUES"&$F{NotaGeral}<=4.9]]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
@@ -146,14 +152,12 @@ ORDER BY turma ASC, `Aluno` ASC, cat DESC]]>
 			</textField>
 			<elementGroup/>
 			<textField>
-				<reportElement x="32" y="0" width="229" height="20" uuid="dc20b991-3364-45e7-aae0-3317b13060d8">
-					<printWhenExpression><![CDATA[$F{cat}=="PORTUGUES"]]></printWhenExpression>
-				</reportElement>
+				<reportElement x="99" y="0" width="162" height="20" uuid="dc20b991-3364-45e7-aae0-3317b13060d8"/>
 				<textElement verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA[$F{Aluno}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
-				<reportElement x="344" y="0" width="29" height="20" uuid="69f94944-a47a-493a-946a-79cf22a3afd5"/>
+				<reportElement x="417" y="0" width="43" height="20" uuid="69f94944-a47a-493a-946a-79cf22a3afd5"/>
 				<textElement verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA[$F{Media}]]></textFieldExpression>
 			</textField>
@@ -163,8 +167,12 @@ ORDER BY turma ASC, `Aluno` ASC, cat DESC]]>
 				</reportElement>
 			</line>
 			<textField>
-				<reportElement x="261" y="0" width="83" height="18" uuid="a9982181-9707-4f57-84f9-6d5256975a53"/>
+				<reportElement x="344" y="0" width="73" height="18" uuid="a9982181-9707-4f57-84f9-6d5256975a53"/>
 				<textFieldExpression><![CDATA[$F{cat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="32" y="0" width="67" height="20" uuid="aa8be3c8-43f5-4717-9355-0a1ca526abd9"/>
+				<textFieldExpression><![CDATA[$F{Usuario}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

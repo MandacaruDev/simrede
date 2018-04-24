@@ -3592,8 +3592,9 @@ foreach($this->arrayVariable as $name=>$value){
         
 					$this->global_pointer--;
         }else {
-            echo "Nenhum dado encontrado!!!";
 
+            echo "<div align='center'></br></br>Desculpe, nenhum dado foi encontrado!!!<p><a  href='http://localhost:8000/home'><== Voltar</a></div>";
+            
 // return Redirect("http://facebook.com/");
 
             exit(0);
